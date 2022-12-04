@@ -4,5 +4,7 @@
   </PropertyGroup>
   <PropertyGroup Condition=" '$(AvaloniaSingleProject)' == 'true' and '$([MSBuild]::GetTargetPlatformIdentifier($(TargetFramework)))' == 'windows' ">
     <OutputType Condition="'$(OutputType)' == 'Exe'">WinExe</OutputType>
+    <BuiltInComInteropSupport>true</BuiltInComInteropSupport>
+    <EnableWindowsTargeting>true</EnableWindowsTargeting>
   </PropertyGroup>
 </Project>
