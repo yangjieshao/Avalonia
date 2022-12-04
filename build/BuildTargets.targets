@@ -4,6 +4,7 @@
     <AvaloniaUseExternalMSBuild>true</AvaloniaUseExternalMSBuild>
     <AvaloniaXamlIlVerifyIl>true</AvaloniaXamlIlVerifyIl>
     <AvaloniaUseCompiledBindingsByDefault>true</AvaloniaUseCompiledBindingsByDefault>
+    <AvaloniaSingleProjectIncludeDefaultPlatformReferences>false</AvaloniaSingleProjectIncludeDefaultPlatformReferences>
   </PropertyGroup>
   <Import Project="$(MSBuildThisFileDirectory)\..\packages\Avalonia\AvaloniaBuildTasks.props"/>
   <Import Project="$(MSBuildThisFileDirectory)\..\packages\Avalonia\AvaloniaSingleProject.props"/>
