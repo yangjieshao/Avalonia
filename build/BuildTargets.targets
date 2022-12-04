@@ -6,5 +6,7 @@
     <AvaloniaUseCompiledBindingsByDefault>true</AvaloniaUseCompiledBindingsByDefault>
   </PropertyGroup>
   <Import Project="$(MSBuildThisFileDirectory)\..\packages\Avalonia\AvaloniaBuildTasks.props"/>
+  <Import Project="$(MSBuildThisFileDirectory)\..\packages\Avalonia\AvaloniaSingleProject.props"/>
   <Import Project="$(MSBuildThisFileDirectory)\..\packages\Avalonia\AvaloniaBuildTasks.targets"/>
+  <Import Project="$(MSBuildThisFileDirectory)\..\packages\Avalonia\AvaloniaSingleProject.targets"/>
 </Project>
