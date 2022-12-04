@@ -1,0 +1,8 @@
+<Project>
+  <PropertyGroup Condition="'$(AvaloniaSingleProject)' == 'true'">
+    <AvaloniaSingleProjectIncludeDefaultPlatformReferences>true</AvaloniaSingleProjectIncludeDefaultPlatformReferences>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(AvaloniaSingleProject)' == 'true' and '$([MSBuild]::GetTargetPlatformIdentifier($(TargetFramework)))' == 'windows' ">
+    <OutputType Condition="'$(OutputType)' == 'Exe'">WinExe</OutputType>
+  </PropertyGroup>
+</Project>

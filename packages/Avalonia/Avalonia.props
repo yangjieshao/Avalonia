@@ -6,4 +6,5 @@
     <AvaloniaUseExternalMSBuild>false</AvaloniaUseExternalMSBuild>
   </PropertyGroup>
   <Import Project="$(MSBuildThisFileDirectory)\AvaloniaBuildTasks.props"/>
+  <Import Project="$(MSBuildThisFileDirectory)\AvaloniaSingleProject.props"/>
 </Project>

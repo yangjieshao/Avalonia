@@ -1,0 +1,178 @@
+<Project>
+
+  <ItemGroup Condition=" '$(AvaloniaSingleProjectIncludeDefaultPlatformReferences)' == 'true' ">
+    <PackageReference Include="Avalonia.Skia" Version="11.0-preview4" />
+    <PackageReference Include="Avalonia.Win32" Version="11.0-preview4" Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'windows'" />
+    <PackageReference Include="Avalonia.Native" Version="11.0-preview4" Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'macos'" />
+    <PackageReference Include="Avalonia.X11" Version="11.0-preview4" Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'linux'" />
+    <PackageReference Include="Avalonia.Android" Version="11.0-preview4" Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'android'" />
+    <PackageReference Include="Avalonia.iOS" Version="11.0-preview4" Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'ios'" />
+    <PackageReference Include="Avalonia.Web" Version="11.0-preview4" Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'browser'" />
+  </ItemGroup>
+  
+  <PropertyGroup Condition=" '$(AvaloniaSingleProject)' == 'true' ">
+    <PlatformsProjectFolder Condition=" '$(PlatformsProjectFolder)' == '' ">Platforms\</PlatformsProjectFolder>
+    <PlatformsProjectFolder>$([MSBuild]::EnsureTrailingSlash('$(PlatformsProjectFolder)'))</PlatformsProjectFolder>
+    <!-- Required - Enable Launch Profiles for .NET 6 iOS/Android -->
+    <_KeepLaunchProfiles>true</_KeepLaunchProfiles>
+    <!-- Android -->
+    <EnableDefaultAndroidItems>false</EnableDefaultAndroidItems>
+    <AndroidProjectFolder Condition=" '$(AndroidProjectFolder)' == '' ">$(PlatformsProjectFolder)Android\</AndroidProjectFolder>
+    <AndroidProjectFolder>$([MSBuild]::EnsureTrailingSlash('$(AndroidProjectFolder)'))</AndroidProjectFolder>
+    <!-- iOS -->
+    <EnableDefaultiOSItems>false</EnableDefaultiOSItems>
+    <iOSProjectFolder Condition=" '$(iOSProjectFolder)' == '' ">$(PlatformsProjectFolder)iOS\</iOSProjectFolder>
+    <iOSProjectFolder>$([MSBuild]::EnsureTrailingSlash('$(iOSProjectFolder)'))</iOSProjectFolder>
+    <!-- MacCatalyst -->
+    <EnableDefaultMacCatalystItems>false</EnableDefaultMacCatalystItems>
+    <MacCatalystProjectFolder Condition=" '$(MacCatalystProjectFolder)' == '' ">$(PlatformsProjectFolder)MacCatalyst\</MacCatalystProjectFolder>
+    <MacCatalystProjectFolder>$([MSBuild]::EnsureTrailingSlash('$(MacCatalystProjectFolder)'))</MacCatalystProjectFolder>
+    <!-- macOS -->
+    <EnableDefaultmacOSItems>false</EnableDefaultmacOSItems>
+    <macOSProjectFolder Condition=" '$(macOSProjectFolder)' == '' ">$(PlatformsProjectFolder)macOS\</macOSProjectFolder>
+    <macOSProjectFolder>$([MSBuild]::EnsureTrailingSlash('$(macOSProjectFolder)'))</macOSProjectFolder>
+    <!-- Windows -->
+    <EnableDefaultWindowsItems>false</EnableDefaultWindowsItems>
+    <WindowsProjectFolder Condition=" '$(WindowsProjectFolder)' == '' ">$(PlatformsProjectFolder)Windows\</WindowsProjectFolder>
+    <WindowsProjectFolder>$([MSBuild]::EnsureTrailingSlash('$(WindowsProjectFolder)'))</WindowsProjectFolder>
+    <!-- Linux -->
+    <LinuxProjectFolder Condition=" '$(LinuxProjectFolder)' == '' ">$(PlatformsProjectFolder)Linux\</LinuxProjectFolder>
+    <LinuxProjectFolder>$([MSBuild]::EnsureTrailingSlash('$(LinuxProjectFolder)'))</LinuxProjectFolder>
+    <!-- Browser -->
+    <BrowserProjectFolder Condition=" '$(BrowserProjectFolder)' == '' ">$(PlatformsProjectFolder)Browser\</BrowserProjectFolder>
+    <BrowserProjectFolder>$([MSBuild]::EnsureTrailingSlash('$(BrowserProjectFolder)'))</BrowserProjectFolder>
+  </PropertyGroup>
+
+  <ItemGroup Condition=" '$(AvaloniaSingleProject)' == 'true' ">
+    <!-- Compatability with VS tooling -->
+    <MauiPlatformSpecificFolder Include="$(AndroidProjectFolder)" TargetPlatformIdentifier="android" />
+    <MauiPlatformSpecificFolder Include="$(iOSProjectFolder)" TargetPlatformIdentifier="ios" />
+    <MauiPlatformSpecificFolder Include="$(macOSProjectFolder)" TargetPlatformIdentifier="macos" />
+    <MauiPlatformSpecificFolder Include="$(WindowsProjectFolder)" TargetPlatformIdentifier="windows" />
+    <MauiPlatformSpecificFolder Include="$(LinuxProjectFolder)" TargetPlatformIdentifier="linux" />
+    <MauiPlatformSpecificFolder Include="$(BrowserProjectFolder)" TargetPlatformIdentifier="browser" />
+  </ItemGroup>
+
+  <PropertyGroup Condition=" '$(AvaloniaSingleProject)' == 'true' and '$([MSBuild]::GetTargetPlatformIdentifier($(TargetFramework)))' == 'android' ">
+    <AndroidManifest Condition=" Exists('$(AndroidProjectFolder)AndroidManifest.xml') ">$(AndroidProjectFolder)AndroidManifest.xml</AndroidManifest>
+    <MonoAndroidResourcePrefix>$(AndroidProjectFolder)Resources</MonoAndroidResourcePrefix>
+    <MonoAndroidAssetsPrefix>$(AndroidProjectFolder)Assets</MonoAndroidAssetsPrefix>
+  </PropertyGroup>
+
+  <PropertyGroup Condition=" '$(AvaloniaSingleProject)' == 'true' and '$([MSBuild]::GetTargetPlatformIdentifier($(TargetFramework)))' == 'ios' ">
+    <IPhoneResourcePrefix>$(iOSProjectFolder)Resources</IPhoneResourcePrefix>
+    <CodesignEntitlements Condition=" Exists('$(iOSProjectFolder)Entitlements.plist') ">$(iOSProjectFolder)Entitlements.plist</CodesignEntitlements>
+    <_SingleProjectiOSExcludes>$(iOSProjectFolder)/**/.*/**</_SingleProjectiOSExcludes>
+  </PropertyGroup>
+
+  <PropertyGroup Condition=" '$(AvaloniaSingleProject)' == 'true' and '$([MSBuild]::GetTargetPlatformIdentifier($(TargetFramework)))' == 'macos' ">
+    <MonoMacResourcePrefix>$(macOSProjectFolder)Resources</MonoMacResourcePrefix>
+    <CodesignEntitlements Condition=" Exists('$(macOSProjectFolder)Entitlements.plist') ">$(macOSProjectFolder)Entitlements.plist</CodesignEntitlements>
+  </PropertyGroup>
+
+  <PropertyGroup Condition=" '$(AvaloniaSingleProject)' == 'true' and '$([MSBuild]::GetTargetPlatformIdentifier($(TargetFramework)))' == 'windows' ">
+    <ApplicationManifest Condition=" Exists('$(WindowsProjectFolder)app.manifest') ">$(WindowsProjectFolder)app.manifest</ApplicationManifest>
+    <PackageManifest Condition=" Exists('$(WindowsProjectFolder)Package.appxmanifest') ">$(WindowsProjectFolder)Package.appxmanifest</PackageManifest>
+  </PropertyGroup>
+
+  <ItemGroup Condition=" '$(AvaloniaSingleProject)' == 'true' ">
+    <!-- Add metadata indicating that the platform-specific files are not part of every build configuration. -->
+    <Compile Update="$(PlatformsProjectFolder)**/*$(DefaultLanguageSourceExtension)">
+      <ExcludeFromCurrentConfiguration>true</ExcludeFromCurrentConfiguration>
+    </Compile>
+
+    <!-- Add metadata for the files that are actually part of the current build configuration. -->
+    <Compile Condition=" '$(TargetPlatformIdentifier)' == 'android' " Update="$(AndroidProjectFolder)**/*$(DefaultLanguageSourceExtension)">
+      <ExcludeFromCurrentConfiguration>false</ExcludeFromCurrentConfiguration>
+    </Compile>
+    <Compile Condition=" '$(TargetPlatformIdentifier)' == 'ios' " Update="$(iOSProjectFolder)**/*$(DefaultLanguageSourceExtension)">
+      <ExcludeFromCurrentConfiguration>false</ExcludeFromCurrentConfiguration>
+    </Compile>
+    <Compile Condition=" '$(TargetPlatformIdentifier)' == 'macos' " Update="$(macOSProjectFolder)**/*$(DefaultLanguageSourceExtension)">
+      <ExcludeFromCurrentConfiguration>false</ExcludeFromCurrentConfiguration>
+    </Compile>
+    <Compile Condition=" '$(TargetPlatformIdentifier)' == 'windows' " Update="$(WindowsProjectFolder)**/*$(DefaultLanguageSourceExtension)">
+      <ExcludeFromCurrentConfiguration>false</ExcludeFromCurrentConfiguration>
+    </Compile>
+    <Compile Condition=" '$(TargetPlatformIdentifier)' == 'linux' " Update="$(LinuxProjectFolder)**/*$(DefaultLanguageSourceExtension)">
+      <ExcludeFromCurrentConfiguration>false</ExcludeFromCurrentConfiguration>
+    </Compile>
+    <Compile Condition=" '$(TargetPlatformIdentifier)' == 'browser' " Update="$(BrowserProjectFolder)**/*$(DefaultLanguageSourceExtension)">
+      <ExcludeFromCurrentConfiguration>false</ExcludeFromCurrentConfiguration>
+    </Compile>
+  </ItemGroup>
+
+  <Target Name="_AvaloniaRemovePlatformCompileItems" BeforeTargets="GenerateMSBuildEditorConfigFileShouldRun" Condition=" '$(EnableDefaultItems)' == 'true' and '$(AvaloniaSingleProject)' == 'true' ">
+    <ItemGroup>
+      <Compile Condition=" '%(Compile.ExcludeFromCurrentConfiguration)' == 'true' " Remove="$(PlatformsProjectFolder)**/*$(DefaultLanguageSourceExtension)" />
+    </ItemGroup>
+  </Target>
+
+  <!-- IDE capabilities -->
+  <ItemGroup Condition=" '$(AvaloniaSingleProject)' == 'true' ">
+    <ProjectCapability Include="Msix" />
+    <ProjectCapability Include="MauiSingleProject" />
+    <ProjectCapability Include="LaunchProfiles" />
+    <!-- If VS is older than Dev17 -->
+    <ProjectCapability Include="XamarinStaticLaunchProfiles" Condition=" '$(VisualStudioVersion)' != '' and '$(VisualStudioVersion)' &lt; '17.0' " />
+    <!-- Otherwise define LaunchProfilesGroupByPlatformFilters by default -->
+    <ProjectCapability Include="LaunchProfilesGroupByPlatformFilters" Condition=" '$(VisualStudioVersion)' == '' or '$(VisualStudioVersion)' &gt;= '17.0' " />
+    <ProjectCapability Include="SingleTargetBuildForStartupProjects" Condition=" '$(EnableSingleTargetBuildForStartupProjects)' != 'false' " />
+  </ItemGroup>
+
+  <!-- Android -->
+  <ItemGroup Condition="'$(EnableDefaultItems)' == 'true' and '$(AvaloniaSingleProject)' == 'true' and '$(TargetPlatformIdentifier)' == 'android' and '$(MonoAndroidResourcePrefix)' != '' ">
+    <AndroidResource Include="$(MonoAndroidResourcePrefix)/*/*.xml" />
+    <AndroidResource Include="$(MonoAndroidResourcePrefix)/*/*.axml" />
+    <AndroidResource Include="$(MonoAndroidResourcePrefix)/*/*.png" />
+    <AndroidResource Include="$(MonoAndroidResourcePrefix)/*/*.jpg" />
+    <AndroidResource Include="$(MonoAndroidResourcePrefix)/*/*.gif" />
+    <AndroidResource Include="$(MonoAndroidResourcePrefix)/font/*.ttf" />
+    <AndroidResource Include="$(MonoAndroidResourcePrefix)/font/*.otf" />
+    <AndroidResource Include="$(MonoAndroidResourcePrefix)/font/*.ttc" />
+    <AndroidResource Include="$(MonoAndroidResourcePrefix)/raw/*" Exclude="$(MonoAndroidResourcePrefix)/raw/.*" />
+    <AndroidAsset Include="$(MonoAndroidAssetsPrefix)/**/*" Exclude="$(MonoAndroidAssetsPrefix)/**/.*/**" />
+  </ItemGroup>
+
+  <!-- iOS -->
+  <ItemGroup Condition=" '$(EnableDefaulItems)' == 'true' and '$(AvaloniaSingleProject)' == 'true' and '$(TargetPlatformIdentifier)' == 'ios' and '$(iOSProjectFolder)' != ''">
+    <None
+      Include="$(iOSProjectFolder)Info.plist"
+      Condition="Exists('$(iOSProjectFolder)Info.plist')"
+      Exclude="$(_SingleProjectiOSExcludes)"
+      LogicalName="Info.plist"
+      IsDefaultItem="true"
+    />
+    <BundleResource
+      Include="$(iOSProjectFolder)Resources\**"
+      Exclude="$(_SingleProjectiOSExcludes)"
+      IsDefaultItem="true"
+    />
+    <ImageAsset
+      Include="$(iOSProjectFolder)**/*.xcassets/**/*.*"
+      Exclude="$(_SingleProjectiOSExcludes)"
+      Link="%(RecursiveDir)%(FileName)%(Extension)"
+      Visible="false"
+      IsDefaultItem="true"
+    />
+    <SceneKitAsset
+      Include="$(iOSProjectFolder)**/*.scnassets/*"
+      Exclude="$(_SingleProjectiOSExcludes)"
+      Link="%(RecursiveDir)%(FileName)%(Extension)"
+      IsDefaultItem="true"
+    />
+    <InterfaceDefinition
+      Include="$(iOSProjectFolder)**/*.storyboard;$(iOSProjectFolder)**/*.xib"
+      Exclude="$(_SingleProjectiOSExcludes)"
+      Link="%(RecursiveDir)%(FileName)%(Extension)"
+      IsDefaultItem="true"
+    />
+  </ItemGroup>
+
+  <!-- Windows -->
+  <ItemGroup Condition=" '$(EnableDefaultItems)' == 'true' and '$(AvaloniaSingleProject)' == 'true' and '$(TargetPlatformIdentifier)' == 'windows' and '$(WindowsProjectFolder)' != '' ">
+    <Manifest
+      Include="$(ApplicationManifest)"
+      Condition="Exists('$(ApplicationManifest)')" />
+  </ItemGroup>
+</Project>
