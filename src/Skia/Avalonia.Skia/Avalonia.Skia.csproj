@@ -14,7 +14,8 @@
   <ItemGroup>
     <ProjectReference Include="..\..\..\packages\Avalonia\Avalonia.csproj" />
   </ItemGroup>
-  
+
+  <Import Project="..\..\..\build\ApiDiff.props" />
   <Import Project="..\..\..\build\SkiaSharp.props" />
   <Import Project="..\..\..\build\HarfBuzzSharp.props" />
   <Import Project="..\..\..\build\DevAnalyzers.props" />
