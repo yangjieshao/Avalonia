@@ -123,6 +123,7 @@ namespace Avalonia
         public override int GetHashCode() { throw null; }
         public Avalonia.AvaloniaPropertyMetadata GetMetadata(System.Type type) { throw null; }
         public Avalonia.AvaloniaPropertyMetadata GetMetadata<T>() where T : Avalonia.AvaloniaObject { throw null; }
+        [System.Diagnostics.CodeAnalysis.RequiresUnreferencedCodeAttribute("Implicit convertion methods are required for type conversion.")]
         public bool IsValidValue(object? value) { throw null; }
         public static bool operator ==(Avalonia.AvaloniaProperty? a, Avalonia.AvaloniaProperty? b) { throw null; }
         public static bool operator !=(Avalonia.AvaloniaProperty? a, Avalonia.AvaloniaProperty? b) { throw null; }
@@ -186,6 +187,7 @@ namespace Avalonia
         public Avalonia.AvaloniaProperty? FindRegistered(System.Type type, string name) { throw null; }
         public Avalonia.DirectPropertyBase<T>? FindRegisteredDirect<T>(Avalonia.AvaloniaObject o, Avalonia.DirectPropertyBase<T> property) { throw null; }
         public System.Collections.Generic.IReadOnlyList<Avalonia.AvaloniaProperty> GetRegistered(Avalonia.AvaloniaObject o) { throw null; }
+        [System.Diagnostics.CodeAnalysis.UnconditionalSuppressMessageAttribute("Trimming", "IL2059", Justification="If type was trimmed out, no properties were referenced")]
         public System.Collections.Generic.IReadOnlyList<Avalonia.AvaloniaProperty> GetRegistered(System.Type type) { throw null; }
         public System.Collections.Generic.IReadOnlyList<Avalonia.AvaloniaProperty> GetRegisteredAttached(System.Type type) { throw null; }
         public System.Collections.Generic.IReadOnlyList<Avalonia.AvaloniaProperty> GetRegisteredDirect(System.Type type) { throw null; }
@@ -202,6 +204,7 @@ namespace Avalonia
         protected AvaloniaProperty(string name, System.Type ownerType, Avalonia.AvaloniaPropertyMetadata metadata, System.Action<Avalonia.AvaloniaObject, bool>? notifying = null) : base (default(string), default(System.Type), default(System.Type), default(Avalonia.AvaloniaPropertyMetadata), default(System.Action<Avalonia.AvaloniaObject, bool>)) { }
         public new System.IObservable<Avalonia.AvaloniaPropertyChangedEventArgs<TValue>> Changed { get { throw null; } }
         protected override System.IObservable<Avalonia.AvaloniaPropertyChangedEventArgs> GetChanged() { throw null; }
+        [System.Diagnostics.CodeAnalysis.UnconditionalSuppressMessageAttribute("Trimming", "IL2026", Justification="Implicit convertion methods might be removed by the linker. We don't have a reliable way to prevent it, except converting everything in compile time when possible.")]
         protected Avalonia.Data.BindingValue<object?> TryConvert(object? value) { throw null; }
     }
     [System.Runtime.InteropServices.StructLayoutAttribute(System.Runtime.InteropServices.LayoutKind.Sequential)]
@@ -979,7 +982,7 @@ namespace Avalonia.Animation
         public static void RegisterAnimator<TAnimator>(System.Func<Avalonia.AvaloniaProperty, bool> condition) where TAnimator : Avalonia.Animation.IAnimator, new() { }
         public System.Threading.Tasks.Task RunAsync(Avalonia.Animation.Animatable control, Avalonia.Animation.IClock? clock = null) { throw null; }
         public System.Threading.Tasks.Task RunAsync(Avalonia.Animation.Animatable control, Avalonia.Animation.IClock? clock = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken)) { throw null; }
-        public static void SetAnimator(Avalonia.Animation.IAnimationSetter setter, System.Type value) { }
+        public static void SetAnimator(Avalonia.Animation.IAnimationSetter setter, [System.Diagnostics.CodeAnalysis.DynamicallyAccessedMembersAttribute(System.Diagnostics.CodeAnalysis.DynamicallyAccessedMemberTypes.PublicMethods | System.Diagnostics.CodeAnalysis.DynamicallyAccessedMemberTypes.PublicParameterlessConstructor)] System.Type value) { }
     }
     public abstract partial class AnimatorDrivenTransition<T, TAnimator> : Avalonia.Animation.Transition<T> where TAnimator : Avalonia.Animation.Animators.Animator<T>, new()
     {
@@ -999,6 +1002,7 @@ namespace Avalonia.Animation
         public Avalonia.AvaloniaProperty? Property { [System.Runtime.CompilerServices.CompilerGeneratedAttribute] get { throw null; } }
         public object? Value { get { throw null; } set { } }
         public System.IDisposable BindSetter(Avalonia.Animation.IAnimationSetter setter, Avalonia.Animation.Animatable targetControl) { throw null; }
+        [System.Diagnostics.CodeAnalysis.RequiresUnreferencedCodeAttribute("Convertion methods are required for type conversion, including op_Implicit, op_Explicit, Parse and TypeConverter.")]
         public T GetTypedValue<T>() { throw null; }
     }
     public partial class AnimatorTransitionObservable<T, TAnimator> : Avalonia.Animation.TransitionObservableBase<T> where TAnimator : Avalonia.Animation.Animators.Animator<T>
@@ -1054,7 +1058,6 @@ namespace Avalonia.Animation
         public Avalonia.Animation.Easings.Easing FadeInEasing { get { throw null; } set { } }
         public Avalonia.Animation.Easings.Easing FadeOutEasing { get { throw null; } set { } }
         System.Threading.Tasks.Task Avalonia.Animation.IPageTransition.Start(Avalonia.Visual? from, Avalonia.Visual? to, bool forward, System.Threading.CancellationToken cancellationToken) { throw null; }
-        [System.Diagnostics.DebuggerStepThroughAttribute]
         public System.Threading.Tasks.Task Start(Avalonia.Visual? from, Avalonia.Visual? to, System.Threading.CancellationToken cancellationToken) { throw null; }
     }
     [System.ComponentModel.TypeConverterAttribute(typeof(Avalonia.Animation.CueTypeConverter))]
@@ -1213,7 +1216,6 @@ namespace Avalonia.Animation
         public Avalonia.Animation.Easings.Easing SlideInEasing { [System.Runtime.CompilerServices.CompilerGeneratedAttribute] get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute] set { } }
         public Avalonia.Animation.Easings.Easing SlideOutEasing { [System.Runtime.CompilerServices.CompilerGeneratedAttribute] get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute] set { } }
         protected static Avalonia.Visual GetVisualParent(Avalonia.Visual? from, Avalonia.Visual? to) { throw null; }
-        [System.Diagnostics.DebuggerStepThroughAttribute]
         public virtual System.Threading.Tasks.Task Start(Avalonia.Visual? from, Avalonia.Visual? to, bool forward, System.Threading.CancellationToken cancellationToken) { throw null; }
         public enum SlideAxis
         {
@@ -1255,7 +1257,6 @@ namespace Avalonia.Animation
         public Rotate3DTransition() { }
         public Rotate3DTransition(System.TimeSpan duration, Avalonia.Animation.PageSlide.SlideAxis orientation = Avalonia.Animation.PageSlide.SlideAxis.Horizontal, double? depth = default(double?)) { }
         public double? Depth { [System.Runtime.CompilerServices.CompilerGeneratedAttribute] get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute] set { } }
-        [System.Diagnostics.DebuggerStepThroughAttribute]
         public override System.Threading.Tasks.Task Start(Avalonia.Visual? from, Avalonia.Visual? to, bool forward, System.Threading.CancellationToken cancellationToken) { throw null; }
     }
     public partial class SizeTransition : Avalonia.Animation.AnimatorDrivenTransition<Avalonia.Size, Avalonia.Animation.Animators.SizeAnimator>
@@ -1310,6 +1311,7 @@ namespace Avalonia.Animation
         public System.TimeSpan Delay { [System.Runtime.CompilerServices.CompilerGeneratedAttribute] get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute] set { } }
         public System.TimeSpan Duration { [System.Runtime.CompilerServices.CompilerGeneratedAttribute] get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute] set { } }
         public Avalonia.Animation.Easings.Easing Easing { [System.Runtime.CompilerServices.CompilerGeneratedAttribute] get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute] set { } }
+        [System.Diagnostics.CodeAnalysis.DisallowNullAttribute]
         public Avalonia.AvaloniaProperty? Property { get { throw null; } set { } }
         public virtual System.IDisposable Apply(Avalonia.Animation.Animatable control, Avalonia.Animation.IClock clock, object? oldValue, object? newValue) { throw null; }
         public abstract System.IObservable<T> DoTransition(System.IObservable<double> progress, T oldValue, T newValue);
@@ -1703,8 +1705,9 @@ namespace Avalonia.Collections
         System.Collections.IDictionaryEnumerator System.Collections.IDictionary.GetEnumerator() { throw null; }
         void System.Collections.IDictionary.Remove(object key) { }
         System.Collections.IEnumerator System.Collections.IEnumerable.GetEnumerator() { throw null; }
-        public bool TryGetValue(TKey key, out TValue value) { throw null; }
+        public bool TryGetValue(TKey key, [System.Diagnostics.CodeAnalysis.MaybeNullWhenAttribute(false)] out TValue value) { throw null; }
     }
+    [System.Diagnostics.CodeAnalysis.RequiresUnreferencedCodeAttribute("Convertion methods are required for type conversion, including op_Implicit, op_Explicit, Parse and TypeConverter.")]
     public partial class AvaloniaListConverter<T> : System.ComponentModel.TypeConverter
     {
         public AvaloniaListConverter() { }
@@ -1768,6 +1771,8 @@ namespace Avalonia.Collections
         [System.Runtime.InteropServices.StructLayoutAttribute(System.Runtime.InteropServices.LayoutKind.Sequential)]
         public partial struct Enumerator : System.Collections.Generic.IEnumerator<T>, System.Collections.IEnumerator, System.IDisposable
         {
+            private object _dummy;
+            private int _dummyPrimitive;
             public Enumerator(System.Collections.Generic.List<T> inner) { throw null; }
             public T Current { get { throw null; } }
             object? System.Collections.IEnumerator.Current { get { throw null; } }
@@ -1913,8 +1918,8 @@ namespace Avalonia.Collections.Pooled
         public T[] ToArray() { throw null; }
         public void TrimExcess() { }
         public bool TrueForAll(System.Func<T, bool> match) { throw null; }
-        public bool TryFind(System.Func<T, bool> match, out T result) { throw null; }
-        public bool TryFindLast(System.Func<T, bool> match, out T result) { throw null; }
+        public bool TryFind(System.Func<T, bool> match, [System.Diagnostics.CodeAnalysis.MaybeNullWhenAttribute(false)] out T result) { throw null; }
+        public bool TryFindLast(System.Func<T, bool> match, [System.Diagnostics.CodeAnalysis.MaybeNullWhenAttribute(false)] out T result) { throw null; }
         [System.Runtime.InteropServices.StructLayoutAttribute(System.Runtime.InteropServices.LayoutKind.Sequential)]
         public partial struct Enumerator : System.Collections.Generic.IEnumerator<T>, System.Collections.IEnumerator, System.IDisposable
         {
@@ -1971,8 +1976,8 @@ namespace Avalonia.Collections.Pooled
         void System.Runtime.Serialization.IDeserializationCallback.OnDeserialization(object? sender) { }
         public T[] ToArray() { throw null; }
         public void TrimExcess() { }
-        public bool TryPeek(out T result) { throw null; }
-        public bool TryPop(out T result) { throw null; }
+        public bool TryPeek([System.Diagnostics.CodeAnalysis.MaybeNullWhenAttribute(false)] out T result) { throw null; }
+        public bool TryPop([System.Diagnostics.CodeAnalysis.MaybeNullWhenAttribute(false)] out T result) { throw null; }
         [System.Runtime.InteropServices.StructLayoutAttribute(System.Runtime.InteropServices.LayoutKind.Sequential)]
         public partial struct Enumerator : System.Collections.Generic.IEnumerator<T>, System.Collections.IEnumerator, System.IDisposable
         {
@@ -2280,7 +2285,9 @@ namespace Avalonia.Data
         public bool Equals(Avalonia.Data.BindingValue<T> other) { throw null; }
         [System.Runtime.CompilerServices.CompilerGeneratedAttribute]
         public override bool Equals(object obj) { throw null; }
+        [System.Diagnostics.CodeAnalysis.RequiresUnreferencedCodeAttribute("Implicit convertion methods are required for type conversion.")]
         public static Avalonia.Data.BindingValue<T> FromUntyped(object? value) { throw null; }
+        [System.Diagnostics.CodeAnalysis.RequiresUnreferencedCodeAttribute("Implicit convertion methods are required for type conversion.")]
         public static Avalonia.Data.BindingValue<T> FromUntyped(object? value, System.Type targetType) { throw null; }
         [System.Runtime.CompilerServices.CompilerGeneratedAttribute]
         public override int GetHashCode() { throw null; }
@@ -2385,6 +2392,7 @@ namespace Avalonia.Data.Converters
         public static readonly Avalonia.Data.Converters.IValueConverter Not;
         public static readonly Avalonia.Data.Converters.IMultiValueConverter Or;
     }
+    [System.Diagnostics.CodeAnalysis.RequiresUnreferencedCodeAttribute("Convertion methods are required for type conversion, including op_Implicit, op_Explicit, Parse and TypeConverter.")]
     public partial class DefaultValueConverter : Avalonia.Data.Converters.IValueConverter
     {
         public static readonly Avalonia.Data.Converters.DefaultValueConverter Instance;
@@ -2533,7 +2541,9 @@ namespace Avalonia.Data.Core.Plugins
     }
     public partial interface IDataValidationPlugin
     {
+        [System.Diagnostics.CodeAnalysis.RequiresUnreferencedCodeAttribute("DataValidationPlugin might require unreferenced code.")]
         bool Match(System.WeakReference<object?> reference, string memberName);
+        [System.Diagnostics.CodeAnalysis.RequiresUnreferencedCodeAttribute("DataValidationPlugin might require unreferenced code.")]
         Avalonia.Data.Core.Plugins.IPropertyAccessor Start(System.WeakReference<object?> reference, string propertyName, Avalonia.Data.Core.Plugins.IPropertyAccessor inner);
     }
     public partial interface IPropertyAccessor : System.IDisposable
@@ -2546,12 +2556,16 @@ namespace Avalonia.Data.Core.Plugins
     }
     public partial interface IPropertyAccessorPlugin
     {
+        [System.Diagnostics.CodeAnalysis.RequiresUnreferencedCodeAttribute("PropertyAccessors might require unreferenced code.")]
         bool Match(object obj, string propertyName);
+        [System.Diagnostics.CodeAnalysis.RequiresUnreferencedCodeAttribute("PropertyAccessors might require unreferenced code.")]
         Avalonia.Data.Core.Plugins.IPropertyAccessor? Start(System.WeakReference<object?> reference, string propertyName);
     }
     public partial interface IStreamPlugin
     {
+        [System.Diagnostics.CodeAnalysis.RequiresUnreferencedCodeAttribute("StreamPlugin might require unreferenced code.")]
         bool Match(System.WeakReference<object?> reference);
+        [System.Diagnostics.CodeAnalysis.RequiresUnreferencedCodeAttribute("StreamPlugin might require unreferenced code.")]
         System.IObservable<object?> Start(System.WeakReference<object?> reference);
     }
     public abstract partial class PropertyAccessorBase : Avalonia.Data.Core.Plugins.IPropertyAccessor, System.IDisposable
@@ -6585,10 +6599,8 @@ namespace Avalonia.Media.TextFormatting
     [System.Runtime.InteropServices.StructLayoutAttribute(System.Runtime.InteropServices.LayoutKind.Sequential)]
     public readonly partial struct SplitResult<T>
     {
-        [System.Diagnostics.DebuggerBrowsableAttribute(System.Diagnostics.DebuggerBrowsableState.Never)]
         [System.Runtime.CompilerServices.CompilerGeneratedAttribute]
         private readonly T _First_k__BackingField;
-        [System.Diagnostics.DebuggerBrowsableAttribute(System.Diagnostics.DebuggerBrowsableState.Never)]
         [System.Runtime.CompilerServices.CompilerGeneratedAttribute]
         private readonly T _Second_k__BackingField;
         public SplitResult(T first, T? second) { throw null; }
@@ -7919,7 +7931,7 @@ namespace Avalonia.Platform
     public static partial class OptionalFeatureProviderExtensions
     {
         public static T? TryGetFeature<T>(this Avalonia.Platform.IOptionalFeatureProvider provider) where T : class { throw null; }
-        public static bool TryGetFeature<T>(this Avalonia.Platform.IOptionalFeatureProvider provider, out T rv) where T : class { throw null; }
+        public static bool TryGetFeature<T>(this Avalonia.Platform.IOptionalFeatureProvider provider, [System.Diagnostics.CodeAnalysis.MaybeNullWhenAttribute(false)] out T rv) where T : class { throw null; }
     }
     public enum PixelFormat
     {
@@ -8114,7 +8126,7 @@ namespace Avalonia.Platform.Storage
         System.Threading.Tasks.Task<Avalonia.Platform.Storage.StorageItemProperties> GetBasicPropertiesAsync();
         System.Threading.Tasks.Task<Avalonia.Platform.Storage.IStorageFolder?> GetParentAsync();
         System.Threading.Tasks.Task<string?> SaveBookmarkAsync();
-        bool TryGetUri(out System.Uri? uri);
+        bool TryGetUri([System.Diagnostics.CodeAnalysis.NotNullWhenAttribute(true)] out System.Uri? uri);
     }
     [Avalonia.Metadata.NotClientImplementableAttribute]
     public partial interface IStorageProvider
@@ -8162,7 +8174,7 @@ namespace Avalonia.Platform.Storage.FileIO
         public System.Threading.Tasks.Task<System.IO.Stream> OpenWriteAsync() { throw null; }
         public System.Threading.Tasks.Task ReleaseBookmarkAsync() { throw null; }
         public virtual System.Threading.Tasks.Task<string?> SaveBookmarkAsync() { throw null; }
-        public bool TryGetUri(out System.Uri? uri) { throw null; }
+        public bool TryGetUri([System.Diagnostics.CodeAnalysis.NotNullWhenAttribute(true)] out System.Uri? uri) { throw null; }
     }
     [Avalonia.Metadata.UnstableAttribute]
     public partial class BclStorageFolder : Avalonia.Platform.Storage.IStorageBookmarkFolder, Avalonia.Platform.Storage.IStorageBookmarkItem, Avalonia.Platform.Storage.IStorageFolder, Avalonia.Platform.Storage.IStorageItem, System.IDisposable
@@ -8179,7 +8191,7 @@ namespace Avalonia.Platform.Storage.FileIO
         public System.Threading.Tasks.Task<Avalonia.Platform.Storage.IStorageFolder?> GetParentAsync() { throw null; }
         public System.Threading.Tasks.Task ReleaseBookmarkAsync() { throw null; }
         public virtual System.Threading.Tasks.Task<string?> SaveBookmarkAsync() { throw null; }
-        public bool TryGetUri(out System.Uri? uri) { throw null; }
+        public bool TryGetUri([System.Diagnostics.CodeAnalysis.NotNullWhenAttribute(true)] out System.Uri? uri) { throw null; }
     }
     [Avalonia.Metadata.UnstableAttribute]
     public abstract partial class BclStorageProvider : Avalonia.Platform.Storage.IStorageProvider
@@ -8401,7 +8413,7 @@ namespace Avalonia.Rendering
         public void Clear() { }
         public System.Collections.Generic.IEnumerator<Avalonia.Rendering.RenderLayer> GetEnumerator() { throw null; }
         System.Collections.IEnumerator System.Collections.IEnumerable.GetEnumerator() { throw null; }
-        public bool TryGetValue(Avalonia.Visual layerRoot, out Avalonia.Rendering.RenderLayer? value) { throw null; }
+        public bool TryGetValue(Avalonia.Visual layerRoot, [System.Diagnostics.CodeAnalysis.NotNullWhenAttribute(true)] out Avalonia.Rendering.RenderLayer? value) { throw null; }
         public void Update(Avalonia.Rendering.SceneGraph.Scene scene, Avalonia.Platform.IDrawingContextImpl context) { }
     }
     public partial class RenderLoop : Avalonia.Rendering.IRenderLoop
@@ -8841,7 +8853,7 @@ namespace Avalonia.Rendering.Composition.Animations
         void System.Collections.Generic.ICollection<System.Collections.Generic.KeyValuePair<string, Avalonia.Rendering.Composition.Animations.ICompositionAnimationBase>>.CopyTo(System.Collections.Generic.KeyValuePair<string, Avalonia.Rendering.Composition.Animations.ICompositionAnimationBase>[] array, int arrayIndex) { }
         bool System.Collections.Generic.ICollection<System.Collections.Generic.KeyValuePair<string, Avalonia.Rendering.Composition.Animations.ICompositionAnimationBase>>.Remove(System.Collections.Generic.KeyValuePair<string, Avalonia.Rendering.Composition.Animations.ICompositionAnimationBase> item) { throw null; }
         System.Collections.IEnumerator System.Collections.IEnumerable.GetEnumerator() { throw null; }
-        public bool TryGetValue(string key, out Avalonia.Rendering.Composition.Animations.ICompositionAnimationBase value) { throw null; }
+        public bool TryGetValue(string key, [System.Diagnostics.CodeAnalysis.MaybeNullWhenAttribute(false)] out Avalonia.Rendering.Composition.Animations.ICompositionAnimationBase value) { throw null; }
     }
     public abstract partial class KeyFrameAnimation : Avalonia.Rendering.Composition.Animations.CompositionAnimation
     {
@@ -8861,7 +8873,6 @@ namespace Avalonia.Rendering.Composition.Transport
     [System.Runtime.InteropServices.StructLayoutAttribute(System.Runtime.InteropServices.LayoutKind.Sequential)]
     public partial struct BatchStreamSegment<TData> : System.IEquatable<Avalonia.Rendering.Composition.Transport.BatchStreamSegment<TData>>
     {
-        [System.Diagnostics.DebuggerBrowsableAttribute(System.Diagnostics.DebuggerBrowsableState.Never)]
         [System.Runtime.CompilerServices.CompilerGeneratedAttribute]
         private TData _Data_k__BackingField;
         private int _dummyPrimitive;
@@ -9146,6 +9157,7 @@ namespace Avalonia.Styling
         [Avalonia.Metadata.ContentAttribute]
         [Avalonia.Metadata.DependsOnAttribute("Property")]
         public object? Value { get { throw null; } set { } }
+        [System.Diagnostics.CodeAnalysis.UnconditionalSuppressMessageAttribute("Trimming", "IL2026", Justification="Implicit convertion methods might be removed by the linker. We don't have a reliable way to prevent it, except converting everything in compile time when possible.")]
         Avalonia.Styling.ISetterInstance Avalonia.Styling.ISetter.Instance(Avalonia.Styling.IStyleInstance instance, Avalonia.StyledElement target) { throw null; }
         public override string ToString() { throw null; }
     }
@@ -9406,8 +9418,8 @@ namespace Avalonia.Utilities
         System.Collections.IEnumerator System.Collections.IEnumerable.GetEnumerator() { throw null; }
         [System.Runtime.CompilerServices.CompilerGeneratedAttribute]
         public override string ToString() { throw null; }
-        public bool TryGetAndRemoveValue(TKey key, out TValue value) { throw null; }
-        public bool TryGetValue(TKey key, out TValue value) { throw null; }
+        public bool TryGetAndRemoveValue(TKey key, [System.Diagnostics.CodeAnalysis.MaybeNullWhenAttribute(false)] out TValue value) { throw null; }
+        public bool TryGetValue(TKey key, [System.Diagnostics.CodeAnalysis.MaybeNullWhenAttribute(false)] out TValue value) { throw null; }
         [System.Runtime.InteropServices.StructLayoutAttribute(System.Runtime.InteropServices.LayoutKind.Sequential)]
         public partial struct Enumerator : System.Collections.Generic.IEnumerator<System.Collections.Generic.KeyValuePair<TKey, TValue>>, System.Collections.IEnumerator, System.IDisposable
         {
@@ -9486,7 +9498,7 @@ namespace Avalonia.Utilities
         public void Add(TKey key, TValue value) { }
         public System.Collections.Generic.IEnumerator<System.Collections.Generic.KeyValuePair<TKey, TValue>> GetEnumerator() { throw null; }
         System.Collections.IEnumerator System.Collections.IEnumerable.GetEnumerator() { throw null; }
-        public bool TryGetValue(TKey key, out TValue value) { throw null; }
+        public bool TryGetValue(TKey key, [System.Diagnostics.CodeAnalysis.MaybeNullWhenAttribute(false)] out TValue value) { throw null; }
     }
     public partial class SingleOrQueue<T>
     {
@@ -9528,7 +9540,7 @@ namespace Avalonia.Utilities
         public override string ToString() { throw null; }
         public bool TryReadDouble(out double result, char? separator = default(char?)) { throw null; }
         public bool TryReadInt32(out int result, char? separator = default(char?)) { throw null; }
-        public bool TryReadString(out string result, char? separator = default(char?)) { throw null; }
+        public bool TryReadString([System.Diagnostics.CodeAnalysis.MaybeNullWhenAttribute(false)] out string result, char? separator = default(char?)) { throw null; }
     }
     public static partial class StyleClassParser
     {
@@ -9575,18 +9587,23 @@ namespace Avalonia.Utilities
         public static bool AcceptsNull(System.Type type) { throw null; }
         [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.AggressiveInlining)]public static bool AcceptsNull<T>() { throw null; }
         public static bool CanCast<T>(object? value) { throw null; }
+        [System.Diagnostics.CodeAnalysis.RequiresUnreferencedCodeAttribute("Implicit convertion methods are required for type conversion.")]
         public static object? ConvertImplicitOrDefault(object? value, System.Type type) { throw null; }
+        [System.Diagnostics.CodeAnalysis.RequiresUnreferencedCodeAttribute("Implicit convertion methods are required for type conversion.")]
         public static T ConvertImplicit<T>(object value) { throw null; }
+        [System.Diagnostics.CodeAnalysis.RequiresUnreferencedCodeAttribute("Convertion methods are required for type conversion, including op_Implicit, op_Explicit, Parse and TypeConverter.")]
         public static object? ConvertOrDefault(object? value, System.Type type, System.Globalization.CultureInfo culture) { throw null; }
+        [System.Diagnostics.CodeAnalysis.UnconditionalSuppressMessageAttribute("Trimming", "IL2067", Justification="We don't care about public ctors for the value types, and always return null for the ref types.")]
         public static object? Default(System.Type type) { throw null; }
         public static bool IsNumeric(System.Type type) { throw null; }
+        [System.Diagnostics.CodeAnalysis.RequiresUnreferencedCodeAttribute("Convertion methods are required for type conversion, including op_Implicit, op_Explicit, Parse and TypeConverter.")]
         public static bool TryConvert(System.Type to, object? value, System.Globalization.CultureInfo? culture, out object? result) { throw null; }
+        [System.Diagnostics.CodeAnalysis.RequiresUnreferencedCodeAttribute("Implicit convertion methods are required for type conversion.")]
         public static bool TryConvertImplicit(System.Type to, object? value, out object? result) { throw null; }
     }
     [System.Runtime.InteropServices.StructLayoutAttribute(System.Runtime.InteropServices.LayoutKind.Sequential)]
     public ref partial struct ValueSingleOrList<T>
     {
-        [System.Diagnostics.DebuggerBrowsableAttribute(System.Diagnostics.DebuggerBrowsableState.Never)]
         [System.Runtime.CompilerServices.CompilerGeneratedAttribute]
         private T _Single_k__BackingField;
         private object _dummy;
@@ -9601,7 +9618,6 @@ namespace Avalonia.Utilities
     [System.Runtime.InteropServices.StructLayoutAttribute(System.Runtime.InteropServices.LayoutKind.Sequential)]
     public readonly partial struct ValueSpan<T> : System.IEquatable<Avalonia.Utilities.ValueSpan<T>>
     {
-        [System.Diagnostics.DebuggerBrowsableAttribute(System.Diagnostics.DebuggerBrowsableState.Never)]
         [System.Runtime.CompilerServices.CompilerGeneratedAttribute]
         private readonly T _Value_k__BackingField;
         private readonly int _dummyPrimitive;
