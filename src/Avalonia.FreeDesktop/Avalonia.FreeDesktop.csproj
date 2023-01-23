@@ -17,5 +17,5 @@
   <ItemGroup Label="InternalsVisibleTo">
     <InternalsVisibleTo Include="Avalonia.X11, PublicKey=$(AvaloniaPublicKey)" />
   </ItemGroup>
-  <Import Project="..\..\build\ApiDiff.props" />
+  <Import Project="..\..\build\ApiListing.props" />
 </Project>
