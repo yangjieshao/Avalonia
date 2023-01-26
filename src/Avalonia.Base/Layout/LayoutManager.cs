@@ -208,7 +208,7 @@ namespace Avalonia.Layout
             _effectiveViewportChangedListeners ??= new List<EffectiveViewportChangedListener>();
             _effectiveViewportChangedListeners.Add(new EffectiveViewportChangedListener(
                 control,
-                CalculateEffectiveViewport(control)));
+                control.CalculateEffectiveViewport()));
         }
 
         void ILayoutManager.UnregisterEffectiveViewportListener(Layoutable control)
@@ -346,7 +346,7 @@ namespace Avalonia.Layout
                             continue;
                         }
 
-                        var viewport = CalculateEffectiveViewport(l.Listener);
+                        var viewport = l.Listener.CalculateEffectiveViewport();
 
                         if (viewport != l.Viewport)
                         {
@@ -362,45 +362,6 @@ namespace Avalonia.Layout
             }
 
             return startCount != _toMeasure.Count + _toArrange.Count;
-        }
-
-        private Rect CalculateEffectiveViewport(Visual control)
-        {
-            var viewport = new Rect(0, 0, double.PositiveInfinity, double.PositiveInfinity);
-            CalculateEffectiveViewport(control, control, ref viewport);
-            return viewport;
-        }
-
-        private void CalculateEffectiveViewport(Visual target, Visual control, ref Rect viewport)
-        {
-            // Recurse until the top level control.
-            if (control.VisualParent is object)
-            {
-                CalculateEffectiveViewport(target, control.VisualParent, ref viewport);
-            }
-            else
-            {
-                viewport = new Rect(control.Bounds.Size);
-            }
-
-            // Apply the control clip bounds if it's not the target control. We don't apply it to
-            // the target control because it may itself be clipped to bounds and if so the viewport
-            // we calculate would be of no use.
-            if (control != target && control.ClipToBounds)
-            {
-                viewport = control.Bounds.Intersect(viewport);
-            }
-
-            // Translate the viewport into this control's coordinate space.
-            viewport = viewport.Translate(-control.Bounds.Position);
-
-            if (control != target && control.RenderTransform is object)
-            {
-                var origin = control.RenderTransformOrigin.ToPixels(control.Bounds.Size);
-                var offset = Matrix.CreateTranslation(origin);
-                var renderTransform = (-offset) * control.RenderTransform.Value.Invert() * (offset);
-                viewport = viewport.TransformToAABB(renderTransform);
-            }
         }
 
         private class EffectiveViewportChangedListener
