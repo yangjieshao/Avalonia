@@ -45,16 +45,3 @@ namespace Avalonia.Browser
         public static Avalonia.AppBuilder UseBrowser(this Avalonia.AppBuilder builder) { throw null; }
     }
 }
-namespace Avalonia.Browser.Skia
-{
-    public partial class BrowserSkiaGpu : Avalonia.Platform.IOptionalFeatureProvider, Avalonia.Platform.IPlatformGraphicsContext, Avalonia.Skia.ISkiaGpu, System.IDisposable
-    {
-        public BrowserSkiaGpu() { }
-        public bool IsLost { get { throw null; } }
-        public void Dispose() { }
-        public System.IDisposable EnsureCurrent() { throw null; }
-        public Avalonia.Skia.ISkiaGpuRenderTarget? TryCreateRenderTarget(System.Collections.Generic.IEnumerable<object> surfaces) { throw null; }
-        public Avalonia.Skia.ISkiaSurface? TryCreateSurface(Avalonia.PixelSize size, Avalonia.Skia.ISkiaGpuRenderSession session) { throw null; }
-        public object? TryGetFeature(System.Type t) { throw null; }
-    }
-}

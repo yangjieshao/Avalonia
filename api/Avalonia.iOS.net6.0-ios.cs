@@ -47,31 +47,6 @@ namespace Avalonia.iOS
         public override void TouchesMoved(Foundation.NSSet touches, UIKit.UIEvent evt) { }
         public override void TraitCollectionDidChange(UIKit.UITraitCollection previousTraitCollection) { }
     }
-    public partial class ClipboardImpl : Avalonia.Input.Platform.IClipboard
-    {
-        public ClipboardImpl() { }
-        public System.Threading.Tasks.Task ClearAsync() { throw null; }
-        public System.Threading.Tasks.Task<object> GetDataAsync(string format) { throw null; }
-        public System.Threading.Tasks.Task<string[]> GetFormatsAsync() { throw null; }
-        public System.Threading.Tasks.Task<string> GetTextAsync() { throw null; }
-        public System.Threading.Tasks.Task SetDataObjectAsync(Avalonia.Input.IDataObject data) { throw null; }
-        public System.Threading.Tasks.Task SetTextAsync(string text) { throw null; }
-    }
-    public partial class IconStub : Avalonia.Platform.IWindowIconImpl
-    {
-        public IconStub(System.IO.MemoryStream stream) { }
-        public void Save(System.IO.Stream outputStream) { }
-    }
-    public partial class LayerFbo
-    {
-        internal LayerFbo() { }
-        public int Height { [System.Runtime.CompilerServices.CompilerGeneratedAttribute] get { throw null; } }
-        public int Width { [System.Runtime.CompilerServices.CompilerGeneratedAttribute] get { throw null; } }
-        public void Bind() { }
-        public void Dispose() { }
-        public void Present() { }
-        public static Avalonia.iOS.LayerFbo TryCreate(OpenGLES.EAGLContext context, Avalonia.OpenGL.GlInterface gl, CoreAnimation.CAEAGLLayer layer) { throw null; }
-    }
     public partial class UIViewControlHandle : Avalonia.Controls.Platform.INativeControlHostDestroyableControlHandle, Avalonia.Platform.IPlatformHandle
     {
         public UIViewControlHandle(UIKit.UIView view) { }

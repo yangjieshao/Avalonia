@@ -30,19 +30,3 @@ namespace Avalonia
         public bool ShowInDock { [System.Runtime.CompilerServices.CompilerGeneratedAttribute] get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute] set { } }
     }
 }
-namespace Avalonia.Native
-{
-    public partial class MenuActionCallback : Avalonia.Native.NativeCallbackBase, MicroCom.Runtime.IUnknown, System.IDisposable
-    {
-        public MenuActionCallback(System.Action action) { }
-    }
-    public abstract partial class NativeCallbackBase : Avalonia.MicroCom.CallbackBase, MicroCom.Runtime.IMicroComExceptionCallback
-    {
-        protected NativeCallbackBase() { }
-        public void RaiseException(System.Exception e) { }
-    }
-    public partial class PredicateCallback : Avalonia.Native.NativeCallbackBase, MicroCom.Runtime.IUnknown, System.IDisposable
-    {
-        public PredicateCallback(System.Func<bool> predicate) { }
-    }
-}

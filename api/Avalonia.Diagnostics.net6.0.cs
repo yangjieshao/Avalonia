@@ -64,12 +64,14 @@ namespace Avalonia.Diagnostics.Screenshots
     {
         protected BaseRenderToStreamHandler() { }
         protected abstract System.Threading.Tasks.Task<System.IO.Stream?> GetStream(Avalonia.Controls.Control control);
+        [System.Diagnostics.DebuggerStepThroughAttribute]
         public System.Threading.Tasks.Task Take(Avalonia.Controls.Control control) { throw null; }
     }
     public sealed partial class FilePickerHandler : Avalonia.Diagnostics.Screenshots.BaseRenderToStreamHandler
     {
         public FilePickerHandler() { }
         public FilePickerHandler(string? title, string? screenshotRoot = null) { }
+        [System.Diagnostics.DebuggerStepThroughAttribute]
         protected override System.Threading.Tasks.Task<System.IO.Stream?> GetStream(Avalonia.Controls.Control control) { throw null; }
     }
 }

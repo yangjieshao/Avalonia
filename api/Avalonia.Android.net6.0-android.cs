@@ -69,31 +69,6 @@ namespace Avalonia.Android
         public override void OnVisibilityAggregated(bool isVisible) { }
         protected override void OnVisibilityChanged(Android.Views.View changedView, [Android.Runtime.GeneratedEnumAttribute] Android.Views.ViewStates visibility) { }
     }
-    [System.Runtime.InteropServices.StructLayoutAttribute(System.Runtime.InteropServices.LayoutKind.Sequential)]
-    public readonly partial struct ComposingRegion : System.IEquatable<Avalonia.Android.ComposingRegion>
-    {
-        private readonly int _dummyPrimitive;
-        public ComposingRegion(int start, int end) { throw null; }
-        public int End { get { throw null; } }
-        public int Start { get { throw null; } }
-        [System.Runtime.CompilerServices.CompilerGeneratedAttribute]
-        public bool Equals(Avalonia.Android.ComposingRegion other) { throw null; }
-        [System.Runtime.CompilerServices.CompilerGeneratedAttribute]
-        public override bool Equals(object obj) { throw null; }
-        [System.Runtime.CompilerServices.CompilerGeneratedAttribute]
-        public override int GetHashCode() { throw null; }
-        [System.Runtime.CompilerServices.CompilerGeneratedAttribute]
-        public static bool operator ==(Avalonia.Android.ComposingRegion left, Avalonia.Android.ComposingRegion right) { throw null; }
-        [System.Runtime.CompilerServices.CompilerGeneratedAttribute]
-        public static bool operator !=(Avalonia.Android.ComposingRegion left, Avalonia.Android.ComposingRegion right) { throw null; }
-        [System.Runtime.CompilerServices.CompilerGeneratedAttribute]
-        public override string ToString() { throw null; }
-    }
-    public partial class FakeIcon : Avalonia.Platform.IWindowIconImpl
-    {
-        public FakeIcon(System.IO.Stream stream) { }
-        public void Save(System.IO.Stream outputStream) { }
-    }
     public partial interface IActivityNavigationService
     {
         event System.EventHandler<Avalonia.Android.AndroidBackRequestedEventArgs> BackRequested;
@@ -103,25 +78,9 @@ namespace Avalonia.Android
         System.Action<int, Android.App.Result, Android.Content.Intent> ActivityResult { get; set; }
         System.Action<int, string[], Android.Content.PM.Permission[]> RequestPermissionsResult { get; set; }
     }
-    public partial class IconStub : Avalonia.Platform.IWindowIconImpl
-    {
-        public IconStub(System.IO.MemoryStream stream) { }
-        public void Save(System.IO.Stream outputStream) { }
-    }
-    public abstract partial class InvalidationAwareSurfaceView : Android.Views.SurfaceView, Android.Runtime.IJavaObject, Android.Views.ISurfaceHolderCallback, Avalonia.Platform.IPlatformHandle, Avalonia.Platform.IPlatformNativeSurfaceHandle, Java.Interop.IJavaPeerable, System.IDisposable
-    {
-        public InvalidationAwareSurfaceView(Android.Content.Context context) : base (default(System.IntPtr), default(Android.Runtime.JniHandleOwnership)) { }
-        System.IntPtr Avalonia.Platform.IPlatformHandle.Handle { get { throw null; } }
-        public string HandleDescriptor { get { throw null; } }
-        public double Scaling { get { throw null; } }
-        public Avalonia.PixelSize Size { get { throw null; } }
-        protected void DoDraw() { }
-        protected abstract void Draw();
-        public override void Invalidate() { }
-        public void SurfaceChanged(Android.Views.ISurfaceHolder holder, Android.Graphics.Format format, int width, int height) { }
-        public void SurfaceCreated(Android.Views.ISurfaceHolder holder) { }
-        public void SurfaceDestroyed(Android.Views.ISurfaceHolder holder) { }
-    }
+}
+namespace Avalonia.Android.Internal
+{
     [System.CodeDom.Compiler.GeneratedCodeAttribute("Xamarin.Android.Build.Tasks", "12.3.99.85")]
     public partial class Resource
     {
@@ -1897,13 +1856,6 @@ namespace Avalonia.Android
             public static int View_paddingStart;
             public static int View_theme;
         }
-    }
-}
-namespace Avalonia.Android.Platform.Input
-{
-    public partial class AndroidKeyboardDevice : Avalonia.Input.KeyboardDevice, Avalonia.Input.IInputDevice, Avalonia.Input.IKeyboardDevice, System.ComponentModel.INotifyPropertyChanged
-    {
-        public AndroidKeyboardDevice() { }
     }
 }
 namespace Avalonia.Android.Platform.Specific

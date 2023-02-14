@@ -21,36 +21,6 @@ namespace Avalonia
 }
 namespace Avalonia.Skia
 {
-    [Avalonia.Metadata.UnstableAttribute]
-    public partial class GlyphRunImpl : Avalonia.Platform.IGlyphRunImpl, System.IDisposable
-    {
-        public GlyphRunImpl(SkiaSharp.SKTextBlob textBlob, Avalonia.Size size, Avalonia.Point baselineOrigin) { }
-        public Avalonia.Point BaselineOrigin { [System.Runtime.CompilerServices.CompilerGeneratedAttribute] get { throw null; } }
-        public Avalonia.Size Size { [System.Runtime.CompilerServices.CompilerGeneratedAttribute] get { throw null; } }
-        public SkiaSharp.SKTextBlob TextBlob { [System.Runtime.CompilerServices.CompilerGeneratedAttribute] get { throw null; } }
-        public System.Collections.Generic.IReadOnlyList<float> GetIntersections(float upperBound, float lowerBound) { throw null; }
-        void System.IDisposable.Dispose() { }
-    }
-    [Avalonia.Metadata.UnstableAttribute]
-    public partial class GlyphTypefaceImpl : Avalonia.Media.IGlyphTypeface, System.IDisposable
-    {
-        public GlyphTypefaceImpl(SkiaSharp.SKTypeface typeface, Avalonia.Media.FontSimulations fontSimulations) { }
-        public HarfBuzzSharp.Face Face { [System.Runtime.CompilerServices.CompilerGeneratedAttribute] get { throw null; } }
-        public HarfBuzzSharp.Font Font { [System.Runtime.CompilerServices.CompilerGeneratedAttribute] get { throw null; } }
-        public Avalonia.Media.FontSimulations FontSimulations { [System.Runtime.CompilerServices.CompilerGeneratedAttribute] get { throw null; } }
-        public int GlyphCount { [System.Runtime.CompilerServices.CompilerGeneratedAttribute] get { throw null; } }
-        public Avalonia.Media.FontMetrics Metrics { [System.Runtime.CompilerServices.CompilerGeneratedAttribute] get { throw null; } }
-        public int ReplacementCodepoint { [System.Runtime.CompilerServices.CompilerGeneratedAttribute] get { throw null; } }
-        public SkiaSharp.SKTypeface Typeface { [System.Runtime.CompilerServices.CompilerGeneratedAttribute] get { throw null; } }
-        public void Dispose() { }
-        public ushort GetGlyph(uint codepoint) { throw null; }
-        public int GetGlyphAdvance(ushort glyph) { throw null; }
-        public int[] GetGlyphAdvances(System.ReadOnlySpan<ushort> glyphs) { throw null; }
-        public ushort[] GetGlyphs(System.ReadOnlySpan<uint> codepoints) { throw null; }
-        public bool TryGetGlyph(uint codepoint, out ushort glyph) { throw null; }
-        public bool TryGetGlyphMetrics(ushort glyph, out Avalonia.Media.GlyphMetrics metrics) { throw null; }
-        public bool TryGetTable(uint tag, out byte[] table) { throw null; }
-    }
     public partial interface ISkiaGpu : Avalonia.Platform.IOptionalFeatureProvider, Avalonia.Platform.IPlatformGraphicsContext, System.IDisposable
     {
         Avalonia.Skia.ISkiaGpuRenderTarget TryCreateRenderTarget(System.Collections.Generic.IEnumerable<object> surfaces);
@@ -114,16 +84,6 @@ namespace Avalonia.Skia
         public static SkiaSharp.SKRoundRect ToSKRoundRect(this Avalonia.RoundedRect r) { throw null; }
         public static SkiaSharp.SKShaderTileMode ToSKShaderTileMode(this Avalonia.Media.GradientSpreadMethod m) { throw null; }
         public static SkiaSharp.SKTextAlign ToSKTextAlign(this Avalonia.Media.TextAlignment a) { throw null; }
-    }
-    public partial class SKTypefaceCollection
-    {
-        public SKTypefaceCollection() { }
-        public void AddTypeface(Avalonia.Media.Typeface key, SkiaSharp.SKTypeface typeface) { }
-        public SkiaSharp.SKTypeface Get(Avalonia.Media.Typeface typeface) { throw null; }
-    }
-    public static partial class SKTypefaceCollectionCache
-    {
-        public static Avalonia.Skia.SKTypefaceCollection GetOrAddTypefaceCollection(Avalonia.Media.FontFamily fontFamily) { throw null; }
     }
 }
 namespace Avalonia.Skia.Helpers
