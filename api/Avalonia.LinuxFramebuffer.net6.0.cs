@@ -136,8 +136,8 @@ namespace Avalonia.LinuxFramebuffer.Output
     public partial class DrmOutput : Avalonia.LinuxFramebuffer.Output.IGlOutputBackend, Avalonia.LinuxFramebuffer.Output.IOutputBackend, Avalonia.OpenGL.Surfaces.IGlPlatformSurface
     {
         public DrmOutput(Avalonia.LinuxFramebuffer.Output.DrmCard card, Avalonia.LinuxFramebuffer.Output.DrmResources resources, Avalonia.LinuxFramebuffer.Output.DrmConnector connector, Avalonia.LinuxFramebuffer.Output.DrmModeInfo modeInfo) { }
-        public DrmOutput(Avalonia.LinuxFramebuffer.Output.DrmCard card, Avalonia.LinuxFramebuffer.Output.DrmResources resources, Avalonia.LinuxFramebuffer.Output.DrmConnector connector, Avalonia.LinuxFramebuffer.Output.DrmModeInfo modeInfo, Avalonia.LinuxFramebuffer.DrmOutputOptions? options = null) { }
-        public DrmOutput(string path = null, bool connectorsForceProbe = false, Avalonia.LinuxFramebuffer.DrmOutputOptions? options = null) { }
+        public DrmOutput(Avalonia.LinuxFramebuffer.Output.DrmCard card, Avalonia.LinuxFramebuffer.Output.DrmResources resources, Avalonia.LinuxFramebuffer.Output.DrmConnector connector, Avalonia.LinuxFramebuffer.Output.DrmModeInfo modeInfo, Avalonia.LinuxFramebuffer.DrmOutputOptions options = null) { }
+        public DrmOutput(string path = null, bool connectorsForceProbe = false, Avalonia.LinuxFramebuffer.DrmOutputOptions options = null) { }
         public Avalonia.PixelSize PixelSize { get { throw null; } }
         public Avalonia.Platform.IPlatformGraphics PlatformGraphics { [System.Runtime.CompilerServices.CompilerGeneratedAttribute] get { throw null; } }
         public double Scaling { get { throw null; } set { } }

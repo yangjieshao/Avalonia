@@ -747,9 +747,7 @@ namespace Avalonia.Controls.Primitives
         public bool IsRoundingEnabled { get { throw null; } set { } }
         public bool IsSaturationValueMaxForced { get { throw null; } set { } }
         public event System.EventHandler<Avalonia.Controls.ColorChangedEventArgs>? ColorChanged { add { } remove { } }
-        protected override void OnAttachedToVisualTree(Avalonia.VisualTreeAttachmentEventArgs e) { }
         protected virtual void OnColorChanged(Avalonia.Controls.ColorChangedEventArgs e) { }
-        protected override void OnDetachedFromVisualTree(Avalonia.VisualTreeAttachmentEventArgs e) { }
         protected override void OnPropertyChanged(Avalonia.AvaloniaPropertyChangedEventArgs change) { }
     }
     [Avalonia.Controls.Metadata.PseudoClassesAttribute(new string[]{ ":pressed", ":large-selector", ":dark-selector", ":light-selector"})]

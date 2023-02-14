@@ -24,7 +24,6 @@ namespace Avalonia.Android
     public sealed partial class AndroidPlatformOptions
     {
         public AndroidPlatformOptions() { }
-        public bool UseCompositor { [System.Runtime.CompilerServices.CompilerGeneratedAttribute] get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute] set { } }
         public bool UseDeferredRendering { [System.Runtime.CompilerServices.CompilerGeneratedAttribute] get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute] set { } }
         public bool UseGpu { [System.Runtime.CompilerServices.CompilerGeneratedAttribute] get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute] set { } }
     }
@@ -41,11 +40,13 @@ namespace Avalonia.Android
         protected AvaloniaMainActivity() { }
         public System.Action<int, Android.App.Result, Android.Content.Intent> ActivityResult { [System.Runtime.CompilerServices.CompilerGeneratedAttribute] get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute] set { } }
         public object Content { get { throw null; } set { } }
+        public System.Action<int, string[], Android.Content.PM.Permission[]> RequestPermissionsResult { [System.Runtime.CompilerServices.CompilerGeneratedAttribute] get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute] set { } }
         public event System.EventHandler<Avalonia.Android.AndroidBackRequestedEventArgs> BackRequested { add { } remove { } }
         protected override void OnActivityResult(int requestCode, [Android.Runtime.GeneratedEnumAttribute] Android.App.Result resultCode, Android.Content.Intent data) { }
         public override void OnBackPressed() { }
         protected override void OnCreate(Android.OS.Bundle savedInstanceState) { }
         protected override void OnDestroy() { }
+        public override void OnRequestPermissionsResult(int requestCode, string[] permissions, Android.Content.PM.Permission[] grantResults) { }
     }
     public abstract partial class AvaloniaSplashActivity : AndroidX.AppCompat.App.AppCompatActivity
     {
@@ -100,6 +101,7 @@ namespace Avalonia.Android
     public partial interface IActivityResultHandler
     {
         System.Action<int, Android.App.Result, Android.Content.Intent> ActivityResult { get; set; }
+        System.Action<int, string[], Android.Content.PM.Permission[]> RequestPermissionsResult { get; set; }
     }
     public partial class IconStub : Avalonia.Platform.IWindowIconImpl
     {

@@ -36,7 +36,7 @@ namespace Avalonia.Diagnostics
         public bool ShowImplementedInterfaces { [System.Runtime.CompilerServices.CompilerGeneratedAttribute] get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute] set { } }
         public Avalonia.Size Size { [System.Runtime.CompilerServices.CompilerGeneratedAttribute] get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute] set { } }
         public int? StartupScreenIndex { [System.Runtime.CompilerServices.CompilerGeneratedAttribute] get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute] set { } }
-        public bool UseDarkMode { [System.Runtime.CompilerServices.CompilerGeneratedAttribute] get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute] set { } }
+        public Avalonia.Styling.ThemeVariant? ThemeVariant { [System.Runtime.CompilerServices.CompilerGeneratedAttribute] get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute] set { } }
     }
     public partial interface IScreenshotHandler
     {
@@ -70,8 +70,6 @@ namespace Avalonia.Diagnostics.Screenshots
     {
         public FilePickerHandler() { }
         public FilePickerHandler(string? title, string? screenshotRoot = null) { }
-        public string ScreenshotsRoot { [System.Runtime.CompilerServices.CompilerGeneratedAttribute] get { throw null; } }
-        public string Title { [System.Runtime.CompilerServices.CompilerGeneratedAttribute] get { throw null; } }
         protected override System.Threading.Tasks.Task<System.IO.Stream?> GetStream(Avalonia.Controls.Control control) { throw null; }
     }
 }

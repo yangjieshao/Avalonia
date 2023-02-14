@@ -33,13 +33,14 @@ namespace Avalonia.Direct2D1
         public Avalonia.Platform.IGeometryImpl CreateCombinedGeometry(Avalonia.Media.GeometryCombineMode combineMode, Avalonia.Media.Geometry g1, Avalonia.Media.Geometry g2) { throw null; }
         public Avalonia.Platform.IGeometryImpl CreateEllipseGeometry(Avalonia.Rect rect) { throw null; }
         public Avalonia.Platform.IGeometryImpl CreateGeometryGroup(Avalonia.Media.FillRule fillRule, System.Collections.Generic.IReadOnlyList<Avalonia.Media.Geometry> children) { throw null; }
-        public Avalonia.Platform.IGlyphRunImpl CreateGlyphRun(Avalonia.Media.IGlyphTypeface glyphTypeface, double fontRenderingEmSize, System.Collections.Generic.IReadOnlyList<Avalonia.Media.TextFormatting.GlyphInfo> glyphInfos) { throw null; }
+        public Avalonia.Platform.IGlyphRunImpl CreateGlyphRun(Avalonia.Media.IGlyphTypeface glyphTypeface, double fontRenderingEmSize, System.Collections.Generic.IReadOnlyList<Avalonia.Media.TextFormatting.GlyphInfo> glyphInfos, Avalonia.Point baselineOrigin) { throw null; }
         public Avalonia.Platform.IGeometryImpl CreateLineGeometry(Avalonia.Point p1, Avalonia.Point p2) { throw null; }
         public Avalonia.Platform.IGeometryImpl CreateRectangleGeometry(Avalonia.Rect rect) { throw null; }
         public Avalonia.Platform.IRenderTargetBitmapImpl CreateRenderTargetBitmap(Avalonia.PixelSize size, Avalonia.Vector dpi) { throw null; }
         public Avalonia.Platform.IStreamGeometryImpl CreateStreamGeometry() { throw null; }
         public Avalonia.Platform.IWriteableBitmapImpl CreateWriteableBitmap(Avalonia.PixelSize size, Avalonia.Vector dpi, Avalonia.Platform.PixelFormat format, Avalonia.Platform.AlphaFormat alphaFormat) { throw null; }
         public static void Initialize() { }
+        public bool IsSupportedBitmapPixelFormat(Avalonia.Platform.PixelFormat format) { throw null; }
         public Avalonia.Platform.IBitmapImpl LoadBitmap(Avalonia.Platform.PixelFormat format, Avalonia.Platform.AlphaFormat alphaFormat, System.IntPtr data, Avalonia.PixelSize size, Avalonia.Vector dpi, int stride) { throw null; }
         public Avalonia.Platform.IBitmapImpl LoadBitmap(System.IO.Stream stream) { throw null; }
         public Avalonia.Platform.IBitmapImpl LoadBitmap(string fileName) { throw null; }
@@ -301,19 +302,21 @@ namespace Avalonia.Direct2D1.Media
         protected override SharpDX.Direct2D1.Geometry GetSourceGeometry() { throw null; }
     }
     [Avalonia.Metadata.UnstableAttribute]
-    public partial class WicBitmapImpl : Avalonia.Direct2D1.Media.BitmapImpl
+    public partial class WicBitmapImpl : Avalonia.Direct2D1.Media.BitmapImpl, Avalonia.Platform.IReadableBitmapImpl
     {
         public WicBitmapImpl(Avalonia.PixelSize size, Avalonia.Vector dpi, Avalonia.Platform.PixelFormat? pixelFormat = default(Avalonia.Platform.PixelFormat?), Avalonia.Platform.AlphaFormat? alphaFormat = default(Avalonia.Platform.AlphaFormat?)) { }
         public WicBitmapImpl(Avalonia.Platform.PixelFormat format, Avalonia.Platform.AlphaFormat alphaFormat, System.IntPtr data, Avalonia.PixelSize size, Avalonia.Vector dpi, int stride) { }
         public WicBitmapImpl(System.IO.Stream stream) { }
         public WicBitmapImpl(System.IO.Stream stream, int decodeSize, bool horizontal, Avalonia.Media.Imaging.BitmapInterpolationMode interpolationMode) { }
         public WicBitmapImpl(string fileName) { }
+        Avalonia.Platform.PixelFormat? Avalonia.Platform.IReadableBitmapImpl.Format { get { throw null; } }
         public override Avalonia.Vector Dpi { [System.Runtime.CompilerServices.CompilerGeneratedAttribute] get { throw null; } }
         protected Avalonia.Platform.PixelFormat? PixelFormat { [System.Runtime.CompilerServices.CompilerGeneratedAttribute] get { throw null; } }
         public override Avalonia.PixelSize PixelSize { get { throw null; } }
         public SharpDX.WIC.Bitmap WicImpl { [System.Runtime.CompilerServices.CompilerGeneratedAttribute] get { throw null; } }
         public override void Dispose() { }
         public override Avalonia.Direct2D1.OptionalDispose<SharpDX.Direct2D1.Bitmap> GetDirect2DBitmap(SharpDX.Direct2D1.RenderTarget renderTarget) { throw null; }
+        public Avalonia.Platform.ILockedFramebuffer Lock() { throw null; }
         public override void Save(System.IO.Stream stream, int? quality = default(int?)) { }
     }
     [Avalonia.Metadata.UnstableAttribute]

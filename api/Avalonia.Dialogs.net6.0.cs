@@ -38,16 +38,6 @@ namespace Avalonia.Dialogs
         public ManagedFileDialogOptions() { }
         public bool AllowDirectorySelection { [System.Runtime.CompilerServices.CompilerGeneratedAttribute] get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute] set { } }
     }
-    public partial class ManagedStorageProvider<T> : Avalonia.Platform.Storage.FileIO.BclStorageProvider where T : Avalonia.Controls.Window, new()
-    {
-        public ManagedStorageProvider(Avalonia.Controls.Window parent, Avalonia.Dialogs.ManagedFileDialogOptions? managedOptions) { }
-        public override bool CanOpen { get { throw null; } }
-        public override bool CanPickFolder { get { throw null; } }
-        public override bool CanSave { get { throw null; } }
-        public override System.Threading.Tasks.Task<System.Collections.Generic.IReadOnlyList<Avalonia.Platform.Storage.IStorageFile>> OpenFilePickerAsync(Avalonia.Platform.Storage.FilePickerOpenOptions options) { throw null; }
-        public override System.Threading.Tasks.Task<System.Collections.Generic.IReadOnlyList<Avalonia.Platform.Storage.IStorageFolder>> OpenFolderPickerAsync(Avalonia.Platform.Storage.FolderPickerOpenOptions options) { throw null; }
-        public override System.Threading.Tasks.Task<Avalonia.Platform.Storage.IStorageFile?> SaveFilePickerAsync(Avalonia.Platform.Storage.FilePickerSaveOptions options) { throw null; }
-    }
 }
 namespace Avalonia.Dialogs.Internal
 {

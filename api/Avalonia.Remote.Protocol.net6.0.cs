@@ -10,7 +10,7 @@
 namespace Avalonia.Remote.Protocol
 {
     [System.AttributeUsageAttribute(System.AttributeTargets.Class)]
-    public partial class AvaloniaRemoteMessageGuidAttribute : System.Attribute
+    public sealed partial class AvaloniaRemoteMessageGuidAttribute : System.Attribute
     {
         public AvaloniaRemoteMessageGuidAttribute(string guid) { }
         public System.Guid Guid { [System.Runtime.CompilerServices.CompilerGeneratedAttribute] get { throw null; } }

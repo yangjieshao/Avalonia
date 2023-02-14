@@ -97,6 +97,7 @@ namespace Avalonia.Skia
     {
         public static SkiaSharp.SKPath Clone(this SkiaSharp.SKPath src) { throw null; }
         public static Avalonia.Platform.AlphaFormat ToAlphaFormat(this SkiaSharp.SKAlphaType fmt) { throw null; }
+        public static Avalonia.Platform.PixelFormat? ToAvalonia(this SkiaSharp.SKColorType colorType) { throw null; }
         public static Avalonia.Media.FontStyle ToAvalonia(this SkiaSharp.SKFontStyleSlant slant) { throw null; }
         public static Avalonia.Media.TextAlignment ToAvalonia(this SkiaSharp.SKTextAlign a) { throw null; }
         public static Avalonia.Rect ToAvaloniaRect(this SkiaSharp.SKRect r) { throw null; }

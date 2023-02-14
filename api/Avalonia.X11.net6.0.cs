@@ -23,10 +23,8 @@ namespace Avalonia
         public System.Collections.Generic.IList<Avalonia.OpenGL.GlVersion> GlProfiles { [System.Runtime.CompilerServices.CompilerGeneratedAttribute] get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute] set { } }
         public System.Collections.Generic.IList<string> GlxRendererBlacklist { [System.Runtime.CompilerServices.CompilerGeneratedAttribute] get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute] set { } }
         public bool OverlayPopups { [System.Runtime.CompilerServices.CompilerGeneratedAttribute] get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute] set { } }
-        public bool UseCompositor { [System.Runtime.CompilerServices.CompilerGeneratedAttribute] get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute] set { } }
         public bool UseDBusFilePicker { [System.Runtime.CompilerServices.CompilerGeneratedAttribute] get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute] set { } }
         public bool UseDBusMenu { [System.Runtime.CompilerServices.CompilerGeneratedAttribute] get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute] set { } }
-        public bool UseDeferredRendering { [System.Runtime.CompilerServices.CompilerGeneratedAttribute] get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute] set { } }
         public bool UseEGL { [System.Runtime.CompilerServices.CompilerGeneratedAttribute] get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute] set { } }
         public bool UseGpu { [System.Runtime.CompilerServices.CompilerGeneratedAttribute] get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute] set { } }
         public string WmClass { [System.Runtime.CompilerServices.CompilerGeneratedAttribute] get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute] set { } }
@@ -65,26 +63,6 @@ namespace Avalonia.X11
     {
         public X11FramebufferSurface(System.IntPtr display, System.IntPtr xid, int depth, System.Func<double> scaling) { }
         public Avalonia.Platform.ILockedFramebuffer Lock() { throw null; }
-    }
-    public partial class X11ImmediateRendererProxy : Avalonia.Rendering.IRenderer, Avalonia.Rendering.IRenderLoopTask, System.IDisposable
-    {
-        public X11ImmediateRendererProxy(Avalonia.Visual root, Avalonia.Rendering.IRenderLoop loop, System.Func<Avalonia.Platform.IRenderTarget> renderTargetFactory, Avalonia.Rendering.PlatformRenderInterfaceContextManager renderContext) { }
-        public bool DrawDirtyRects { get { throw null; } set { } }
-        public bool DrawFps { get { throw null; } set { } }
-        public bool NeedsUpdate { get { throw null; } }
-        public event System.EventHandler<Avalonia.Rendering.SceneInvalidatedEventArgs> SceneInvalidated { add { } remove { } }
-        public void AddDirty(Avalonia.Visual visual) { }
-        public void Dispose() { }
-        public System.Collections.Generic.IEnumerable<Avalonia.Visual> HitTest(Avalonia.Point p, Avalonia.Visual root, System.Func<Avalonia.Visual, bool> filter) { throw null; }
-        public Avalonia.Visual HitTestFirst(Avalonia.Point p, Avalonia.Visual root, System.Func<Avalonia.Visual, bool> filter) { throw null; }
-        public void Paint(Avalonia.Rect rect) { }
-        public void RecalculateChildren(Avalonia.Visual visual) { }
-        public void Render() { }
-        public void Resized(Avalonia.Size size) { }
-        public void Start() { }
-        public void Stop() { }
-        public System.Threading.Tasks.ValueTask<object> TryGetRenderInterfaceFeature(System.Type featureType) { throw null; }
-        public void Update(System.TimeSpan time) { }
     }
     [System.FlagsAttribute]
     public enum XCreateWindowFlags

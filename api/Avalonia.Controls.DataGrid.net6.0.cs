@@ -325,6 +325,7 @@ namespace Avalonia.Controls
     {
         protected DataGridBoundColumn() { }
         [Avalonia.Data.AssignBindingAttribute]
+        [Avalonia.Metadata.InheritDataTypeFromItemsAttribute("Items", AncestorType=typeof(Avalonia.Controls.DataGrid))]
         public virtual Avalonia.Data.IBinding Binding { get { throw null; } set { } }
         protected Avalonia.AvaloniaProperty BindingTarget { [System.Runtime.CompilerServices.CompilerGeneratedAttribute] get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute] set { } }
         public override Avalonia.Data.IBinding ClipboardContentBinding { get { throw null; } set { } }
@@ -636,8 +637,10 @@ namespace Avalonia.Controls
         public static readonly Avalonia.DirectProperty<Avalonia.Controls.DataGridTemplateColumn, Avalonia.Controls.Templates.IDataTemplate> CellEditingTemplateProperty;
         public static readonly Avalonia.DirectProperty<Avalonia.Controls.DataGridTemplateColumn, Avalonia.Controls.Templates.IDataTemplate> CellTemplateProperty;
         public DataGridTemplateColumn() { }
+        [Avalonia.Metadata.InheritDataTypeFromItemsAttribute("Items", AncestorType=typeof(Avalonia.Controls.DataGrid))]
         public Avalonia.Controls.Templates.IDataTemplate CellEditingTemplate { get { throw null; } set { } }
         [Avalonia.Metadata.ContentAttribute]
+        [Avalonia.Metadata.InheritDataTypeFromItemsAttribute("Items", AncestorType=typeof(Avalonia.Controls.DataGrid))]
         public Avalonia.Controls.Templates.IDataTemplate CellTemplate { get { throw null; } set { } }
         public override bool IsReadOnly { get { throw null; } set { } }
         protected override void EndCellEdit() { }

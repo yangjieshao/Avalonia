@@ -37,11 +37,14 @@ namespace Avalonia
         public Avalonia.AppBuilder With<T>(T options) { throw null; }
         public delegate void AppMainDelegate(Avalonia.Application app, string[] args);
     }
-    public partial class Application : Avalonia.AvaloniaObject, Avalonia.Controls.IGlobalDataTemplates, Avalonia.Controls.IResourceHost, Avalonia.Controls.IResourceNode, Avalonia.Controls.Templates.IDataTemplateHost, Avalonia.IDataContextProvider, Avalonia.Platform.IApplicationPlatformEvents, Avalonia.Styling.IGlobalStyles, Avalonia.Styling.IStyleHost
+    public partial class Application : Avalonia.AvaloniaObject, Avalonia.Controls.IGlobalDataTemplates, Avalonia.Controls.IResourceHost, Avalonia.Controls.IResourceNode, Avalonia.Controls.Templates.IDataTemplateHost, Avalonia.IDataContextProvider, Avalonia.Platform.IApplicationPlatformEvents, Avalonia.Styling.IGlobalStyles, Avalonia.Styling.IGlobalThemeVariantProvider, Avalonia.Styling.IStyleHost
     {
+        public static readonly Avalonia.StyledProperty<Avalonia.Styling.ThemeVariant> ActualThemeVariantProperty;
         public static readonly Avalonia.StyledProperty<object?> DataContextProperty;
         public static readonly Avalonia.DirectProperty<Avalonia.Application, string?> NameProperty;
+        public static readonly Avalonia.StyledProperty<Avalonia.Styling.ThemeVariant?> RequestedThemeVariantProperty;
         public Application() { }
+        public Avalonia.Styling.ThemeVariant ActualThemeVariant { get { throw null; } }
         public Avalonia.Controls.ApplicationLifetimes.IApplicationLifetime? ApplicationLifetime { [System.Runtime.CompilerServices.CompilerGeneratedAttribute] get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute] set { } }
         bool Avalonia.Controls.IResourceNode.HasResources { get { throw null; } }
         bool Avalonia.Controls.Templates.IDataTemplateHost.IsDataTemplatesInitialized { get { throw null; } }
@@ -54,20 +57,23 @@ namespace Avalonia
         public Avalonia.Input.IFocusManager? FocusManager { [System.Runtime.CompilerServices.CompilerGeneratedAttribute] get { throw null; } }
         public Avalonia.Input.InputManager? InputManager { [System.Runtime.CompilerServices.CompilerGeneratedAttribute] get { throw null; } }
         public string? Name { get { throw null; } set { } }
+        public Avalonia.Styling.ThemeVariant? RequestedThemeVariant { get { throw null; } set { } }
         public Avalonia.Controls.IResourceDictionary Resources { get { throw null; } set { } }
         public Avalonia.Styling.Styles Styles { get { throw null; } }
+        public event System.EventHandler? ActualThemeVariantChanged { add { } remove { } }
         event System.Action<System.Collections.Generic.IReadOnlyList<Avalonia.Styling.IStyle>>? Avalonia.Styling.IGlobalStyles.GlobalStylesAdded { add { } remove { } }
         event System.Action<System.Collections.Generic.IReadOnlyList<Avalonia.Styling.IStyle>>? Avalonia.Styling.IGlobalStyles.GlobalStylesRemoved { add { } remove { } }
         public event System.EventHandler<Avalonia.Controls.ResourcesChangedEventArgs>? ResourcesChanged { add { } remove { } }
         public event System.EventHandler<Avalonia.UrlOpenedEventArgs>? UrlsOpened { add { } remove { } }
         void Avalonia.Controls.IResourceHost.NotifyHostedResourcesChanged(Avalonia.Controls.ResourcesChangedEventArgs e) { }
-        bool Avalonia.Controls.IResourceNode.TryGetResource(object key, out object? value) { throw null; }
         void Avalonia.Platform.IApplicationPlatformEvents.RaiseUrlsOpened(string[] urls) { }
         void Avalonia.Styling.IStyleHost.StylesAdded(System.Collections.Generic.IReadOnlyList<Avalonia.Styling.IStyle> styles) { }
         void Avalonia.Styling.IStyleHost.StylesRemoved(System.Collections.Generic.IReadOnlyList<Avalonia.Styling.IStyle> styles) { }
         public virtual void Initialize() { }
         public virtual void OnFrameworkInitializationCompleted() { }
+        protected override void OnPropertyChanged(Avalonia.AvaloniaPropertyChangedEventArgs change) { }
         public virtual void RegisterServices() { }
+        public bool TryGetResource(object key, Avalonia.Styling.ThemeVariant? theme, out object? value) { throw null; }
     }
     public static partial class ClassicDesktopStyleApplicationLifetimeExtensions
     {
@@ -106,55 +112,55 @@ namespace Avalonia.Automation
     }
     public static partial class AutomationProperties
     {
-        public static readonly Avalonia.AttachedProperty<string> AcceleratorKeyProperty;
+        public static readonly Avalonia.AttachedProperty<string?> AcceleratorKeyProperty;
         public static readonly Avalonia.AttachedProperty<Avalonia.Automation.AccessibilityView> AccessibilityViewProperty;
-        public static readonly Avalonia.AttachedProperty<string> AccessKeyProperty;
-        public static readonly Avalonia.AttachedProperty<string> AutomationIdProperty;
+        public static readonly Avalonia.AttachedProperty<string?> AccessKeyProperty;
+        public static readonly Avalonia.AttachedProperty<string?> AutomationIdProperty;
         public static readonly Avalonia.AttachedProperty<Avalonia.Automation.Peers.AutomationControlType?> ControlTypeOverrideProperty;
-        public static readonly Avalonia.AttachedProperty<string> HelpTextProperty;
+        public static readonly Avalonia.AttachedProperty<string?> HelpTextProperty;
         public static readonly Avalonia.AttachedProperty<bool> IsColumnHeaderProperty;
         public static readonly Avalonia.AttachedProperty<Avalonia.Automation.IsOffscreenBehavior> IsOffscreenBehaviorProperty;
         public static readonly Avalonia.AttachedProperty<bool> IsRequiredForFormProperty;
         public static readonly Avalonia.AttachedProperty<bool> IsRowHeaderProperty;
-        public static readonly Avalonia.AttachedProperty<string> ItemStatusProperty;
-        public static readonly Avalonia.AttachedProperty<string> ItemTypeProperty;
+        public static readonly Avalonia.AttachedProperty<string?> ItemStatusProperty;
+        public static readonly Avalonia.AttachedProperty<string?> ItemTypeProperty;
         public static readonly Avalonia.AttachedProperty<Avalonia.Controls.Control> LabeledByProperty;
         public static readonly Avalonia.AttachedProperty<Avalonia.Automation.AutomationLiveSetting> LiveSettingProperty;
-        public static readonly Avalonia.AttachedProperty<string> NameProperty;
+        public static readonly Avalonia.AttachedProperty<string?> NameProperty;
         public static readonly Avalonia.AttachedProperty<int> PositionInSetProperty;
         public static readonly Avalonia.AttachedProperty<int> SizeOfSetProperty;
-        public static string GetAcceleratorKey(Avalonia.StyledElement element) { throw null; }
+        public static string? GetAcceleratorKey(Avalonia.StyledElement element) { throw null; }
         public static Avalonia.Automation.AccessibilityView GetAccessibilityView(Avalonia.StyledElement element) { throw null; }
-        public static string GetAccessKey(Avalonia.StyledElement element) { throw null; }
-        public static string GetAutomationId(Avalonia.StyledElement element) { throw null; }
+        public static string? GetAccessKey(Avalonia.StyledElement element) { throw null; }
+        public static string? GetAutomationId(Avalonia.StyledElement element) { throw null; }
         public static Avalonia.Automation.Peers.AutomationControlType? GetControlTypeOverride(Avalonia.StyledElement element) { throw null; }
-        public static string GetHelpText(Avalonia.StyledElement element) { throw null; }
+        public static string? GetHelpText(Avalonia.StyledElement element) { throw null; }
         public static bool GetIsColumnHeader(Avalonia.StyledElement element) { throw null; }
         public static Avalonia.Automation.IsOffscreenBehavior GetIsOffscreenBehavior(Avalonia.StyledElement element) { throw null; }
         public static bool GetIsRequiredForForm(Avalonia.StyledElement element) { throw null; }
         public static bool GetIsRowHeader(Avalonia.StyledElement element) { throw null; }
-        public static string GetItemStatus(Avalonia.StyledElement element) { throw null; }
-        public static string GetItemType(Avalonia.StyledElement element) { throw null; }
+        public static string? GetItemStatus(Avalonia.StyledElement element) { throw null; }
+        public static string? GetItemType(Avalonia.StyledElement element) { throw null; }
         public static Avalonia.Controls.Control GetLabeledBy(Avalonia.StyledElement element) { throw null; }
         public static Avalonia.Automation.AutomationLiveSetting GetLiveSetting(Avalonia.StyledElement element) { throw null; }
-        public static string GetName(Avalonia.StyledElement element) { throw null; }
+        public static string? GetName(Avalonia.StyledElement element) { throw null; }
         public static int GetPositionInSet(Avalonia.StyledElement element) { throw null; }
         public static int GetSizeOfSet(Avalonia.StyledElement element) { throw null; }
         public static void SetAcceleratorKey(Avalonia.StyledElement element, string value) { }
         public static void SetAccessibilityView(Avalonia.StyledElement element, Avalonia.Automation.AccessibilityView value) { }
         public static void SetAccessKey(Avalonia.StyledElement element, string value) { }
-        public static void SetAutomationId(Avalonia.StyledElement element, string value) { }
+        public static void SetAutomationId(Avalonia.StyledElement element, string? value) { }
         public static void SetControlTypeOverride(Avalonia.StyledElement element, Avalonia.Automation.Peers.AutomationControlType? value) { }
-        public static void SetHelpText(Avalonia.StyledElement element, string value) { }
+        public static void SetHelpText(Avalonia.StyledElement element, string? value) { }
         public static void SetIsColumnHeader(Avalonia.StyledElement element, bool value) { }
         public static void SetIsOffscreenBehavior(Avalonia.StyledElement element, Avalonia.Automation.IsOffscreenBehavior value) { }
         public static void SetIsRequiredForForm(Avalonia.StyledElement element, bool value) { }
         public static void SetIsRowHeader(Avalonia.StyledElement element, bool value) { }
-        public static void SetItemStatus(Avalonia.StyledElement element, string value) { }
-        public static void SetItemType(Avalonia.StyledElement element, string value) { }
+        public static void SetItemStatus(Avalonia.StyledElement element, string? value) { }
+        public static void SetItemType(Avalonia.StyledElement element, string? value) { }
         public static void SetLabeledBy(Avalonia.StyledElement element, Avalonia.Controls.Control value) { }
         public static void SetLiveSetting(Avalonia.StyledElement element, Avalonia.Automation.AutomationLiveSetting value) { }
-        public static void SetName(Avalonia.StyledElement element, string value) { }
+        public static void SetName(Avalonia.StyledElement element, string? value) { }
         public static void SetPositionInSet(Avalonia.StyledElement element, int value) { }
         public static void SetSizeOfSet(Avalonia.StyledElement element, int value) { }
     }
@@ -772,7 +778,7 @@ namespace Avalonia.Controls
         protected override Avalonia.Size ArrangeOverride(Avalonia.Size finalSize) { throw null; }
         protected override Avalonia.Size MeasureOverride(Avalonia.Size availableSize) { throw null; }
         protected override void OnPropertyChanged(Avalonia.AvaloniaPropertyChangedEventArgs change) { }
-        public override void Render(Avalonia.Media.DrawingContext context) { }
+        public sealed override void Render(Avalonia.Media.DrawingContext context) { }
     }
     [Avalonia.Controls.Metadata.PseudoClassesAttribute(new string[]{ ":flyout-open", ":pressed"})]
     public partial class Button : Avalonia.Controls.ContentControl, Avalonia.Input.ICommandSource
@@ -850,7 +856,7 @@ namespace Avalonia.Controls
         public static readonly Avalonia.DirectProperty<Avalonia.Controls.Calendar, System.DateTime?> DisplayDateStartProperty;
         public static readonly Avalonia.StyledProperty<Avalonia.Controls.CalendarMode> DisplayModeProperty;
         public static readonly Avalonia.StyledProperty<System.DayOfWeek> FirstDayOfWeekProperty;
-        public static readonly Avalonia.StyledProperty<Avalonia.Media.IBrush> HeaderBackgroundProperty;
+        public static readonly Avalonia.StyledProperty<Avalonia.Media.IBrush?> HeaderBackgroundProperty;
         public static readonly Avalonia.StyledProperty<bool> IsTodayHighlightedProperty;
         public static readonly Avalonia.DirectProperty<Avalonia.Controls.Calendar, System.DateTime?> SelectedDateProperty;
         public static readonly Avalonia.StyledProperty<Avalonia.Controls.CalendarSelectionMode> SelectionModeProperty;
@@ -861,7 +867,7 @@ namespace Avalonia.Controls
         public System.DateTime? DisplayDateStart { get { throw null; } set { } }
         public Avalonia.Controls.CalendarMode DisplayMode { get { throw null; } set { } }
         public System.DayOfWeek FirstDayOfWeek { get { throw null; } set { } }
-        public Avalonia.Media.IBrush HeaderBackground { get { throw null; } set { } }
+        public Avalonia.Media.IBrush? HeaderBackground { get { throw null; } set { } }
         public bool IsTodayHighlighted { get { throw null; } set { } }
         public System.DateTime? SelectedDate { get { throw null; } set { } }
         public Avalonia.Controls.Primitives.SelectedDatesCollection SelectedDates { [System.Runtime.CompilerServices.CompilerGeneratedAttribute] get { throw null; } }
@@ -1153,7 +1159,6 @@ namespace Avalonia.Controls
         public Avalonia.Controls.Templates.DataTemplates DataTemplates { get { throw null; } }
         public Avalonia.Controls.ITemplate<Avalonia.Controls.Control>? FocusAdorner { get { throw null; } set { } }
         public bool IsLoaded { get { throw null; } }
-        public new Avalonia.Controls.Control? Parent { get { throw null; } }
         public object? Tag { get { throw null; } set { } }
         public event System.EventHandler<Avalonia.Controls.ContextRequestedEventArgs>? ContextRequested { add { } remove { } }
         public event System.EventHandler<Avalonia.Interactivity.RoutedEventArgs>? Loaded { add { } remove { } }
@@ -1297,9 +1302,9 @@ namespace Avalonia.Controls
     }
     public abstract partial class DefinitionBase : Avalonia.AvaloniaObject
     {
-        public static readonly Avalonia.AttachedProperty<string> SharedSizeGroupProperty;
+        public static readonly Avalonia.AttachedProperty<string?> SharedSizeGroupProperty;
         protected DefinitionBase() { }
-        public string SharedSizeGroup { get { throw null; } set { } }
+        public string? SharedSizeGroup { get { throw null; } set { } }
         internal abstract double UserMaxSizeValueCache { get; }
         internal abstract double UserMinSizeValueCache { get; }
         internal abstract Avalonia.Controls.GridLength UserSizeValueCache { get; }
@@ -1360,29 +1365,6 @@ namespace Avalonia.Controls
     {
         public DropDownButton() { }
     }
-    public abstract partial class ElementFactory : Avalonia.Controls.IElementFactory, Avalonia.Controls.Templates.IDataTemplate, Avalonia.Controls.Templates.ITemplate<object?, Avalonia.Controls.Control?>
-    {
-        protected ElementFactory() { }
-        public Avalonia.Controls.Control Build(object? data) { throw null; }
-        public Avalonia.Controls.Control GetElement(Avalonia.Controls.ElementFactoryGetArgs args) { throw null; }
-        protected abstract Avalonia.Controls.Control GetElementCore(Avalonia.Controls.ElementFactoryGetArgs args);
-        public bool Match(object? data) { throw null; }
-        public void RecycleElement(Avalonia.Controls.ElementFactoryRecycleArgs args) { }
-        protected abstract void RecycleElementCore(Avalonia.Controls.ElementFactoryRecycleArgs args);
-    }
-    public partial class ElementFactoryGetArgs
-    {
-        public ElementFactoryGetArgs() { }
-        public object? Data { [System.Runtime.CompilerServices.CompilerGeneratedAttribute] get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute] set { } }
-        public int Index { [System.Runtime.CompilerServices.CompilerGeneratedAttribute] get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute] set { } }
-        public Avalonia.Controls.Control? Parent { [System.Runtime.CompilerServices.CompilerGeneratedAttribute] get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute] set { } }
-    }
-    public partial class ElementFactoryRecycleArgs
-    {
-        public ElementFactoryRecycleArgs() { }
-        public Avalonia.Controls.Control? Element { [System.Runtime.CompilerServices.CompilerGeneratedAttribute] get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute] set { } }
-        public Avalonia.Controls.Control? Parent { [System.Runtime.CompilerServices.CompilerGeneratedAttribute] get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute] set { } }
-    }
     public enum ExpandDirection
     {
         Down = 0,
@@ -1394,20 +1376,21 @@ namespace Avalonia.Controls
     public partial class Expander : Avalonia.Controls.Primitives.HeaderedContentControl
     {
         public static readonly Avalonia.Interactivity.RoutedEvent<Avalonia.Interactivity.RoutedEventArgs> CollapsedEvent;
-        public static readonly Avalonia.Interactivity.RoutedEvent<Avalonia.Interactivity.RoutedEventArgs> CollapsingEvent;
+        public static readonly Avalonia.Interactivity.RoutedEvent<Avalonia.Interactivity.CancelRoutedEventArgs> CollapsingEvent;
         public static readonly Avalonia.StyledProperty<Avalonia.Animation.IPageTransition?> ContentTransitionProperty;
         public static readonly Avalonia.StyledProperty<Avalonia.Controls.ExpandDirection> ExpandDirectionProperty;
         public static readonly Avalonia.Interactivity.RoutedEvent<Avalonia.Interactivity.RoutedEventArgs> ExpandedEvent;
-        public static readonly Avalonia.Interactivity.RoutedEvent<Avalonia.Interactivity.RoutedEventArgs> ExpandingEvent;
-        public static readonly Avalonia.DirectProperty<Avalonia.Controls.Expander, bool> IsExpandedProperty;
+        public static readonly Avalonia.Interactivity.RoutedEvent<Avalonia.Interactivity.CancelRoutedEventArgs> ExpandingEvent;
+        public static readonly Avalonia.StyledProperty<bool> IsExpandedProperty;
         public Expander() { }
         public Avalonia.Animation.IPageTransition? ContentTransition { get { throw null; } set { } }
         public Avalonia.Controls.ExpandDirection ExpandDirection { get { throw null; } set { } }
         public bool IsExpanded { get { throw null; } set { } }
         public event System.EventHandler<Avalonia.Interactivity.RoutedEventArgs>? Collapsed { add { } remove { } }
-        public event System.EventHandler<Avalonia.Interactivity.RoutedEventArgs>? Collapsing { add { } remove { } }
+        public event System.EventHandler<Avalonia.Interactivity.CancelRoutedEventArgs>? Collapsing { add { } remove { } }
         public event System.EventHandler<Avalonia.Interactivity.RoutedEventArgs>? Expanded { add { } remove { } }
-        public event System.EventHandler<Avalonia.Interactivity.RoutedEventArgs>? Expanding { add { } remove { } }
+        public event System.EventHandler<Avalonia.Interactivity.CancelRoutedEventArgs>? Expanding { add { } remove { } }
+        protected virtual bool OnCoerceIsExpanded(bool value) { throw null; }
         protected virtual void OnCollapsed(Avalonia.Interactivity.RoutedEventArgs eventArgs) { }
         protected virtual void OnCollapsing(Avalonia.Interactivity.RoutedEventArgs eventArgs) { }
         protected virtual void OnExpanded(Avalonia.Interactivity.RoutedEventArgs eventArgs) { }
@@ -1425,7 +1408,7 @@ namespace Avalonia.Controls
         protected override Avalonia.Size MeasureOverride(Avalonia.Size availableSize) { throw null; }
         protected override void OnAttachedToVisualTree(Avalonia.VisualTreeAttachmentEventArgs e) { }
         protected override void OnDetachedFromVisualTree(Avalonia.VisualTreeAttachmentEventArgs e) { }
-        public override void Render(Avalonia.Media.DrawingContext context) { }
+        public sealed override void Render(Avalonia.Media.DrawingContext context) { }
     }
     [System.ObsoleteAttribute("Use Window.StorageProvider API or TopLevel.StorageProvider API")]
     public abstract partial class FileDialog : Avalonia.Controls.FileSystemDialog
@@ -1493,8 +1476,10 @@ namespace Avalonia.Controls
         public static readonly Avalonia.AttachedProperty<int> RowSpanProperty;
         public static readonly Avalonia.StyledProperty<bool> ShowGridLinesProperty;
         public Grid() { }
-        public Avalonia.Controls.ColumnDefinitions ColumnDefinitions { get { throw null; } set { } }
-        public Avalonia.Controls.RowDefinitions RowDefinitions { get { throw null; } set { } }
+        [System.Diagnostics.CodeAnalysis.MemberNotNullAttribute("_extData")]
+        public Avalonia.Controls.ColumnDefinitions ColumnDefinitions { [System.Diagnostics.CodeAnalysis.MemberNotNullAttribute("_extData")] get { throw null; } [System.Diagnostics.CodeAnalysis.MemberNotNullAttribute("_extData")] set { } }
+        [System.Diagnostics.CodeAnalysis.MemberNotNullAttribute("_extData")]
+        public Avalonia.Controls.RowDefinitions RowDefinitions { [System.Diagnostics.CodeAnalysis.MemberNotNullAttribute("_extData")] get { throw null; } [System.Diagnostics.CodeAnalysis.MemberNotNullAttribute("_extData")] set { } }
         public bool ShowGridLines { get { throw null; } set { } }
         protected override Avalonia.Size ArrangeOverride(Avalonia.Size arrangeSize) { throw null; }
         protected override void ChildrenChanged(object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) { }
@@ -1592,11 +1577,6 @@ namespace Avalonia.Controls
         Avalonia.Layout.HorizontalAlignment HorizontalContentAlignment { get; set; }
         Avalonia.Layout.VerticalAlignment VerticalContentAlignment { get; set; }
     }
-    public partial interface IElementFactory : Avalonia.Controls.Templates.IDataTemplate, Avalonia.Controls.Templates.ITemplate<object?, Avalonia.Controls.Control?>
-    {
-        Avalonia.Controls.Control GetElement(Avalonia.Controls.ElementFactoryGetArgs args);
-        void RecycleElement(Avalonia.Controls.ElementFactoryRecycleArgs args);
-    }
     [Avalonia.Metadata.NotClientImplementableAttribute]
     public partial interface IGlobalDataTemplates : Avalonia.Controls.Templates.IDataTemplateHost
     {
@@ -1607,18 +1587,18 @@ namespace Avalonia.Controls
     }
     public partial class Image : Avalonia.Controls.Control
     {
-        public static readonly Avalonia.StyledProperty<Avalonia.Media.IImage> SourceProperty;
+        public static readonly Avalonia.StyledProperty<Avalonia.Media.IImage?> SourceProperty;
         public static readonly Avalonia.StyledProperty<Avalonia.Media.StretchDirection> StretchDirectionProperty;
         public static readonly Avalonia.StyledProperty<Avalonia.Media.Stretch> StretchProperty;
         public Image() { }
         protected override bool BypassFlowDirectionPolicies { get { throw null; } }
         [Avalonia.Metadata.ContentAttribute]
-        public Avalonia.Media.IImage Source { get { throw null; } set { } }
+        public Avalonia.Media.IImage? Source { get { throw null; } set { } }
         public Avalonia.Media.Stretch Stretch { get { throw null; } set { } }
         public Avalonia.Media.StretchDirection StretchDirection { get { throw null; } set { } }
         protected override Avalonia.Size ArrangeOverride(Avalonia.Size finalSize) { throw null; }
         protected override Avalonia.Size MeasureOverride(Avalonia.Size availableSize) { throw null; }
-        public override void Render(Avalonia.Media.DrawingContext context) { }
+        public sealed override void Render(Avalonia.Media.DrawingContext context) { }
     }
     [Avalonia.Metadata.NotClientImplementableAttribute]
     public partial interface IMenu : Avalonia.Controls.IMenuElement, Avalonia.Input.IInputElement, Avalonia.LogicalTree.ILogical
@@ -1674,8 +1654,10 @@ namespace Avalonia.Controls
         new TControl Build();
     }
     [Avalonia.Controls.Metadata.PseudoClassesAttribute(new string[]{ ":empty", ":singleitem"})]
-    public partial class ItemsControl : Avalonia.Controls.Primitives.TemplatedControl, Avalonia.LogicalTree.IChildIndexProvider
+    public partial class ItemsControl : Avalonia.Controls.Primitives.TemplatedControl, Avalonia.Controls.Primitives.IScrollSnapPointsInfo, Avalonia.LogicalTree.IChildIndexProvider
     {
+        public static readonly Avalonia.StyledProperty<bool> AreHorizontalSnapPointsRegularProperty;
+        public static readonly Avalonia.StyledProperty<bool> AreVerticalSnapPointsRegularProperty;
         public static readonly Avalonia.StyledProperty<Avalonia.Data.IBinding?> DisplayMemberBindingProperty;
         public static readonly Avalonia.StyledProperty<Avalonia.Styling.ControlTheme?> ItemContainerThemeProperty;
         public static readonly Avalonia.DirectProperty<Avalonia.Controls.ItemsControl, int> ItemCountProperty;
@@ -1684,7 +1666,10 @@ namespace Avalonia.Controls
         public static readonly Avalonia.DirectProperty<Avalonia.Controls.ItemsControl, Avalonia.Controls.ItemsSourceView> ItemsViewProperty;
         public static readonly Avalonia.StyledProperty<Avalonia.Controls.Templates.IDataTemplate?> ItemTemplateProperty;
         public ItemsControl() { }
+        public bool AreHorizontalSnapPointsRegular { get { throw null; } set { } }
+        public bool AreVerticalSnapPointsRegular { get { throw null; } set { } }
         [Avalonia.Data.AssignBindingAttribute]
+        [Avalonia.Metadata.InheritDataTypeFromItemsAttribute("Items")]
         public Avalonia.Data.IBinding? DisplayMemberBinding { get { throw null; } set { } }
         public Avalonia.Controls.Generators.ItemContainerGenerator ItemContainerGenerator { get { throw null; } }
         public Avalonia.Styling.ControlTheme? ItemContainerTheme { get { throw null; } set { } }
@@ -1694,9 +1679,12 @@ namespace Avalonia.Controls
         public Avalonia.Controls.ITemplate<Avalonia.Controls.Panel> ItemsPanel { get { throw null; } set { } }
         public Avalonia.Controls.Panel? ItemsPanelRoot { get { throw null; } }
         public Avalonia.Controls.ItemsSourceView ItemsView { get { throw null; } }
+        [Avalonia.Metadata.InheritDataTypeFromItemsAttribute("Items")]
         public Avalonia.Controls.Templates.IDataTemplate? ItemTemplate { get { throw null; } set { } }
         public Avalonia.Controls.Presenters.ItemsPresenter? Presenter { [System.Runtime.CompilerServices.CompilerGeneratedAttribute] get { throw null; } }
         event System.EventHandler<Avalonia.LogicalTree.ChildIndexChangedEventArgs>? Avalonia.LogicalTree.IChildIndexProvider.ChildIndexChanged { add { } remove { } }
+        public event System.EventHandler<Avalonia.Interactivity.RoutedEventArgs> HorizontalSnapPointsChanged { add { } remove { } }
+        public event System.EventHandler<Avalonia.Interactivity.RoutedEventArgs> VerticalSnapPointsChanged { add { } remove { } }
         int Avalonia.LogicalTree.IChildIndexProvider.GetChildIndex(Avalonia.LogicalTree.ILogical child) { throw null; }
         bool Avalonia.LogicalTree.IChildIndexProvider.TryGetTotalCount(out int count) { throw null; }
         protected internal virtual void ClearContainerForItemOverride(Avalonia.Controls.Control container) { }
@@ -1704,8 +1692,10 @@ namespace Avalonia.Controls
         public Avalonia.Controls.Control? ContainerFromItem(object item) { throw null; }
         protected virtual void ContainerIndexChangedOverride(Avalonia.Controls.Control container, int oldIndex, int newIndex) { }
         protected internal virtual Avalonia.Controls.Control CreateContainerForItemOverride() { throw null; }
+        public System.Collections.Generic.IReadOnlyList<double> GetIrregularSnapPoints(Avalonia.Layout.Orientation orientation, Avalonia.Controls.Primitives.SnapPointsAlignment snapPointsAlignment) { throw null; }
         protected static Avalonia.Input.IInputElement? GetNextControl(Avalonia.Input.INavigableContainer container, Avalonia.Input.NavigationDirection direction, Avalonia.Input.IInputElement? from, bool wrap) { throw null; }
         public System.Collections.Generic.IEnumerable<Avalonia.Controls.Control> GetRealizedContainers() { throw null; }
+        public double GetRegularSnapPoints(Avalonia.Layout.Orientation orientation, Avalonia.Controls.Primitives.SnapPointsAlignment snapPointsAlignment, out double offset) { throw null; }
         public int IndexFromContainer(Avalonia.Controls.Control container) { throw null; }
         protected internal virtual bool IsItemItsOwnContainerOverride(Avalonia.Controls.Control item) { throw null; }
         public object? ItemFromContainer(Avalonia.Controls.Control container) { throw null; }
@@ -1716,53 +1706,6 @@ namespace Avalonia.Controls
         protected override void OnPropertyChanged(Avalonia.AvaloniaPropertyChangedEventArgs change) { }
         protected internal virtual void PrepareContainerForItemOverride(Avalonia.Controls.Control container, object? item, int index) { }
         protected void RefreshContainers() { }
-    }
-    public partial class ItemsRepeater : Avalonia.Controls.Panel, Avalonia.LogicalTree.IChildIndexProvider
-    {
-        public static readonly Avalonia.StyledProperty<double> HorizontalCacheLengthProperty;
-        public static readonly Avalonia.DirectProperty<Avalonia.Controls.ItemsRepeater, System.Collections.IEnumerable?> ItemsProperty;
-        public static readonly Avalonia.StyledProperty<Avalonia.Controls.Templates.IDataTemplate?> ItemTemplateProperty;
-        public static readonly Avalonia.StyledProperty<Avalonia.Layout.AttachedLayout> LayoutProperty;
-        public static readonly Avalonia.StyledProperty<double> VerticalCacheLengthProperty;
-        public ItemsRepeater() { }
-        public double HorizontalCacheLength { get { throw null; } set { } }
-        public System.Collections.IEnumerable? Items { get { throw null; } set { } }
-        public Avalonia.Controls.ItemsSourceView? ItemsSourceView { [System.Runtime.CompilerServices.CompilerGeneratedAttribute] get { throw null; } }
-        public Avalonia.Controls.Templates.IDataTemplate? ItemTemplate { get { throw null; } set { } }
-        public Avalonia.Layout.AttachedLayout Layout { get { throw null; } set { } }
-        public double VerticalCacheLength { get { throw null; } set { } }
-        event System.EventHandler<Avalonia.LogicalTree.ChildIndexChangedEventArgs>? Avalonia.LogicalTree.IChildIndexProvider.ChildIndexChanged { add { } remove { } }
-        public event System.EventHandler<Avalonia.Controls.ItemsRepeaterElementClearingEventArgs>? ElementClearing { add { } remove { } }
-        public event System.EventHandler<Avalonia.Controls.ItemsRepeaterElementIndexChangedEventArgs>? ElementIndexChanged { add { } remove { } }
-        public event System.EventHandler<Avalonia.Controls.ItemsRepeaterElementPreparedEventArgs>? ElementPrepared { add { } remove { } }
-        protected override Avalonia.Size ArrangeOverride(Avalonia.Size finalSize) { throw null; }
-        int Avalonia.LogicalTree.IChildIndexProvider.GetChildIndex(Avalonia.LogicalTree.ILogical child) { throw null; }
-        bool Avalonia.LogicalTree.IChildIndexProvider.TryGetTotalCount(out int count) { throw null; }
-        public int GetElementIndex(Avalonia.Controls.Control element) { throw null; }
-        public Avalonia.Controls.Control GetOrCreateElement(int index) { throw null; }
-        protected override Avalonia.Size MeasureOverride(Avalonia.Size availableSize) { throw null; }
-        protected override void OnAttachedToVisualTree(Avalonia.VisualTreeAttachmentEventArgs e) { }
-        protected override void OnDetachedFromVisualTree(Avalonia.VisualTreeAttachmentEventArgs e) { }
-        protected override void OnPropertyChanged(Avalonia.AvaloniaPropertyChangedEventArgs change) { }
-        public Avalonia.Controls.Control? TryGetElement(int index) { throw null; }
-    }
-    public partial class ItemsRepeaterElementClearingEventArgs : System.EventArgs
-    {
-        internal ItemsRepeaterElementClearingEventArgs() { }
-        public Avalonia.Controls.Control Element { [System.Runtime.CompilerServices.CompilerGeneratedAttribute] get { throw null; } }
-    }
-    public partial class ItemsRepeaterElementIndexChangedEventArgs : System.EventArgs
-    {
-        internal ItemsRepeaterElementIndexChangedEventArgs() { }
-        public Avalonia.Controls.Control Element { [System.Runtime.CompilerServices.CompilerGeneratedAttribute] get { throw null; } }
-        public int NewIndex { [System.Runtime.CompilerServices.CompilerGeneratedAttribute] get { throw null; } }
-        public int OldIndex { [System.Runtime.CompilerServices.CompilerGeneratedAttribute] get { throw null; } }
-    }
-    public partial class ItemsRepeaterElementPreparedEventArgs
-    {
-        internal ItemsRepeaterElementPreparedEventArgs() { }
-        public Avalonia.Controls.Control Element { [System.Runtime.CompilerServices.CompilerGeneratedAttribute] get { throw null; } }
-        public int Index { [System.Runtime.CompilerServices.CompilerGeneratedAttribute] get { throw null; } }
     }
     public partial class ItemsSourceView : System.Collections.Generic.IEnumerable<object?>, System.Collections.Generic.IReadOnlyCollection<object?>, System.Collections.Generic.IReadOnlyList<object?>, System.Collections.IEnumerable, System.Collections.Specialized.INotifyCollectionChanged
     {
@@ -1821,6 +1764,7 @@ namespace Avalonia.Controls
         public new Avalonia.Controls.Selection.ISelectionModel Selection { get { throw null; } set { } }
         public new Avalonia.Controls.SelectionMode SelectionMode { get { throw null; } set { } }
         protected internal override Avalonia.Controls.Control CreateContainerForItemOverride() { throw null; }
+        protected internal override bool IsItemItsOwnContainerOverride(Avalonia.Controls.Control item) { throw null; }
         protected override void OnApplyTemplate(Avalonia.Controls.Primitives.TemplateAppliedEventArgs e) { }
         protected override void OnGotFocus(Avalonia.Input.GotFocusEventArgs e) { }
         protected override void OnPointerPressed(Avalonia.Input.PointerPressedEventArgs e) { }
@@ -1908,10 +1852,12 @@ namespace Avalonia.Controls
     }
     public partial class MenuFlyout : Avalonia.Controls.Primitives.FlyoutBase
     {
+        public static readonly Avalonia.StyledProperty<Avalonia.Styling.ControlTheme?> ItemContainerThemeProperty;
         public static readonly Avalonia.DirectProperty<Avalonia.Controls.MenuFlyout, System.Collections.IEnumerable?> ItemsProperty;
         public static readonly Avalonia.DirectProperty<Avalonia.Controls.MenuFlyout, Avalonia.Controls.Templates.IDataTemplate?> ItemTemplateProperty;
         public MenuFlyout() { }
         public Avalonia.Controls.Classes FlyoutPresenterClasses { get { throw null; } }
+        public Avalonia.Styling.ControlTheme? ItemContainerTheme { get { throw null; } set { } }
         [Avalonia.Metadata.ContentAttribute]
         public System.Collections.IEnumerable? Items { get { throw null; } set { } }
         public Avalonia.Controls.Templates.IDataTemplate? ItemTemplate { get { throw null; } set { } }
@@ -2003,7 +1949,7 @@ namespace Avalonia.Controls
     public partial class NativeMenu : Avalonia.AvaloniaObject, Avalonia.Controls.INativeMenuExporterEventsImplBridge, System.Collections.Generic.IEnumerable<Avalonia.Controls.NativeMenuItemBase>, System.Collections.IEnumerable
     {
         public static readonly Avalonia.AttachedProperty<bool> IsNativeMenuExportedProperty;
-        public static readonly Avalonia.AttachedProperty<Avalonia.Controls.NativeMenu> MenuProperty;
+        public static readonly Avalonia.AttachedProperty<Avalonia.Controls.NativeMenu?> MenuProperty;
         public static readonly Avalonia.DirectProperty<Avalonia.Controls.NativeMenu, Avalonia.Controls.NativeMenuItem?> ParentProperty;
         public NativeMenu() { }
         [Avalonia.Metadata.ContentAttribute]
@@ -2018,8 +1964,8 @@ namespace Avalonia.Controls
         void Avalonia.Controls.INativeMenuExporterEventsImplBridge.RaiseOpening() { }
         public System.Collections.Generic.IEnumerator<Avalonia.Controls.NativeMenuItemBase> GetEnumerator() { throw null; }
         public static bool GetIsNativeMenuExported(Avalonia.Controls.TopLevel tl) { throw null; }
-        public static Avalonia.Controls.NativeMenu GetMenu(Avalonia.AvaloniaObject o) { throw null; }
-        public static void SetMenu(Avalonia.AvaloniaObject o, Avalonia.Controls.NativeMenu menu) { }
+        public static Avalonia.Controls.NativeMenu? GetMenu(Avalonia.AvaloniaObject o) { throw null; }
+        public static void SetMenu(Avalonia.AvaloniaObject o, Avalonia.Controls.NativeMenu? menu) { }
         System.Collections.IEnumerator System.Collections.IEnumerable.GetEnumerator() { throw null; }
     }
     public partial class NativeMenuBar : Avalonia.Controls.Primitives.TemplatedControl
@@ -2166,7 +2112,7 @@ namespace Avalonia.Controls
         protected static void AffectsParentMeasure<TPanel>(params Avalonia.AvaloniaProperty[] properties) where TPanel : Avalonia.Controls.Panel { }
         int Avalonia.LogicalTree.IChildIndexProvider.GetChildIndex(Avalonia.LogicalTree.ILogical child) { throw null; }
         protected virtual void ChildrenChanged(object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) { }
-        public override void Render(Avalonia.Media.DrawingContext context) { }
+        public sealed override void Render(Avalonia.Media.DrawingContext context) { }
         public bool TryGetTotalCount(out int count) { throw null; }
     }
     public partial class PathIcon : Avalonia.Controls.IconElement
@@ -2188,6 +2134,10 @@ namespace Avalonia.Controls
         Left = 3,
         Top = 4,
         AnchorAndGravity = 5,
+    }
+    public enum PlatformInhibitionType
+    {
+        AppSleep = 0,
     }
     public partial class PopulatedEventArgs : System.EventArgs
     {
@@ -2221,6 +2171,7 @@ namespace Avalonia.Controls
         public Avalonia.Controls.ProgressBar.ProgressBarTemplateProperties TemplateProperties { [System.Runtime.CompilerServices.CompilerGeneratedAttribute] get { throw null; } }
         protected override Avalonia.Size ArrangeOverride(Avalonia.Size finalSize) { throw null; }
         protected override void OnApplyTemplate(Avalonia.Controls.Primitives.TemplateAppliedEventArgs e) { }
+        protected override Avalonia.Automation.Peers.AutomationPeer OnCreateAutomationPeer() { throw null; }
         protected override void OnPropertyChanged(Avalonia.AvaloniaPropertyChangedEventArgs change) { }
         public partial class ProgressBarTemplateProperties : Avalonia.AvaloniaObject
         {
@@ -2247,24 +2198,6 @@ namespace Avalonia.Controls
         protected override void OnAttachedToVisualTree(Avalonia.VisualTreeAttachmentEventArgs e) { }
         protected override void OnDetachedFromVisualTree(Avalonia.VisualTreeAttachmentEventArgs e) { }
         protected override void Toggle() { }
-    }
-    public partial class RecyclePool
-    {
-        public RecyclePool() { }
-        public static Avalonia.Controls.RecyclePool? GetPoolInstance(Avalonia.Controls.Templates.IDataTemplate dataTemplate) { throw null; }
-        public void PutElement(Avalonia.Controls.Control element, string key, Avalonia.Controls.Control? owner) { }
-        public static void SetPoolInstance(Avalonia.Controls.Templates.IDataTemplate dataTemplate, Avalonia.Controls.RecyclePool value) { }
-        public Avalonia.Controls.Control? TryGetElement(string key, Avalonia.Controls.Control? owner) { throw null; }
-    }
-    public partial class RecyclingElementFactory : Avalonia.Controls.ElementFactory
-    {
-        public RecyclingElementFactory() { }
-        public Avalonia.Controls.RecyclePool RecyclePool { get { throw null; } set { } }
-        public System.Collections.Generic.IDictionary<string, Avalonia.Controls.Templates.IDataTemplate> Templates { get { throw null; } set { } }
-        public event System.EventHandler<Avalonia.Controls.SelectTemplateEventArgs>? SelectTemplateKey { add { } remove { } }
-        protected override Avalonia.Controls.Control GetElementCore(Avalonia.Controls.ElementFactoryGetArgs args) { throw null; }
-        protected virtual string OnSelectTemplateKeyCore(object? dataContext, Avalonia.Controls.Control? owner) { throw null; }
-        protected override void RecycleElementCore(Avalonia.Controls.ElementFactoryRecycleArgs args) { }
     }
     public partial class RefreshCompletionDeferral
     {
@@ -2414,7 +2347,8 @@ namespace Avalonia.Controls
         public Avalonia.Visual? TargetObject { [System.Runtime.CompilerServices.CompilerGeneratedAttribute] get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute] set { } }
         public Avalonia.Rect TargetRect { [System.Runtime.CompilerServices.CompilerGeneratedAttribute] get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute] set { } }
     }
-    public partial class ResolveByNameAttribute : System.Attribute
+    [System.AttributeUsageAttribute(System.AttributeTargets.Method | System.AttributeTargets.Property)]
+    public sealed partial class ResolveByNameAttribute : System.Attribute
     {
         public ResolveByNameAttribute() { }
     }
@@ -2485,8 +2419,11 @@ namespace Avalonia.Controls
         public static readonly Avalonia.DirectProperty<Avalonia.Controls.ScrollViewer, double> HorizontalScrollBarValueProperty;
         public static readonly Avalonia.DirectProperty<Avalonia.Controls.ScrollViewer, double> HorizontalScrollBarViewportSizeProperty;
         public static readonly Avalonia.AttachedProperty<Avalonia.Controls.Primitives.ScrollBarVisibility> HorizontalScrollBarVisibilityProperty;
+        public static readonly Avalonia.AttachedProperty<Avalonia.Controls.Primitives.SnapPointsAlignment> HorizontalSnapPointsAlignmentProperty;
+        public static readonly Avalonia.AttachedProperty<Avalonia.Controls.Primitives.SnapPointsType> HorizontalSnapPointsTypeProperty;
         public static readonly Avalonia.DirectProperty<Avalonia.Controls.ScrollViewer, bool> IsExpandedProperty;
         public static readonly Avalonia.AttachedProperty<bool> IsScrollChainingEnabledProperty;
+        public static readonly Avalonia.AttachedProperty<bool> IsScrollInertiaEnabledProperty;
         public static readonly Avalonia.DirectProperty<Avalonia.Controls.ScrollViewer, Avalonia.Size> LargeChangeProperty;
         public static readonly Avalonia.DirectProperty<Avalonia.Controls.ScrollViewer, Avalonia.Vector> OffsetProperty;
         public static readonly Avalonia.Interactivity.RoutedEvent<Avalonia.Controls.ScrollChangedEventArgs> ScrollChangedEvent;
@@ -2495,6 +2432,8 @@ namespace Avalonia.Controls
         public static readonly Avalonia.DirectProperty<Avalonia.Controls.ScrollViewer, double> VerticalScrollBarValueProperty;
         public static readonly Avalonia.DirectProperty<Avalonia.Controls.ScrollViewer, double> VerticalScrollBarViewportSizeProperty;
         public static readonly Avalonia.AttachedProperty<Avalonia.Controls.Primitives.ScrollBarVisibility> VerticalScrollBarVisibilityProperty;
+        public static readonly Avalonia.AttachedProperty<Avalonia.Controls.Primitives.SnapPointsAlignment> VerticalSnapPointsAlignmentProperty;
+        public static readonly Avalonia.AttachedProperty<Avalonia.Controls.Primitives.SnapPointsType> VerticalSnapPointsTypeProperty;
         public static readonly Avalonia.DirectProperty<Avalonia.Controls.ScrollViewer, Avalonia.Size> ViewportProperty;
         public ScrollViewer() { }
         public bool AllowAutoHide { get { throw null; } set { } }
@@ -2506,8 +2445,11 @@ namespace Avalonia.Controls
         protected double HorizontalScrollBarValue { get { throw null; } set { } }
         protected double HorizontalScrollBarViewportSize { get { throw null; } }
         public Avalonia.Controls.Primitives.ScrollBarVisibility HorizontalScrollBarVisibility { get { throw null; } set { } }
+        public Avalonia.Controls.Primitives.SnapPointsAlignment HorizontalSnapPointsAlignment { get { throw null; } set { } }
+        public Avalonia.Controls.Primitives.SnapPointsType HorizontalSnapPointsType { get { throw null; } set { } }
         public bool IsExpanded { get { throw null; } }
         public bool IsScrollChainingEnabled { get { throw null; } set { } }
+        public bool IsScrollInertiaEnabled { get { throw null; } set { } }
         public Avalonia.Size LargeChange { get { throw null; } }
         public Avalonia.Vector Offset { get { throw null; } set { } }
         public Avalonia.Size SmallChange { get { throw null; } }
@@ -2515,12 +2457,19 @@ namespace Avalonia.Controls
         protected double VerticalScrollBarValue { get { throw null; } set { } }
         protected double VerticalScrollBarViewportSize { get { throw null; } }
         public Avalonia.Controls.Primitives.ScrollBarVisibility VerticalScrollBarVisibility { get { throw null; } set { } }
+        public Avalonia.Controls.Primitives.SnapPointsAlignment VerticalSnapPointsAlignment { get { throw null; } set { } }
+        public Avalonia.Controls.Primitives.SnapPointsType VerticalSnapPointsType { get { throw null; } set { } }
         public Avalonia.Size Viewport { get { throw null; } }
         public event System.EventHandler<Avalonia.Controls.ScrollChangedEventArgs>? ScrollChanged { add { } remove { } }
         public static bool GetAllowAutoHide(Avalonia.Controls.Control control) { throw null; }
         public static Avalonia.Controls.Primitives.ScrollBarVisibility GetHorizontalScrollBarVisibility(Avalonia.Controls.Control control) { throw null; }
+        public static Avalonia.Controls.Primitives.SnapPointsAlignment GetHorizontalSnapPointsAlignment(Avalonia.Controls.Control control) { throw null; }
+        public static Avalonia.Controls.Primitives.SnapPointsType GetHorizontalSnapPointsType(Avalonia.Controls.Control control) { throw null; }
         public static bool GetIsScrollChainingEnabled(Avalonia.Controls.Control control) { throw null; }
+        public static bool GetIsScrollInertiaEnabled(Avalonia.Controls.Control control) { throw null; }
         public static Avalonia.Controls.Primitives.ScrollBarVisibility GetVerticalScrollBarVisibility(Avalonia.Controls.Control control) { throw null; }
+        public static Avalonia.Controls.Primitives.SnapPointsAlignment GetVerticalSnapPointsAlignment(Avalonia.Controls.Control control) { throw null; }
+        public static Avalonia.Controls.Primitives.SnapPointsType GetVerticalSnapPointsType(Avalonia.Controls.Control control) { throw null; }
         public void LineDown() { }
         public void LineLeft() { }
         public void LineRight() { }
@@ -2539,8 +2488,13 @@ namespace Avalonia.Controls
         public void ScrollToHome() { }
         public static void SetAllowAutoHide(Avalonia.Controls.Control control, bool value) { }
         public static void SetHorizontalScrollBarVisibility(Avalonia.Controls.Control control, Avalonia.Controls.Primitives.ScrollBarVisibility value) { }
+        public static void SetHorizontalSnapPointsAlignment(Avalonia.Controls.Control control, Avalonia.Controls.Primitives.SnapPointsAlignment value) { }
+        public static void SetHorizontalSnapPointsType(Avalonia.Controls.Control control, Avalonia.Controls.Primitives.SnapPointsType value) { }
         public static void SetIsScrollChainingEnabled(Avalonia.Controls.Control control, bool value) { }
+        public static void SetIsScrollInertiaEnabled(Avalonia.Controls.Control control, bool value) { }
         public static void SetVerticalScrollBarVisibility(Avalonia.Controls.Control control, Avalonia.Controls.Primitives.ScrollBarVisibility value) { }
+        public static void SetVerticalSnapPointsAlignment(Avalonia.Controls.Control control, Avalonia.Controls.Primitives.SnapPointsAlignment value) { }
+        public static void SetVerticalSnapPointsType(Avalonia.Controls.Control control, Avalonia.Controls.Primitives.SnapPointsType value) { }
         public void UnregisterAnchorCandidate(Avalonia.Controls.Control element) { }
     }
     public partial class SelectableTextBlock : Avalonia.Controls.TextBlock, Avalonia.LogicalTree.ILogical
@@ -2583,13 +2537,6 @@ namespace Avalonia.Controls
         Toggle = 2,
         AlwaysSelected = 4,
     }
-    public partial class SelectTemplateEventArgs : System.EventArgs
-    {
-        public SelectTemplateEventArgs() { }
-        public object? DataContext { [System.Runtime.CompilerServices.CompilerGeneratedAttribute] get { throw null; } }
-        public Avalonia.Controls.Control? Owner { [System.Runtime.CompilerServices.CompilerGeneratedAttribute] get { throw null; } }
-        public string? TemplateKey { [System.Runtime.CompilerServices.CompilerGeneratedAttribute] get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute] set { } }
-    }
     public partial class Separator : Avalonia.Controls.Primitives.TemplatedControl
     {
         public Separator() { }
@@ -2629,14 +2576,14 @@ namespace Avalonia.Controls
         public static readonly Avalonia.StyledProperty<Avalonia.Layout.Orientation> OrientationProperty;
         public static readonly Avalonia.StyledProperty<double> TickFrequencyProperty;
         public static readonly Avalonia.StyledProperty<Avalonia.Controls.TickPlacement> TickPlacementProperty;
-        public static readonly Avalonia.StyledProperty<Avalonia.Collections.AvaloniaList<double>> TicksProperty;
+        public static readonly Avalonia.StyledProperty<Avalonia.Collections.AvaloniaList<double>?> TicksProperty;
         public Slider() { }
         public bool IsDirectionReversed { get { throw null; } set { } }
         public bool IsSnapToTickEnabled { get { throw null; } set { } }
         public Avalonia.Layout.Orientation Orientation { get { throw null; } set { } }
         public double TickFrequency { get { throw null; } set { } }
         public Avalonia.Controls.TickPlacement TickPlacement { get { throw null; } set { } }
-        public Avalonia.Collections.AvaloniaList<double> Ticks { get { throw null; } set { } }
+        public Avalonia.Collections.AvaloniaList<double>? Ticks { get { throw null; } set { } }
         protected override void OnApplyTemplate(Avalonia.Controls.Primitives.TemplateAppliedEventArgs e) { }
         protected override void OnKeyDown(Avalonia.Input.KeyEventArgs e) { }
         protected override void OnPropertyChanged(Avalonia.AvaloniaPropertyChangedEventArgs change) { }
@@ -2768,16 +2715,26 @@ namespace Avalonia.Controls
         public double ClosedPaneWidth { get { throw null; } }
         public Avalonia.Controls.GridLength PaneColumnGridLength { get { throw null; } }
     }
-    public partial class StackPanel : Avalonia.Controls.Panel, Avalonia.Input.INavigableContainer
+    public partial class StackPanel : Avalonia.Controls.Panel, Avalonia.Controls.Primitives.IScrollSnapPointsInfo, Avalonia.Input.INavigableContainer
     {
+        public static readonly Avalonia.StyledProperty<bool> AreHorizontalSnapPointsRegularProperty;
+        public static readonly Avalonia.StyledProperty<bool> AreVerticalSnapPointsRegularProperty;
+        public static readonly Avalonia.Interactivity.RoutedEvent<Avalonia.Interactivity.RoutedEventArgs> HorizontalSnapPointsChangedEvent;
         public static readonly Avalonia.StyledProperty<Avalonia.Layout.Orientation> OrientationProperty;
         public static readonly Avalonia.StyledProperty<double> SpacingProperty;
+        public static readonly Avalonia.Interactivity.RoutedEvent<Avalonia.Interactivity.RoutedEventArgs> VerticalSnapPointsChangedEvent;
         public StackPanel() { }
+        public bool AreHorizontalSnapPointsRegular { get { throw null; } set { } }
+        public bool AreVerticalSnapPointsRegular { get { throw null; } set { } }
         public Avalonia.Layout.Orientation Orientation { get { throw null; } set { } }
         public double Spacing { get { throw null; } set { } }
+        public event System.EventHandler<Avalonia.Interactivity.RoutedEventArgs>? HorizontalSnapPointsChanged { add { } remove { } }
+        public event System.EventHandler<Avalonia.Interactivity.RoutedEventArgs>? VerticalSnapPointsChanged { add { } remove { } }
         protected override Avalonia.Size ArrangeOverride(Avalonia.Size finalSize) { throw null; }
         Avalonia.Input.IInputElement? Avalonia.Input.INavigableContainer.GetControl(Avalonia.Input.NavigationDirection direction, Avalonia.Input.IInputElement? from, bool wrap) { throw null; }
         protected virtual Avalonia.Input.IInputElement? GetControlInDirection(Avalonia.Input.NavigationDirection direction, Avalonia.Controls.Control? from) { throw null; }
+        public System.Collections.Generic.IReadOnlyList<double> GetIrregularSnapPoints(Avalonia.Layout.Orientation orientation, Avalonia.Controls.Primitives.SnapPointsAlignment snapPointsAlignment) { throw null; }
+        public double GetRegularSnapPoints(Avalonia.Layout.Orientation orientation, Avalonia.Controls.Primitives.SnapPointsAlignment snapPointsAlignment, out double offset) { throw null; }
         protected override Avalonia.Size MeasureOverride(Avalonia.Size availableSize) { throw null; }
     }
     public enum SystemDecorations
@@ -2890,7 +2847,8 @@ namespace Avalonia.Controls
         protected override Avalonia.Size MeasureOverride(Avalonia.Size availableSize) { throw null; }
         protected override Avalonia.Automation.Peers.AutomationPeer OnCreateAutomationPeer() { throw null; }
         protected override void OnPropertyChanged(Avalonia.AvaloniaPropertyChangedEventArgs change) { }
-        public override void Render(Avalonia.Media.DrawingContext context) { }
+        public sealed override void Render(Avalonia.Media.DrawingContext context) { }
+        protected internal virtual void RenderCore(Avalonia.Media.DrawingContext context) { }
         protected virtual void RenderTextLayout(Avalonia.Media.DrawingContext context, Avalonia.Point origin) { }
         public static void SetBaselineOffset(Avalonia.Controls.Control control, double value) { }
         public static void SetLetterSpacing(Avalonia.Controls.Control control, double letterSpacing) { }
@@ -3038,9 +2996,14 @@ namespace Avalonia.Controls
         public TextChangingEventArgs(Avalonia.Interactivity.RoutedEvent? routedEvent) { }
         public TextChangingEventArgs(Avalonia.Interactivity.RoutedEvent? routedEvent, Avalonia.Interactivity.Interactive? source) { }
     }
+    public partial class ThemeVariantScope : Avalonia.Controls.Decorator
+    {
+        public ThemeVariantScope() { }
+        public Avalonia.Styling.ThemeVariant? RequestedThemeVariant { get { throw null; } set { } }
+    }
     public partial class TickBar : Avalonia.Controls.Control
     {
-        public static readonly Avalonia.StyledProperty<Avalonia.Media.IBrush> FillProperty;
+        public static readonly Avalonia.StyledProperty<Avalonia.Media.IBrush?> FillProperty;
         public static readonly Avalonia.StyledProperty<bool> IsDirectionReversedProperty;
         public static readonly Avalonia.StyledProperty<double> MaximumProperty;
         public static readonly Avalonia.StyledProperty<double> MinimumProperty;
@@ -3048,9 +3011,9 @@ namespace Avalonia.Controls
         public static readonly Avalonia.StyledProperty<Avalonia.Controls.TickBarPlacement> PlacementProperty;
         public static readonly Avalonia.StyledProperty<Avalonia.Rect> ReservedSpaceProperty;
         public static readonly Avalonia.StyledProperty<double> TickFrequencyProperty;
-        public static readonly Avalonia.StyledProperty<Avalonia.Collections.AvaloniaList<double>> TicksProperty;
+        public static readonly Avalonia.StyledProperty<Avalonia.Collections.AvaloniaList<double>?> TicksProperty;
         public TickBar() { }
-        public Avalonia.Media.IBrush Fill { get { throw null; } set { } }
+        public Avalonia.Media.IBrush? Fill { get { throw null; } set { } }
         public bool IsDirectionReversed { get { throw null; } set { } }
         public double Maximum { get { throw null; } set { } }
         public double Minimum { get { throw null; } set { } }
@@ -3058,8 +3021,8 @@ namespace Avalonia.Controls
         public Avalonia.Controls.TickBarPlacement Placement { get { throw null; } set { } }
         public Avalonia.Rect ReservedSpace { get { throw null; } set { } }
         public double TickFrequency { get { throw null; } set { } }
-        public Avalonia.Collections.AvaloniaList<double> Ticks { get { throw null; } set { } }
-        public override void Render(Avalonia.Media.DrawingContext dc) { }
+        public Avalonia.Collections.AvaloniaList<double>? Ticks { get { throw null; } set { } }
+        public sealed override void Render(Avalonia.Media.DrawingContext dc) { }
     }
     public enum TickBarPlacement
     {
@@ -3217,18 +3180,19 @@ namespace Avalonia.Controls
         double Avalonia.Layout.ILayoutRoot.LayoutScaling { get { throw null; } }
         double Avalonia.Rendering.IRenderRoot.RenderScaling { get { throw null; } }
         Avalonia.Styling.IStyleHost Avalonia.Styling.IStyleHost.StylingParent { get { throw null; } }
+        protected override bool BypassFlowDirectionPolicies { get { throw null; } }
         public Avalonia.Size ClientSize { get { throw null; } protected set { } }
         public Avalonia.Size? FrameSize { get { throw null; } protected set { } }
         public Avalonia.Layout.ILayoutManager LayoutManager { get { throw null; } }
         public Avalonia.Platform.ITopLevelImpl? PlatformImpl { [System.Runtime.CompilerServices.CompilerGeneratedAttribute] get { throw null; } }
         public Avalonia.Rendering.IRenderer Renderer { [System.Runtime.CompilerServices.CompilerGeneratedAttribute] get { throw null; } }
+        public Avalonia.Styling.ThemeVariant? RequestedThemeVariant { get { throw null; } set { } }
         public Avalonia.Platform.Storage.IStorageProvider StorageProvider { get { throw null; } }
         public Avalonia.Media.IBrush TransparencyBackgroundFallback { get { throw null; } set { } }
         public Avalonia.Controls.WindowTransparencyLevel TransparencyLevelHint { get { throw null; } set { } }
         public event System.EventHandler<Avalonia.Interactivity.RoutedEventArgs> BackRequested { add { } remove { } }
         public event System.EventHandler? Closed { add { } remove { } }
         public event System.EventHandler? Opened { add { } remove { } }
-        void Avalonia.Rendering.IRenderRoot.Invalidate(Avalonia.Rect rect) { }
         Avalonia.Point Avalonia.Rendering.IRenderRoot.PointToClient(Avalonia.PixelPoint p) { throw null; }
         Avalonia.PixelPoint Avalonia.Rendering.IRenderRoot.PointToScreen(Avalonia.Point p) { throw null; }
         protected virtual Avalonia.Layout.ILayoutManager CreateLayoutManager() { throw null; }
@@ -3238,10 +3202,13 @@ namespace Avalonia.Controls
         protected virtual void HandleResized(Avalonia.Size clientSize, Avalonia.Platform.PlatformResizeReason reason) { }
         protected virtual void HandleScalingChanged(double scaling) { }
         protected virtual void HandleTransparencyLevelChanged(Avalonia.Controls.WindowTransparencyLevel transparencyLevel) { }
+        public override void InvalidateMirrorTransform() { }
         protected override void OnApplyTemplate(Avalonia.Controls.Primitives.TemplateAppliedEventArgs e) { }
         protected override void OnAttachedToVisualTree(Avalonia.VisualTreeAttachmentEventArgs e) { }
         protected virtual void OnClosed(System.EventArgs e) { }
         protected virtual void OnOpened(System.EventArgs e) { }
+        protected override void OnPropertyChanged(Avalonia.AvaloniaPropertyChangedEventArgs change) { }
+        protected System.Threading.Tasks.Task<System.IDisposable> RequestPlatformInhibition(Avalonia.Controls.PlatformInhibitionType type, string reason) { throw null; }
     }
     public partial class TransitioningContentControl : Avalonia.Controls.ContentControl
     {
@@ -3260,7 +3227,7 @@ namespace Avalonia.Controls
         public static readonly Avalonia.StyledProperty<object?> CommandParameterProperty;
         public static readonly Avalonia.DirectProperty<Avalonia.Controls.TrayIcon, System.Windows.Input.ICommand?> CommandProperty;
         public static readonly Avalonia.StyledProperty<Avalonia.Controls.WindowIcon?> IconProperty;
-        public static readonly Avalonia.AttachedProperty<Avalonia.Controls.TrayIcons> IconsProperty;
+        public static readonly Avalonia.AttachedProperty<Avalonia.Controls.TrayIcons?> IconsProperty;
         public static readonly Avalonia.StyledProperty<bool> IsVisibleProperty;
         public static readonly Avalonia.StyledProperty<Avalonia.Controls.NativeMenu?> MenuProperty;
         public static readonly Avalonia.StyledProperty<string?> ToolTipTextProperty;
@@ -3274,9 +3241,9 @@ namespace Avalonia.Controls
         public string? ToolTipText { get { throw null; } set { } }
         public event System.EventHandler? Clicked { add { } remove { } }
         public void Dispose() { }
-        public static Avalonia.Controls.TrayIcons GetIcons(Avalonia.Application o) { throw null; }
+        public static Avalonia.Controls.TrayIcons? GetIcons(Avalonia.Application o) { throw null; }
         protected override void OnPropertyChanged(Avalonia.AvaloniaPropertyChangedEventArgs change) { }
-        public static void SetIcons(Avalonia.Application o, Avalonia.Controls.TrayIcons trayIcons) { }
+        public static void SetIcons(Avalonia.Application o, Avalonia.Controls.TrayIcons? trayIcons) { }
     }
     public sealed partial class TrayIcons : Avalonia.Collections.AvaloniaList<Avalonia.Controls.TrayIcon>
     {
@@ -3292,6 +3259,7 @@ namespace Avalonia.Controls
         public bool AutoScrollToSelectedItem { get { throw null; } set { } }
         public new Avalonia.Controls.Generators.TreeItemContainerGenerator ItemContainerGenerator { get { throw null; } }
         public object? SelectedItem { get { throw null; } set { } }
+        [System.Diagnostics.CodeAnalysis.AllowNullAttribute]
         public System.Collections.IList SelectedItems { get { throw null; } set { } }
         public Avalonia.Controls.SelectionMode SelectionMode { get { throw null; } set { } }
         public event System.EventHandler<Avalonia.Controls.SelectionChangedEventArgs>? SelectionChanged { add { } remove { } }
@@ -3317,7 +3285,7 @@ namespace Avalonia.Controls
     [Avalonia.Controls.Metadata.TemplatePartAttribute("PART_Header", typeof(Avalonia.Controls.Control))]
     public partial class TreeViewItem : Avalonia.Controls.Primitives.HeaderedItemsControl, Avalonia.Controls.ISelectable
     {
-        public static readonly Avalonia.DirectProperty<Avalonia.Controls.TreeViewItem, bool> IsExpandedProperty;
+        public static readonly Avalonia.StyledProperty<bool> IsExpandedProperty;
         public static readonly Avalonia.StyledProperty<bool> IsSelectedProperty;
         public static readonly Avalonia.DirectProperty<Avalonia.Controls.TreeViewItem, int> LevelProperty;
         public TreeViewItem() { }
@@ -3328,7 +3296,6 @@ namespace Avalonia.Controls
         protected internal override bool IsItemItsOwnContainerOverride(Avalonia.Controls.Control item) { throw null; }
         protected override void OnApplyTemplate(Avalonia.Controls.Primitives.TemplateAppliedEventArgs e) { }
         protected override void OnAttachedToLogicalTree(Avalonia.LogicalTree.LogicalTreeAttachmentEventArgs e) { }
-        protected override void OnDetachedFromLogicalTree(Avalonia.LogicalTree.LogicalTreeAttachmentEventArgs e) { }
         protected virtual void OnHeaderDoubleTapped(Avalonia.Input.TappedEventArgs e) { }
         protected override void OnKeyDown(Avalonia.Input.KeyEventArgs e) { }
         protected virtual void OnRequestBringIntoView(Avalonia.Controls.RequestBringIntoViewEventArgs e) { }
@@ -3402,15 +3369,25 @@ namespace Avalonia.Controls
         protected void RemoveInternalChildRange(int index, int count) { }
         protected internal abstract Avalonia.Controls.Control? ScrollIntoView(int index);
     }
-    public partial class VirtualizingStackPanel : Avalonia.Controls.VirtualizingPanel
+    public partial class VirtualizingStackPanel : Avalonia.Controls.VirtualizingPanel, Avalonia.Controls.Primitives.IScrollSnapPointsInfo
     {
+        public static readonly Avalonia.StyledProperty<bool> AreHorizontalSnapPointsRegularProperty;
+        public static readonly Avalonia.StyledProperty<bool> AreVerticalSnapPointsRegularProperty;
+        public static readonly Avalonia.Interactivity.RoutedEvent<Avalonia.Interactivity.RoutedEventArgs> HorizontalSnapPointsChangedEvent;
         public static readonly Avalonia.StyledProperty<Avalonia.Layout.Orientation> OrientationProperty;
+        public static readonly Avalonia.Interactivity.RoutedEvent<Avalonia.Interactivity.RoutedEventArgs> VerticalSnapPointsChangedEvent;
         public VirtualizingStackPanel() { }
+        public bool AreHorizontalSnapPointsRegular { get { throw null; } set { } }
+        public bool AreVerticalSnapPointsRegular { get { throw null; } set { } }
         public Avalonia.Layout.Orientation Orientation { get { throw null; } set { } }
+        public event System.EventHandler<Avalonia.Interactivity.RoutedEventArgs>? HorizontalSnapPointsChanged { add { } remove { } }
+        public event System.EventHandler<Avalonia.Interactivity.RoutedEventArgs>? VerticalSnapPointsChanged { add { } remove { } }
         protected override Avalonia.Size ArrangeOverride(Avalonia.Size finalSize) { throw null; }
         protected internal override Avalonia.Controls.Control? ContainerFromIndex(int index) { throw null; }
         protected override Avalonia.Input.IInputElement? GetControl(Avalonia.Input.NavigationDirection direction, Avalonia.Input.IInputElement? from, bool wrap) { throw null; }
+        public System.Collections.Generic.IReadOnlyList<double> GetIrregularSnapPoints(Avalonia.Layout.Orientation orientation, Avalonia.Controls.Primitives.SnapPointsAlignment snapPointsAlignment) { throw null; }
         protected internal override System.Collections.Generic.IEnumerable<Avalonia.Controls.Control>? GetRealizedContainers() { throw null; }
+        public double GetRegularSnapPoints(Avalonia.Layout.Orientation orientation, Avalonia.Controls.Primitives.SnapPointsAlignment snapPointsAlignment, out double offset) { throw null; }
         protected internal override int IndexFromContainer(Avalonia.Controls.Control container) { throw null; }
         protected override Avalonia.Size MeasureOverride(Avalonia.Size availableSize) { throw null; }
         protected override void OnItemsChanged(System.Collections.Generic.IReadOnlyList<object?> items, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) { }
@@ -3461,7 +3438,7 @@ namespace Avalonia.Controls
         public void BeginMoveDrag(Avalonia.Input.PointerPressedEventArgs e) { }
         public void BeginResizeDrag(Avalonia.Controls.WindowEdge edge, Avalonia.Input.PointerPressedEventArgs e) { }
         public void Close() { }
-        public void Close(object dialogResult) { }
+        public void Close(object? dialogResult) { }
         protected virtual void ExtendClientAreaToDecorationsChanged(bool isExtended) { }
         protected sealed override void HandleClosed() { }
         protected sealed override void HandleResized(Avalonia.Size clientSize, Avalonia.Platform.PlatformResizeReason reason) { }
@@ -3639,6 +3616,19 @@ namespace Avalonia.Controls.ApplicationLifetimes
         public ShutdownRequestedEventArgs() { }
     }
 }
+namespace Avalonia.Controls.Automation.Peers
+{
+    public partial class ProgressBarAutomationPeer : Avalonia.Automation.Peers.RangeBaseAutomationPeer, Avalonia.Automation.Provider.IRangeValueProvider
+    {
+        public ProgressBarAutomationPeer(Avalonia.Controls.Primitives.RangeBase owner) : base (default(Avalonia.Controls.Primitives.RangeBase)) { }
+        bool Avalonia.Automation.Provider.IRangeValueProvider.IsReadOnly { get { throw null; } }
+        double Avalonia.Automation.Provider.IRangeValueProvider.LargeChange { get { throw null; } }
+        double Avalonia.Automation.Provider.IRangeValueProvider.SmallChange { get { throw null; } }
+        void Avalonia.Automation.Provider.IRangeValueProvider.SetValue(double val) { }
+        protected override Avalonia.Automation.Peers.AutomationControlType GetAutomationControlTypeCore() { throw null; }
+        protected override string GetClassNameCore() { throw null; }
+    }
+}
 namespace Avalonia.Controls.Chrome
 {
     [Avalonia.Controls.Metadata.PseudoClassesAttribute(new string[]{ ":minimized", ":normal", ":maximized", ":fullscreen"})]
@@ -3752,10 +3742,10 @@ namespace Avalonia.Controls.Documents
     public abstract partial class Inline : Avalonia.Controls.Documents.TextElement
     {
         public static readonly Avalonia.StyledProperty<Avalonia.Media.BaselineAlignment> BaselineAlignmentProperty;
-        public static readonly Avalonia.StyledProperty<Avalonia.Media.TextDecorationCollection> TextDecorationsProperty;
+        public static readonly Avalonia.StyledProperty<Avalonia.Media.TextDecorationCollection?> TextDecorationsProperty;
         protected Inline() { }
         public Avalonia.Media.BaselineAlignment BaselineAlignment { get { throw null; } set { } }
-        public Avalonia.Media.TextDecorationCollection TextDecorations { get { throw null; } set { } }
+        public Avalonia.Media.TextDecorationCollection? TextDecorations { get { throw null; } set { } }
         internal abstract void AppendText(System.Text.StringBuilder stringBuilder);
         internal abstract void BuildTextRun(System.Collections.Generic.IList<Avalonia.Media.TextFormatting.TextRun> textRuns);
         protected Avalonia.Media.TextFormatting.TextRunProperties CreateTextRunProperties() { throw null; }
@@ -3779,6 +3769,7 @@ namespace Avalonia.Controls.Documents
         public InlineUIContainer(Avalonia.Controls.Control child) { }
         [Avalonia.Metadata.ContentAttribute]
         public Avalonia.Controls.Control Child { get { throw null; } set { } }
+        protected override void OnPropertyChanged(Avalonia.AvaloniaPropertyChangedEventArgs change) { }
     }
     public sealed partial class Italic : Avalonia.Controls.Documents.Span
     {
@@ -3858,7 +3849,7 @@ namespace Avalonia.Controls.Embedding
 namespace Avalonia.Controls.Embedding.Offscreen
 {
     [Avalonia.Metadata.UnstableAttribute]
-    public abstract partial class OffscreenTopLevelImplBase : Avalonia.Platform.ITopLevelImpl, System.IDisposable
+    public abstract partial class OffscreenTopLevelImplBase : Avalonia.Platform.IOptionalFeatureProvider, Avalonia.Platform.ITopLevelImpl, System.IDisposable
     {
         protected OffscreenTopLevelImplBase() { }
         public Avalonia.Controls.AcrylicPlatformCompensationLevels AcrylicCompensationLevels { [System.Runtime.CompilerServices.CompilerGeneratedAttribute] get { throw null; } }
@@ -3880,13 +3871,13 @@ namespace Avalonia.Controls.Embedding.Offscreen
         public Avalonia.Platform.IPopupImpl? CreatePopup() { throw null; }
         public Avalonia.Rendering.IRenderer CreateRenderer(Avalonia.Rendering.IRenderRoot root) { throw null; }
         public virtual void Dispose() { }
-        public abstract void Invalidate(Avalonia.Rect rect);
         public virtual Avalonia.Point PointToClient(Avalonia.PixelPoint point) { throw null; }
         public virtual Avalonia.PixelPoint PointToScreen(Avalonia.Point point) { throw null; }
         public virtual void SetCursor(Avalonia.Platform.ICursorImpl? cursor) { }
         public void SetFrameThemeVariant(Avalonia.Platform.PlatformThemeVariant themeVariant) { }
         public void SetInputRoot(Avalonia.Input.IInputRoot inputRoot) { }
         public void SetTransparencyLevelHint(Avalonia.Controls.WindowTransparencyLevel transparencyLevel) { }
+        public virtual object? TryGetFeature(System.Type featureType) { throw null; }
     }
 }
 namespace Avalonia.Controls.Generators
@@ -3995,14 +3986,13 @@ namespace Avalonia.Controls.Notifications
     }
     [Avalonia.Controls.Metadata.PseudoClassesAttribute(new string[]{ ":topleft", ":topright", ":bottomleft", ":bottomright"})]
     [Avalonia.Controls.Metadata.TemplatePartAttribute("PART_Items", typeof(Avalonia.Controls.Panel))]
-    public partial class WindowNotificationManager : Avalonia.Controls.Primitives.TemplatedControl, Avalonia.Controls.Notifications.IManagedNotificationManager, Avalonia.Controls.Notifications.INotificationManager, Avalonia.Rendering.ICustomSimpleHitTest
+    public partial class WindowNotificationManager : Avalonia.Controls.Primitives.TemplatedControl, Avalonia.Controls.Notifications.IManagedNotificationManager, Avalonia.Controls.Notifications.INotificationManager
     {
         public static readonly Avalonia.StyledProperty<int> MaxItemsProperty;
         public static readonly Avalonia.StyledProperty<Avalonia.Controls.Notifications.NotificationPosition> PositionProperty;
         public WindowNotificationManager(Avalonia.Controls.TopLevel? host) { }
         public int MaxItems { get { throw null; } set { } }
         public Avalonia.Controls.Notifications.NotificationPosition Position { get { throw null; } set { } }
-        public bool HitTest(Avalonia.Point point) { throw null; }
         protected override void OnApplyTemplate(Avalonia.Controls.Primitives.TemplateAppliedEventArgs e) { }
         protected override void OnPropertyChanged(Avalonia.AvaloniaPropertyChangedEventArgs change) { }
         public void Show(Avalonia.Controls.Notifications.INotification content) { }
@@ -4026,7 +4016,7 @@ namespace Avalonia.Controls.Platform
         protected void CloseMenu(Avalonia.Controls.IMenuItem item) { }
         protected void CloseWithDelay(Avalonia.Controls.IMenuItem item) { }
         public virtual void Detach(Avalonia.Controls.IMenu menu) { }
-        protected static Avalonia.Controls.IMenuItem? GetMenuItem(Avalonia.Controls.Control? item) { throw null; }
+        protected static Avalonia.Controls.IMenuItem? GetMenuItem(Avalonia.StyledElement? item) { throw null; }
         protected internal virtual void GotFocus(object? sender, Avalonia.Input.GotFocusEventArgs e) { }
         protected internal virtual void KeyDown(Avalonia.Controls.IMenuItem? item, Avalonia.Input.KeyEventArgs e) { }
         protected internal virtual void KeyDown(object? sender, Avalonia.Input.KeyEventArgs e) { }
@@ -4113,26 +4103,6 @@ namespace Avalonia.Controls.Platform
     {
         System.Threading.Tasks.Task<string[]?> ShowFileDialogAsync(Avalonia.Controls.FileDialog dialog, Avalonia.Controls.Window parent);
         System.Threading.Tasks.Task<string?> ShowFolderDialogAsync(Avalonia.Controls.OpenFolderDialog dialog, Avalonia.Controls.Window parent);
-    }
-    [Avalonia.Metadata.UnstableAttribute]
-    public partial interface ITopLevelImplWithNativeControlHost
-    {
-        Avalonia.Controls.Platform.INativeControlHostImpl? NativeControlHost { get; }
-    }
-    [Avalonia.Metadata.UnstableAttribute]
-    public partial interface ITopLevelImplWithNativeMenuExporter : Avalonia.Platform.ITopLevelImpl, System.IDisposable
-    {
-        Avalonia.Controls.Platform.ITopLevelNativeMenuExporter? NativeMenuExporter { get; }
-    }
-    [Avalonia.Metadata.UnstableAttribute]
-    public partial interface ITopLevelImplWithStorageProvider : Avalonia.Platform.ITopLevelImpl, System.IDisposable
-    {
-        Avalonia.Platform.Storage.IStorageProvider StorageProvider { get; }
-    }
-    [Avalonia.Metadata.UnstableAttribute]
-    public partial interface ITopLevelImplWithTextInputMethod : Avalonia.Platform.ITopLevelImpl, System.IDisposable
-    {
-        Avalonia.Input.TextInput.ITextInputMethodImpl? TextInputMethod { get; }
     }
     [Avalonia.Metadata.UnstableAttribute]
     public partial interface ITopLevelNativeMenuExporter : Avalonia.Controls.Platform.INativeMenuExporter
@@ -4226,7 +4196,7 @@ namespace Avalonia.Controls.Presenters
         protected override Avalonia.Size MeasureOverride(Avalonia.Size availableSize) { throw null; }
         protected override void OnAttachedToLogicalTree(Avalonia.LogicalTree.LogicalTreeAttachmentEventArgs e) { }
         protected override void OnPropertyChanged(Avalonia.AvaloniaPropertyChangedEventArgs change) { }
-        public override void Render(Avalonia.Media.DrawingContext context) { }
+        public sealed override void Render(Avalonia.Media.DrawingContext context) { }
         public void UpdateChild() { }
     }
     [Avalonia.Metadata.NotClientImplementableAttribute]
@@ -4245,10 +4215,16 @@ namespace Avalonia.Controls.Presenters
     public partial interface IPresenter : Avalonia.INamed
     {
     }
-    public partial class ItemsPresenter : Avalonia.Controls.Control, Avalonia.Controls.Primitives.ILogicalScrollable, Avalonia.Controls.Primitives.IScrollable
+    public partial class ItemsPresenter : Avalonia.Controls.Control, Avalonia.Controls.Primitives.ILogicalScrollable, Avalonia.Controls.Primitives.IScrollable, Avalonia.Controls.Primitives.IScrollSnapPointsInfo
     {
+        public static readonly Avalonia.StyledProperty<bool> AreHorizontalSnapPointsRegularProperty;
+        public static readonly Avalonia.StyledProperty<bool> AreVerticalSnapPointsRegularProperty;
+        public static readonly Avalonia.Interactivity.RoutedEvent<Avalonia.Interactivity.RoutedEventArgs> HorizontalSnapPointsChangedEvent;
         public static readonly Avalonia.StyledProperty<Avalonia.Controls.ITemplate<Avalonia.Controls.Panel>> ItemsPanelProperty;
+        public static readonly Avalonia.Interactivity.RoutedEvent<Avalonia.Interactivity.RoutedEventArgs> VerticalSnapPointsChangedEvent;
         public ItemsPresenter() { }
+        public bool AreHorizontalSnapPointsRegular { get { throw null; } set { } }
+        public bool AreVerticalSnapPointsRegular { get { throw null; } set { } }
         bool Avalonia.Controls.Primitives.ILogicalScrollable.CanHorizontallyScroll { get { throw null; } set { } }
         bool Avalonia.Controls.Primitives.ILogicalScrollable.CanVerticallyScroll { get { throw null; } set { } }
         bool Avalonia.Controls.Primitives.ILogicalScrollable.IsLogicalScrollEnabled { get { throw null; } }
@@ -4260,10 +4236,14 @@ namespace Avalonia.Controls.Presenters
         public Avalonia.Controls.ITemplate<Avalonia.Controls.Panel> ItemsPanel { get { throw null; } set { } }
         public Avalonia.Controls.Panel? Panel { [System.Runtime.CompilerServices.CompilerGeneratedAttribute] get { throw null; } }
         event System.EventHandler? Avalonia.Controls.Primitives.ILogicalScrollable.ScrollInvalidated { add { } remove { } }
+        public event System.EventHandler<Avalonia.Interactivity.RoutedEventArgs>? HorizontalSnapPointsChanged { add { } remove { } }
+        public event System.EventHandler<Avalonia.Interactivity.RoutedEventArgs>? VerticalSnapPointsChanged { add { } remove { } }
         public sealed override void ApplyTemplate() { }
         bool Avalonia.Controls.Primitives.ILogicalScrollable.BringIntoView(Avalonia.Controls.Control target, Avalonia.Rect targetRect) { throw null; }
         Avalonia.Controls.Control? Avalonia.Controls.Primitives.ILogicalScrollable.GetControlInDirection(Avalonia.Input.NavigationDirection direction, Avalonia.Controls.Control? from) { throw null; }
         void Avalonia.Controls.Primitives.ILogicalScrollable.RaiseScrollInvalidated(System.EventArgs e) { }
+        public System.Collections.Generic.IReadOnlyList<double> GetIrregularSnapPoints(Avalonia.Layout.Orientation orientation, Avalonia.Controls.Primitives.SnapPointsAlignment snapPointsAlignment) { throw null; }
+        public double GetRegularSnapPoints(Avalonia.Layout.Orientation orientation, Avalonia.Controls.Primitives.SnapPointsAlignment snapPointsAlignment, out double offset) { throw null; }
         protected override void OnPropertyChanged(Avalonia.AvaloniaPropertyChangedEventArgs change) { }
     }
     public partial class ScrollContentPresenter : Avalonia.Controls.Presenters.ContentPresenter, Avalonia.Controls.IScrollAnchorProvider, Avalonia.Controls.Presenters.IPresenter, Avalonia.Controls.Primitives.IScrollable, Avalonia.INamed
@@ -4271,16 +4251,24 @@ namespace Avalonia.Controls.Presenters
         public static readonly Avalonia.DirectProperty<Avalonia.Controls.Presenters.ScrollContentPresenter, bool> CanHorizontallyScrollProperty;
         public static readonly Avalonia.DirectProperty<Avalonia.Controls.Presenters.ScrollContentPresenter, bool> CanVerticallyScrollProperty;
         public static readonly Avalonia.DirectProperty<Avalonia.Controls.Presenters.ScrollContentPresenter, Avalonia.Size> ExtentProperty;
+        public static readonly Avalonia.StyledProperty<Avalonia.Controls.Primitives.SnapPointsAlignment> HorizontalSnapPointsAlignmentProperty;
+        public static readonly Avalonia.StyledProperty<Avalonia.Controls.Primitives.SnapPointsType> HorizontalSnapPointsTypeProperty;
         public static readonly Avalonia.StyledProperty<bool> IsScrollChainingEnabledProperty;
         public static readonly Avalonia.DirectProperty<Avalonia.Controls.Presenters.ScrollContentPresenter, Avalonia.Vector> OffsetProperty;
+        public static readonly Avalonia.StyledProperty<Avalonia.Controls.Primitives.SnapPointsAlignment> VerticalSnapPointsAlignmentProperty;
+        public static readonly Avalonia.StyledProperty<Avalonia.Controls.Primitives.SnapPointsType> VerticalSnapPointsTypeProperty;
         public static readonly Avalonia.DirectProperty<Avalonia.Controls.Presenters.ScrollContentPresenter, Avalonia.Size> ViewportProperty;
         public ScrollContentPresenter() { }
         Avalonia.Controls.Control? Avalonia.Controls.IScrollAnchorProvider.CurrentAnchor { get { throw null; } }
         public bool CanHorizontallyScroll { get { throw null; } set { } }
         public bool CanVerticallyScroll { get { throw null; } set { } }
         public Avalonia.Size Extent { get { throw null; } }
+        public Avalonia.Controls.Primitives.SnapPointsAlignment HorizontalSnapPointsAlignment { get { throw null; } set { } }
+        public Avalonia.Controls.Primitives.SnapPointsType HorizontalSnapPointsType { get { throw null; } set { } }
         public bool IsScrollChainingEnabled { get { throw null; } set { } }
         public Avalonia.Vector Offset { get { throw null; } set { } }
+        public Avalonia.Controls.Primitives.SnapPointsAlignment VerticalSnapPointsAlignment { get { throw null; } set { } }
+        public Avalonia.Controls.Primitives.SnapPointsType VerticalSnapPointsType { get { throw null; } set { } }
         public Avalonia.Size Viewport { get { throw null; } }
         protected override Avalonia.Size ArrangeOverride(Avalonia.Size finalSize) { throw null; }
         void Avalonia.Controls.IScrollAnchorProvider.RegisterAnchorCandidate(Avalonia.Controls.Control element) { }
@@ -4346,7 +4334,7 @@ namespace Avalonia.Controls.Presenters
         protected override void OnDetachedFromVisualTree(Avalonia.VisualTreeAttachmentEventArgs e) { }
         protected void OnPreeditTextChanged(string? oldValue, string? newValue) { }
         protected override void OnPropertyChanged(Avalonia.AvaloniaPropertyChangedEventArgs change) { }
-        public override void Render(Avalonia.Media.DrawingContext context) { }
+        public sealed override void Render(Avalonia.Media.DrawingContext context) { }
         public void ShowCaret() { }
     }
 }
@@ -4362,9 +4350,9 @@ namespace Avalonia.Controls.Primitives
         protected override void OnAttachedToVisualTree(Avalonia.VisualTreeAttachmentEventArgs e) { }
         protected override Avalonia.Automation.Peers.AutomationPeer OnCreateAutomationPeer() { throw null; }
         protected override void OnDetachedFromVisualTree(Avalonia.VisualTreeAttachmentEventArgs e) { }
-        public override void Render(Avalonia.Media.DrawingContext context) { }
+        protected internal override void RenderCore(Avalonia.Media.DrawingContext context) { }
     }
-    public partial class AdornerLayer : Avalonia.Controls.Canvas, Avalonia.Rendering.ICustomSimpleHitTest
+    public partial class AdornerLayer : Avalonia.Controls.Canvas
     {
         public static readonly Avalonia.AttachedProperty<Avalonia.Visual?> AdornedElementProperty;
         public static readonly Avalonia.AttachedProperty<Avalonia.Controls.Control?> AdornerProperty;
@@ -4375,7 +4363,6 @@ namespace Avalonia.Controls.Primitives
         public static Avalonia.Controls.Control? GetAdorner(Avalonia.Visual visual) { throw null; }
         public static Avalonia.Controls.Primitives.AdornerLayer? GetAdornerLayer(Avalonia.Visual visual) { throw null; }
         public static bool GetIsClipEnabled(Avalonia.Visual adorner) { throw null; }
-        public bool HitTest(Avalonia.Point point) { throw null; }
         protected override Avalonia.Size MeasureOverride(Avalonia.Size availableSize) { throw null; }
         public static void SetAdornedElement(Avalonia.Visual adorner, Avalonia.Visual adorned) { }
         public static void SetAdorner(Avalonia.Visual visual, Avalonia.Controls.Control? adorner) { }
@@ -4422,18 +4409,17 @@ namespace Avalonia.Controls.Primitives
     public sealed partial class CalendarItem : Avalonia.Controls.Primitives.TemplatedControl
     {
         public static readonly Avalonia.DirectProperty<Avalonia.Controls.Primitives.CalendarItem, Avalonia.Controls.ITemplate<Avalonia.Controls.Control>?> DayTitleTemplateProperty;
-        public static readonly Avalonia.StyledProperty<Avalonia.Media.IBrush> HeaderBackgroundProperty;
+        public static readonly Avalonia.StyledProperty<Avalonia.Media.IBrush?> HeaderBackgroundProperty;
         public CalendarItem() { }
         public Avalonia.Controls.ITemplate<Avalonia.Controls.Control>? DayTitleTemplate { get { throw null; } set { } }
-        public Avalonia.Media.IBrush HeaderBackground { get { throw null; } set { } }
+        public Avalonia.Media.IBrush? HeaderBackground { get { throw null; } set { } }
         protected override void OnApplyTemplate(Avalonia.Controls.Primitives.TemplateAppliedEventArgs e) { }
     }
-    public partial class ChromeOverlayLayer : Avalonia.Controls.Panel, Avalonia.Rendering.ICustomSimpleHitTest
+    public partial class ChromeOverlayLayer : Avalonia.Controls.Panel
     {
         public ChromeOverlayLayer() { }
         public void Add(Avalonia.Controls.Control c) { }
         public static Avalonia.Controls.Panel? GetOverlayLayer(Avalonia.Visual visual) { throw null; }
-        public bool HitTest(Avalonia.Point point) { throw null; }
     }
     public partial class DateTimePickerPanel : Avalonia.Controls.Panel, Avalonia.Controls.Primitives.ILogicalScrollable, Avalonia.Controls.Primitives.IScrollable
     {
@@ -4585,20 +4571,28 @@ namespace Avalonia.Controls.Primitives
         Avalonia.Vector Offset { get; set; }
         Avalonia.Size Viewport { get; }
     }
-    public partial class LightDismissOverlayLayer : Avalonia.Controls.Border, Avalonia.Rendering.ICustomHitTest, Avalonia.Rendering.ICustomSimpleHitTest
+    public partial interface IScrollSnapPointsInfo
+    {
+        bool AreHorizontalSnapPointsRegular { get; set; }
+        bool AreVerticalSnapPointsRegular { get; set; }
+        event System.EventHandler<Avalonia.Interactivity.RoutedEventArgs> HorizontalSnapPointsChanged;
+        event System.EventHandler<Avalonia.Interactivity.RoutedEventArgs> VerticalSnapPointsChanged;
+        System.Collections.Generic.IReadOnlyList<double> GetIrregularSnapPoints(Avalonia.Layout.Orientation orientation, Avalonia.Controls.Primitives.SnapPointsAlignment snapPointsAlignment);
+        double GetRegularSnapPoints(Avalonia.Layout.Orientation orientation, Avalonia.Controls.Primitives.SnapPointsAlignment snapPointsAlignment, out double offset);
+    }
+    public partial class LightDismissOverlayLayer : Avalonia.Controls.Border, Avalonia.Rendering.ICustomHitTest
     {
         public LightDismissOverlayLayer() { }
         public Avalonia.Input.IInputElement? InputPassThroughElement { [System.Runtime.CompilerServices.CompilerGeneratedAttribute] get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute] set { } }
         public static Avalonia.Controls.Primitives.LightDismissOverlayLayer? GetLightDismissOverlayLayer(Avalonia.Visual visual) { throw null; }
         public bool HitTest(Avalonia.Point point) { throw null; }
     }
-    public partial class OverlayLayer : Avalonia.Controls.Canvas, Avalonia.Rendering.ICustomSimpleHitTest
+    public partial class OverlayLayer : Avalonia.Controls.Canvas
     {
         public OverlayLayer() { }
         public Avalonia.Size AvailableSize { [System.Runtime.CompilerServices.CompilerGeneratedAttribute] get { throw null; } }
         protected override Avalonia.Size ArrangeOverride(Avalonia.Size finalSize) { throw null; }
         public static Avalonia.Controls.Primitives.OverlayLayer? GetOverlayLayer(Avalonia.Visual visual) { throw null; }
-        public bool HitTest(Avalonia.Point point) { throw null; }
         protected override Avalonia.Size MeasureOverride(Avalonia.Size availableSize) { throw null; }
     }
     public partial class OverlayPopupHost : Avalonia.Controls.ContentControl, Avalonia.Controls.Primitives.IPopupHost, Avalonia.Controls.Primitives.PopupPositioning.IManagedPopupPositionerPopup, Avalonia.Input.IFocusScope, System.IDisposable
@@ -4809,6 +4803,8 @@ namespace Avalonia.Controls.Primitives
         public static readonly Avalonia.DirectProperty<Avalonia.Controls.Primitives.SelectingItemsControl, int> SelectedIndexProperty;
         public static readonly Avalonia.DirectProperty<Avalonia.Controls.Primitives.SelectingItemsControl, object?> SelectedItemProperty;
         protected static readonly Avalonia.DirectProperty<Avalonia.Controls.Primitives.SelectingItemsControl, System.Collections.IList?> SelectedItemsProperty;
+        public static readonly Avalonia.StyledProperty<Avalonia.Data.IBinding?> SelectedValueBindingProperty;
+        public static readonly Avalonia.StyledProperty<object?> SelectedValueProperty;
         public static readonly Avalonia.Interactivity.RoutedEvent<Avalonia.Controls.SelectionChangedEventArgs> SelectionChangedEvent;
         protected static readonly Avalonia.StyledProperty<Avalonia.Controls.SelectionMode> SelectionModeProperty;
         protected static readonly Avalonia.DirectProperty<Avalonia.Controls.Primitives.SelectingItemsControl, Avalonia.Controls.Selection.ISelectionModel> SelectionProperty;
@@ -4820,6 +4816,11 @@ namespace Avalonia.Controls.Primitives
         public int SelectedIndex { get { throw null; } set { } }
         public object? SelectedItem { get { throw null; } set { } }
         protected System.Collections.IList? SelectedItems { get { throw null; } set { } }
+        public object? SelectedValue { get { throw null; } set { } }
+        [Avalonia.Data.AssignBindingAttribute]
+        [Avalonia.Metadata.InheritDataTypeFromItemsAttribute("Items")]
+        public Avalonia.Data.IBinding? SelectedValueBinding { get { throw null; } set { } }
+        [System.Diagnostics.CodeAnalysis.AllowNullAttribute]
         protected Avalonia.Controls.Selection.ISelectionModel Selection { get { throw null; } set { } }
         protected Avalonia.Controls.SelectionMode SelectionMode { get { throw null; } set { } }
         public bool WrapSelection { get { throw null; } set { } }
@@ -4847,6 +4848,18 @@ namespace Avalonia.Controls.Primitives
         protected void UpdateSelection(Avalonia.Controls.Control container, bool select = true, bool rangeModifier = false, bool toggleModifier = false, bool rightButton = false, bool fromFocus = false) { }
         protected void UpdateSelection(int index, bool select = true, bool rangeModifier = false, bool toggleModifier = false, bool rightButton = false, bool fromFocus = false) { }
         protected bool UpdateSelectionFromEventSource(object? eventSource, bool select = true, bool rangeModifier = false, bool toggleModifier = false, bool rightButton = false, bool fromFocus = false) { throw null; }
+    }
+    public enum SnapPointsAlignment
+    {
+        Near = 0,
+        Center = 1,
+        Far = 2,
+    }
+    public enum SnapPointsType
+    {
+        None = 0,
+        Mandatory = 1,
+        MandatorySingle = 2,
     }
     public partial class TabStrip : Avalonia.Controls.Primitives.SelectingItemsControl
     {
@@ -4907,9 +4920,9 @@ namespace Avalonia.Controls.Primitives
     }
     public static partial class TextSearch
     {
-        public static readonly Avalonia.AttachedProperty<string> TextProperty;
-        public static string GetText(Avalonia.Controls.Control control) { throw null; }
-        public static void SetText(Avalonia.Controls.Control control, string text) { }
+        public static readonly Avalonia.AttachedProperty<string?> TextProperty;
+        public static string? GetText(Avalonia.Controls.Control control) { throw null; }
+        public static void SetText(Avalonia.Controls.Control control, string? text) { }
     }
     [Avalonia.Controls.Metadata.PseudoClassesAttribute(new string[]{ ":pressed"})]
     public partial class Thumb : Avalonia.Controls.Primitives.TemplatedControl
@@ -4966,26 +4979,26 @@ namespace Avalonia.Controls.Primitives
     [Avalonia.Controls.Metadata.PseudoClassesAttribute(new string[]{ ":vertical", ":horizontal"})]
     public partial class Track : Avalonia.Controls.Control
     {
-        public static readonly Avalonia.StyledProperty<Avalonia.Controls.Button> DecreaseButtonProperty;
+        public static readonly Avalonia.StyledProperty<Avalonia.Controls.Button?> DecreaseButtonProperty;
         public static readonly Avalonia.StyledProperty<bool> IgnoreThumbDragProperty;
-        public static readonly Avalonia.StyledProperty<Avalonia.Controls.Button> IncreaseButtonProperty;
+        public static readonly Avalonia.StyledProperty<Avalonia.Controls.Button?> IncreaseButtonProperty;
         public static readonly Avalonia.StyledProperty<bool> IsDirectionReversedProperty;
         public static readonly Avalonia.DirectProperty<Avalonia.Controls.Primitives.Track, double> MaximumProperty;
         public static readonly Avalonia.DirectProperty<Avalonia.Controls.Primitives.Track, double> MinimumProperty;
         public static readonly Avalonia.StyledProperty<Avalonia.Layout.Orientation> OrientationProperty;
-        public static readonly Avalonia.StyledProperty<Avalonia.Controls.Primitives.Thumb> ThumbProperty;
+        public static readonly Avalonia.StyledProperty<Avalonia.Controls.Primitives.Thumb?> ThumbProperty;
         public static readonly Avalonia.DirectProperty<Avalonia.Controls.Primitives.Track, double> ValueProperty;
         public static readonly Avalonia.StyledProperty<double> ViewportSizeProperty;
         public Track() { }
-        public Avalonia.Controls.Button DecreaseButton { get { throw null; } set { } }
+        public Avalonia.Controls.Button? DecreaseButton { get { throw null; } set { } }
         public bool IgnoreThumbDrag { get { throw null; } set { } }
-        public Avalonia.Controls.Button IncreaseButton { get { throw null; } set { } }
+        public Avalonia.Controls.Button? IncreaseButton { get { throw null; } set { } }
         public bool IsDirectionReversed { get { throw null; } set { } }
         public double Maximum { get { throw null; } set { } }
         public double Minimum { get { throw null; } set { } }
         public Avalonia.Layout.Orientation Orientation { get { throw null; } set { } }
         [Avalonia.Metadata.ContentAttribute]
-        public Avalonia.Controls.Primitives.Thumb Thumb { get { throw null; } set { } }
+        public Avalonia.Controls.Primitives.Thumb? Thumb { get { throw null; } set { } }
         public double Value { get { throw null; } set { } }
         public double ViewportSize { get { throw null; } set { } }
         protected override Avalonia.Size ArrangeOverride(Avalonia.Size arrangeSize) { throw null; }
@@ -5008,7 +5021,7 @@ namespace Avalonia.Controls.Primitives
     }
     public partial class VisualLayerManager : Avalonia.Controls.Decorator
     {
-        public static readonly Avalonia.StyledProperty<Avalonia.Controls.Primitives.ChromeOverlayLayer> ChromeOverlayLayerProperty;
+        public static readonly Avalonia.StyledProperty<Avalonia.Controls.Primitives.ChromeOverlayLayer?> ChromeOverlayLayerProperty;
         public VisualLayerManager() { }
         public Avalonia.Controls.Primitives.AdornerLayer AdornerLayer { get { throw null; } }
         public Avalonia.Controls.Primitives.ChromeOverlayLayer ChromeOverlayLayer { get { throw null; } }
@@ -5135,29 +5148,12 @@ namespace Avalonia.Controls.Remote
         public RemoteWidget(Avalonia.Remote.Protocol.IAvaloniaRemoteTransportConnection connection) { }
         public Avalonia.Controls.Remote.RemoteWidget.SizingMode Mode { [System.Runtime.CompilerServices.CompilerGeneratedAttribute] get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute] set { } }
         protected override void ArrangeCore(Avalonia.Rect finalRect) { }
-        public override void Render(Avalonia.Media.DrawingContext context) { }
+        public sealed override void Render(Avalonia.Media.DrawingContext context) { }
         public enum SizingMode
         {
             Local = 0,
             Remote = 1,
         }
-    }
-}
-namespace Avalonia.Controls.Remote.Server
-{
-    [Avalonia.Metadata.UnstableAttribute]
-    public partial class RemoteServerTopLevelImpl : Avalonia.Controls.Embedding.Offscreen.OffscreenTopLevelImplBase, Avalonia.Controls.Platform.Surfaces.IFramebufferPlatformSurface
-    {
-        public RemoteServerTopLevelImpl(Avalonia.Remote.Protocol.IAvaloniaRemoteTransportConnection transport) { }
-        public Avalonia.Input.IKeyboardDevice KeyboardDevice { [System.Runtime.CompilerServices.CompilerGeneratedAttribute] get { throw null; } }
-        public override Avalonia.Input.IMouseDevice MouseDevice { [System.Runtime.CompilerServices.CompilerGeneratedAttribute] get { throw null; } }
-        public override System.Collections.Generic.IEnumerable<object> Surfaces { get { throw null; } }
-        public override void Invalidate(Avalonia.Rect rect) { }
-        public Avalonia.Platform.ILockedFramebuffer Lock() { throw null; }
-        protected virtual Avalonia.Size Measure(Avalonia.Size constraint) { throw null; }
-        protected virtual void OnMessage(Avalonia.Remote.Protocol.IAvaloniaRemoteTransportConnection transport, object obj) { }
-        protected void RenderIfNeeded() { }
-        protected void SetDpi(Avalonia.Vector dpi) { }
     }
 }
 namespace Avalonia.Controls.Selection
@@ -5396,7 +5392,7 @@ namespace Avalonia.Controls.Shapes
         protected abstract Avalonia.Media.Geometry? CreateDefiningGeometry();
         protected void InvalidateGeometry() { }
         protected override Avalonia.Size MeasureOverride(Avalonia.Size availableSize) { throw null; }
-        public override void Render(Avalonia.Media.DrawingContext context) { }
+        public sealed override void Render(Avalonia.Media.DrawingContext context) { }
     }
 }
 namespace Avalonia.Controls.Templates
@@ -5537,7 +5533,7 @@ namespace Avalonia.Controls.Utils
 namespace Avalonia.Platform
 {
     [System.AttributeUsageAttribute(System.AttributeTargets.Assembly, AllowMultiple=true)]
-    public partial class ExportAvaloniaModuleAttribute : System.Attribute
+    public sealed partial class ExportAvaloniaModuleAttribute : System.Attribute
     {
         public ExportAvaloniaModuleAttribute(string name, System.Type moduleType) { }
         public string ForRenderingSubsystem { [System.Runtime.CompilerServices.CompilerGeneratedAttribute] get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute] set { } }
@@ -5569,7 +5565,7 @@ namespace Avalonia.Platform
     [Avalonia.Metadata.UnstableAttribute]
     public partial interface IPlatformLifetimeEventsImpl
     {
-        event System.EventHandler<Avalonia.Controls.ApplicationLifetimes.ShutdownRequestedEventArgs> ShutdownRequested;
+        event System.EventHandler<Avalonia.Controls.ApplicationLifetimes.ShutdownRequestedEventArgs>? ShutdownRequested;
     }
     [Avalonia.Metadata.UnstableAttribute]
     public partial interface IPlatformNativeSurfaceHandle : Avalonia.Platform.IPlatformHandle
@@ -5578,7 +5574,7 @@ namespace Avalonia.Platform
         Avalonia.PixelSize Size { get; }
     }
     [Avalonia.Metadata.UnstableAttribute]
-    public partial interface IPopupImpl : Avalonia.Platform.ITopLevelImpl, Avalonia.Platform.IWindowBaseImpl, System.IDisposable
+    public partial interface IPopupImpl : Avalonia.Platform.IOptionalFeatureProvider, Avalonia.Platform.ITopLevelImpl, Avalonia.Platform.IWindowBaseImpl, System.IDisposable
     {
         Avalonia.Controls.Primitives.PopupPositioning.IPopupPositioner PopupPositioner { get; }
         void SetWindowManagerAddShadowHint(bool enabled);
@@ -5593,7 +5589,7 @@ namespace Avalonia.Platform
         Avalonia.Platform.Screen? ScreenFromWindow(Avalonia.Platform.IWindowBaseImpl window);
     }
     [Avalonia.Metadata.UnstableAttribute]
-    public partial interface ITopLevelImpl : System.IDisposable
+    public partial interface ITopLevelImpl : Avalonia.Platform.IOptionalFeatureProvider, System.IDisposable
     {
         Avalonia.Controls.AcrylicPlatformCompensationLevels AcrylicCompensationLevels { get; }
         Avalonia.Size ClientSize { get; }
@@ -5610,7 +5606,6 @@ namespace Avalonia.Platform
         System.Action<Avalonia.Controls.WindowTransparencyLevel>? TransparencyLevelChanged { get; set; }
         Avalonia.Platform.IPopupImpl? CreatePopup();
         Avalonia.Rendering.IRenderer CreateRenderer(Avalonia.Rendering.IRenderRoot root);
-        void Invalidate(Avalonia.Rect rect);
         Avalonia.Point PointToClient(Avalonia.PixelPoint point);
         Avalonia.PixelPoint PointToScreen(Avalonia.Point point);
         void SetCursor(Avalonia.Platform.ICursorImpl? cursor);
@@ -5628,7 +5623,7 @@ namespace Avalonia.Platform
         void SetToolTipText(string? text);
     }
     [Avalonia.Metadata.UnstableAttribute]
-    public partial interface IWindowBaseImpl : Avalonia.Platform.ITopLevelImpl, System.IDisposable
+    public partial interface IWindowBaseImpl : Avalonia.Platform.IOptionalFeatureProvider, Avalonia.Platform.ITopLevelImpl, System.IDisposable
     {
         System.Action? Activated { get; set; }
         System.Action? Deactivated { get; set; }
@@ -5649,17 +5644,17 @@ namespace Avalonia.Platform
         void Save(System.IO.Stream outputStream);
     }
     [Avalonia.Metadata.UnstableAttribute]
-    public partial interface IWindowImpl : Avalonia.Platform.ITopLevelImpl, Avalonia.Platform.IWindowBaseImpl, System.IDisposable
+    public partial interface IWindowImpl : Avalonia.Platform.IOptionalFeatureProvider, Avalonia.Platform.ITopLevelImpl, Avalonia.Platform.IWindowBaseImpl, System.IDisposable
     {
-        System.Func<Avalonia.Controls.WindowCloseReason, bool> Closing { get; set; }
-        System.Action<bool> ExtendClientAreaToDecorationsChanged { get; set; }
+        System.Func<Avalonia.Controls.WindowCloseReason, bool>? Closing { get; set; }
+        System.Action<bool>? ExtendClientAreaToDecorationsChanged { get; set; }
         Avalonia.Thickness ExtendedMargins { get; }
-        System.Action GotInputWhenDisabled { get; set; }
+        System.Action? GotInputWhenDisabled { get; set; }
         bool IsClientAreaExtendedToDecorations { get; }
         bool NeedsManagedDecorations { get; }
         Avalonia.Thickness OffScreenMargin { get; }
         Avalonia.Controls.WindowState WindowState { get; set; }
-        System.Action<Avalonia.Controls.WindowState> WindowStateChanged { get; set; }
+        System.Action<Avalonia.Controls.WindowState>? WindowStateChanged { get; set; }
         void BeginMoveDrag(Avalonia.Input.PointerPressedEventArgs e);
         void BeginResizeDrag(Avalonia.Controls.WindowEdge edge, Avalonia.Input.PointerPressedEventArgs e);
         void CanResize(bool value);

@@ -22,7 +22,8 @@ namespace Avalonia.Markup.Xaml
             object Load(Avalonia.Markup.Xaml.RuntimeXamlLoaderDocument document, Avalonia.Markup.Xaml.RuntimeXamlLoaderConfiguration configuration);
         }
     }
-    public partial class ConstructorArgumentAttribute : System.Attribute
+    [System.AttributeUsageAttribute(System.AttributeTargets.Property)]
+    public sealed partial class ConstructorArgumentAttribute : System.Attribute
     {
         public ConstructorArgumentAttribute(string name) { }
     }
@@ -261,7 +262,7 @@ namespace Avalonia.Markup.Xaml.MarkupExtensions
     {
         public StaticResourceExtension() { }
         public StaticResourceExtension(object resourceKey) { }
-        public object ResourceKey { [System.Runtime.CompilerServices.CompilerGeneratedAttribute] get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute] set { } }
+        public object? ResourceKey { [System.Runtime.CompilerServices.CompilerGeneratedAttribute] get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute] set { } }
         public object ProvideValue(System.IServiceProvider serviceProvider) { throw null; }
     }
 }
@@ -318,9 +319,9 @@ namespace Avalonia.Markup.Xaml.Styling
         public Avalonia.Controls.IResourceHost? Owner { get { throw null; } }
         public System.Uri? Source { [System.Runtime.CompilerServices.CompilerGeneratedAttribute] get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute] set { } }
         public event System.EventHandler? OwnerChanged { add { } remove { } }
-        bool Avalonia.Controls.IResourceNode.TryGetResource(object key, out object? value) { throw null; }
         void Avalonia.Controls.IResourceProvider.AddOwner(Avalonia.Controls.IResourceHost owner) { }
         void Avalonia.Controls.IResourceProvider.RemoveOwner(Avalonia.Controls.IResourceHost owner) { }
+        public bool TryGetResource(object key, Avalonia.Styling.ThemeVariant? theme, out object? value) { throw null; }
     }
     [System.Diagnostics.CodeAnalysis.RequiresUnreferencedCodeAttribute("StyleInclude and ResourceInclude use AvaloniaXamlLoader.Load which dynamically loads referenced assembly with Avalonia resources. Note, StyleInclude and ResourceInclude defined in XAML are resolved compile time and are safe with trimming and AOT.")]
     public partial class StyleInclude : Avalonia.Controls.IResourceNode, Avalonia.Controls.IResourceProvider, Avalonia.Styling.IStyle
@@ -335,7 +336,7 @@ namespace Avalonia.Markup.Xaml.Styling
         public event System.EventHandler? OwnerChanged { add { } remove { } }
         void Avalonia.Controls.IResourceProvider.AddOwner(Avalonia.Controls.IResourceHost owner) { }
         void Avalonia.Controls.IResourceProvider.RemoveOwner(Avalonia.Controls.IResourceHost owner) { }
-        public bool TryGetResource(object key, out object? value) { throw null; }
+        public bool TryGetResource(object key, Avalonia.Styling.ThemeVariant? theme, out object? value) { throw null; }
     }
 }
 namespace Avalonia.Markup.Xaml.Templates

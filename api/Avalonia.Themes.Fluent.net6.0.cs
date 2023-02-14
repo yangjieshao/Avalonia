@@ -17,16 +17,9 @@ namespace Avalonia.Themes.Fluent
     public partial class FluentTheme : Avalonia.Styling.Styles
     {
         public static readonly Avalonia.StyledProperty<Avalonia.Themes.Fluent.DensityStyle> DensityStyleProperty;
-        public static readonly Avalonia.StyledProperty<Avalonia.Themes.Fluent.FluentThemeMode> ModeProperty;
         public FluentTheme(System.IServiceProvider? sp = null) { }
         public Avalonia.Themes.Fluent.DensityStyle DensityStyle { get { throw null; } set { } }
-        public Avalonia.Themes.Fluent.FluentThemeMode Mode { get { throw null; } set { } }
         protected override void OnPropertyChanged(Avalonia.AvaloniaPropertyChangedEventArgs change) { }
-    }
-    public enum FluentThemeMode
-    {
-        Light = 0,
-        Dark = 1,
     }
 }
 namespace CompiledAvaloniaXaml
@@ -37,10 +30,7 @@ namespace CompiledAvaloniaXaml
         internal !AvaloniaResources() { }
         public static Avalonia.Controls.ResourceDictionary Build:/Accents/AccentColors.xaml(System.IServiceProvider ) { throw null; }
         public static Avalonia.Controls.ResourceDictionary Build:/Accents/Base.xaml(System.IServiceProvider ) { throw null; }
-        public static Avalonia.Controls.ResourceDictionary Build:/Accents/BaseDark.xaml(System.IServiceProvider ) { throw null; }
-        public static Avalonia.Controls.ResourceDictionary Build:/Accents/BaseLight.xaml(System.IServiceProvider ) { throw null; }
-        public static Avalonia.Controls.ResourceDictionary Build:/Accents/FluentControlResourcesDark.xaml(System.IServiceProvider ) { throw null; }
-        public static Avalonia.Controls.ResourceDictionary Build:/Accents/FluentControlResourcesLight.xaml(System.IServiceProvider ) { throw null; }
+        public static Avalonia.Controls.ResourceDictionary Build:/Accents/FluentControlResources.xaml(System.IServiceProvider ) { throw null; }
         public static Avalonia.Controls.ResourceDictionary Build:/Controls/AutoCompleteBox.xaml(System.IServiceProvider ) { throw null; }
         public static Avalonia.Controls.ResourceDictionary Build:/Controls/Button.xaml(System.IServiceProvider ) { throw null; }
         public static Avalonia.Controls.ResourceDictionary Build:/Controls/ButtonSpinner.xaml(System.IServiceProvider ) { throw null; }
@@ -98,6 +88,7 @@ namespace CompiledAvaloniaXaml
         public static Avalonia.Controls.ResourceDictionary Build:/Controls/TabStrip.xaml(System.IServiceProvider ) { throw null; }
         public static Avalonia.Controls.ResourceDictionary Build:/Controls/TabStripItem.xaml(System.IServiceProvider ) { throw null; }
         public static Avalonia.Controls.ResourceDictionary Build:/Controls/TextBox.xaml(System.IServiceProvider ) { throw null; }
+        public static Avalonia.Controls.ResourceDictionary Build:/Controls/ThemeVariantScope.xaml(System.IServiceProvider ) { throw null; }
         public static Avalonia.Controls.ResourceDictionary Build:/Controls/TimePicker.xaml(System.IServiceProvider ) { throw null; }
         public static Avalonia.Controls.ResourceDictionary Build:/Controls/TitleBar.xaml(System.IServiceProvider ) { throw null; }
         public static Avalonia.Controls.ResourceDictionary Build:/Controls/ToggleButton.xaml(System.IServiceProvider ) { throw null; }
@@ -112,10 +103,7 @@ namespace CompiledAvaloniaXaml
         public static Avalonia.Styling.Styles Build:/DensityStyles/Compact.xaml(System.IServiceProvider ) { throw null; }
         public static void Populate:/Accents/AccentColors.xaml(System.IServiceProvider , Avalonia.Controls.ResourceDictionary ) { }
         public static void Populate:/Accents/Base.xaml(System.IServiceProvider , Avalonia.Controls.ResourceDictionary ) { }
-        public static void Populate:/Accents/BaseDark.xaml(System.IServiceProvider , Avalonia.Controls.ResourceDictionary ) { }
-        public static void Populate:/Accents/BaseLight.xaml(System.IServiceProvider , Avalonia.Controls.ResourceDictionary ) { }
-        public static void Populate:/Accents/FluentControlResourcesDark.xaml(System.IServiceProvider , Avalonia.Controls.ResourceDictionary ) { }
-        public static void Populate:/Accents/FluentControlResourcesLight.xaml(System.IServiceProvider , Avalonia.Controls.ResourceDictionary ) { }
+        public static void Populate:/Accents/FluentControlResources.xaml(System.IServiceProvider , Avalonia.Controls.ResourceDictionary ) { }
         public static void Populate:/Controls/AutoCompleteBox.xaml(System.IServiceProvider , Avalonia.Controls.ResourceDictionary ) { }
         public static void Populate:/Controls/Button.xaml(System.IServiceProvider , Avalonia.Controls.ResourceDictionary ) { }
         public static void Populate:/Controls/ButtonSpinner.xaml(System.IServiceProvider , Avalonia.Controls.ResourceDictionary ) { }
@@ -173,6 +161,7 @@ namespace CompiledAvaloniaXaml
         public static void Populate:/Controls/TabStrip.xaml(System.IServiceProvider , Avalonia.Controls.ResourceDictionary ) { }
         public static void Populate:/Controls/TabStripItem.xaml(System.IServiceProvider , Avalonia.Controls.ResourceDictionary ) { }
         public static void Populate:/Controls/TextBox.xaml(System.IServiceProvider , Avalonia.Controls.ResourceDictionary ) { }
+        public static void Populate:/Controls/ThemeVariantScope.xaml(System.IServiceProvider , Avalonia.Controls.ResourceDictionary ) { }
         public static void Populate:/Controls/TimePicker.xaml(System.IServiceProvider , Avalonia.Controls.ResourceDictionary ) { }
         public static void Populate:/Controls/TitleBar.xaml(System.IServiceProvider , Avalonia.Controls.ResourceDictionary ) { }
         public static void Populate:/Controls/ToggleButton.xaml(System.IServiceProvider , Avalonia.Controls.ResourceDictionary ) { }
@@ -199,31 +188,10 @@ namespace CompiledAvaloniaXaml
             public virtual System.Collections.Generic.IReadOnlyDictionary<string, System.Collections.Generic.IReadOnlyList<Avalonia.Markup.Xaml.XamlIl.Runtime.AvaloniaXamlIlXmlNamespaceInfo>> XmlNamespaces { get { throw null; } }
             public virtual System.Collections.Generic.IReadOnlyDictionary<string, System.Collections.Generic.IReadOnlyList<Avalonia.Markup.Xaml.XamlIl.Runtime.AvaloniaXamlIlXmlNamespaceInfo>> get_XmlNamespaces() { throw null; }
         }
-        public partial class NamespaceInfo:/Accents/BaseDark.xaml : Avalonia.Markup.Xaml.XamlIl.Runtime.IAvaloniaXamlIlXmlNamespaceInfoProvider
+        public partial class NamespaceInfo:/Accents/FluentControlResources.xaml : Avalonia.Markup.Xaml.XamlIl.Runtime.IAvaloniaXamlIlXmlNamespaceInfoProvider
         {
             public static Avalonia.Markup.Xaml.XamlIl.Runtime.IAvaloniaXamlIlXmlNamespaceInfoProvider Singleton;
-            public NamespaceInfo:/Accents/BaseDark.xaml() { }
-            public virtual System.Collections.Generic.IReadOnlyDictionary<string, System.Collections.Generic.IReadOnlyList<Avalonia.Markup.Xaml.XamlIl.Runtime.AvaloniaXamlIlXmlNamespaceInfo>> XmlNamespaces { get { throw null; } }
-            public virtual System.Collections.Generic.IReadOnlyDictionary<string, System.Collections.Generic.IReadOnlyList<Avalonia.Markup.Xaml.XamlIl.Runtime.AvaloniaXamlIlXmlNamespaceInfo>> get_XmlNamespaces() { throw null; }
-        }
-        public partial class NamespaceInfo:/Accents/BaseLight.xaml : Avalonia.Markup.Xaml.XamlIl.Runtime.IAvaloniaXamlIlXmlNamespaceInfoProvider
-        {
-            public static Avalonia.Markup.Xaml.XamlIl.Runtime.IAvaloniaXamlIlXmlNamespaceInfoProvider Singleton;
-            public NamespaceInfo:/Accents/BaseLight.xaml() { }
-            public virtual System.Collections.Generic.IReadOnlyDictionary<string, System.Collections.Generic.IReadOnlyList<Avalonia.Markup.Xaml.XamlIl.Runtime.AvaloniaXamlIlXmlNamespaceInfo>> XmlNamespaces { get { throw null; } }
-            public virtual System.Collections.Generic.IReadOnlyDictionary<string, System.Collections.Generic.IReadOnlyList<Avalonia.Markup.Xaml.XamlIl.Runtime.AvaloniaXamlIlXmlNamespaceInfo>> get_XmlNamespaces() { throw null; }
-        }
-        public partial class NamespaceInfo:/Accents/FluentControlResourcesDark.xaml : Avalonia.Markup.Xaml.XamlIl.Runtime.IAvaloniaXamlIlXmlNamespaceInfoProvider
-        {
-            public static Avalonia.Markup.Xaml.XamlIl.Runtime.IAvaloniaXamlIlXmlNamespaceInfoProvider Singleton;
-            public NamespaceInfo:/Accents/FluentControlResourcesDark.xaml() { }
-            public virtual System.Collections.Generic.IReadOnlyDictionary<string, System.Collections.Generic.IReadOnlyList<Avalonia.Markup.Xaml.XamlIl.Runtime.AvaloniaXamlIlXmlNamespaceInfo>> XmlNamespaces { get { throw null; } }
-            public virtual System.Collections.Generic.IReadOnlyDictionary<string, System.Collections.Generic.IReadOnlyList<Avalonia.Markup.Xaml.XamlIl.Runtime.AvaloniaXamlIlXmlNamespaceInfo>> get_XmlNamespaces() { throw null; }
-        }
-        public partial class NamespaceInfo:/Accents/FluentControlResourcesLight.xaml : Avalonia.Markup.Xaml.XamlIl.Runtime.IAvaloniaXamlIlXmlNamespaceInfoProvider
-        {
-            public static Avalonia.Markup.Xaml.XamlIl.Runtime.IAvaloniaXamlIlXmlNamespaceInfoProvider Singleton;
-            public NamespaceInfo:/Accents/FluentControlResourcesLight.xaml() { }
+            public NamespaceInfo:/Accents/FluentControlResources.xaml() { }
             public virtual System.Collections.Generic.IReadOnlyDictionary<string, System.Collections.Generic.IReadOnlyList<Avalonia.Markup.Xaml.XamlIl.Runtime.AvaloniaXamlIlXmlNamespaceInfo>> XmlNamespaces { get { throw null; } }
             public virtual System.Collections.Generic.IReadOnlyDictionary<string, System.Collections.Generic.IReadOnlyList<Avalonia.Markup.Xaml.XamlIl.Runtime.AvaloniaXamlIlXmlNamespaceInfo>> get_XmlNamespaces() { throw null; }
         }
@@ -623,6 +591,13 @@ namespace CompiledAvaloniaXaml
         {
             public static Avalonia.Markup.Xaml.XamlIl.Runtime.IAvaloniaXamlIlXmlNamespaceInfoProvider Singleton;
             public NamespaceInfo:/Controls/TextBox.xaml() { }
+            public virtual System.Collections.Generic.IReadOnlyDictionary<string, System.Collections.Generic.IReadOnlyList<Avalonia.Markup.Xaml.XamlIl.Runtime.AvaloniaXamlIlXmlNamespaceInfo>> XmlNamespaces { get { throw null; } }
+            public virtual System.Collections.Generic.IReadOnlyDictionary<string, System.Collections.Generic.IReadOnlyList<Avalonia.Markup.Xaml.XamlIl.Runtime.AvaloniaXamlIlXmlNamespaceInfo>> get_XmlNamespaces() { throw null; }
+        }
+        public partial class NamespaceInfo:/Controls/ThemeVariantScope.xaml : Avalonia.Markup.Xaml.XamlIl.Runtime.IAvaloniaXamlIlXmlNamespaceInfoProvider
+        {
+            public static Avalonia.Markup.Xaml.XamlIl.Runtime.IAvaloniaXamlIlXmlNamespaceInfoProvider Singleton;
+            public NamespaceInfo:/Controls/ThemeVariantScope.xaml() { }
             public virtual System.Collections.Generic.IReadOnlyDictionary<string, System.Collections.Generic.IReadOnlyList<Avalonia.Markup.Xaml.XamlIl.Runtime.AvaloniaXamlIlXmlNamespaceInfo>> XmlNamespaces { get { throw null; } }
             public virtual System.Collections.Generic.IReadOnlyDictionary<string, System.Collections.Generic.IReadOnlyList<Avalonia.Markup.Xaml.XamlIl.Runtime.AvaloniaXamlIlXmlNamespaceInfo>> get_XmlNamespaces() { throw null; }
         }

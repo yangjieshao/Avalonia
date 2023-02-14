@@ -20,8 +20,7 @@ namespace Avalonia
         public float? CompositionBackdropCornerRadius { [System.Runtime.CompilerServices.CompilerGeneratedAttribute] get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute] set { } }
         public Avalonia.Platform.IPlatformGraphics? CustomPlatformGraphics { [System.Runtime.CompilerServices.CompilerGeneratedAttribute] get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute] set { } }
         public bool OverlayPopups { [System.Runtime.CompilerServices.CompilerGeneratedAttribute] get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute] set { } }
-        public bool UseCompositor { [System.Runtime.CompilerServices.CompilerGeneratedAttribute] get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute] set { } }
-        public bool UseDeferredRendering { [System.Runtime.CompilerServices.CompilerGeneratedAttribute] get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute] set { } }
+        public bool ShouldRenderOnUIThread { [System.Runtime.CompilerServices.CompilerGeneratedAttribute] get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute] set { } }
         public bool UseLowLatencyDxgiSwapChain { [System.Runtime.CompilerServices.CompilerGeneratedAttribute] get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute] set { } }
         public bool UseWgl { [System.Runtime.CompilerServices.CompilerGeneratedAttribute] get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute] set { } }
         public bool UseWindowsUIComposition { [System.Runtime.CompilerServices.CompilerGeneratedAttribute] get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute] set { } }
@@ -33,7 +32,7 @@ namespace Avalonia.Win32
     public partial class AngleOptions
     {
         public AngleOptions() { }
-        public System.Collections.Generic.IList<Avalonia.Win32.AngleOptions.PlatformApi> AllowedPlatformApis { [System.Runtime.CompilerServices.CompilerGeneratedAttribute] get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute] set { } }
+        public System.Collections.Generic.IList<Avalonia.Win32.AngleOptions.PlatformApi>? AllowedPlatformApis { [System.Runtime.CompilerServices.CompilerGeneratedAttribute] get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute] set { } }
         public System.Collections.Generic.IList<Avalonia.OpenGL.GlVersion> GlProfiles { [System.Runtime.CompilerServices.CompilerGeneratedAttribute] get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute] set { } }
         public enum PlatformApi
         {
@@ -55,9 +54,9 @@ namespace Avalonia.Win32
         public System.Collections.Generic.IReadOnlyList<Avalonia.Platform.Screen> AllScreens { get { throw null; } }
         public int ScreenCount { get { throw null; } }
         public void InvalidateScreensCache() { }
-        public Avalonia.Platform.Screen ScreenFromPoint(Avalonia.PixelPoint point) { throw null; }
-        public Avalonia.Platform.Screen ScreenFromRect(Avalonia.PixelRect rect) { throw null; }
-        public Avalonia.Platform.Screen ScreenFromWindow(Avalonia.Platform.IWindowBaseImpl window) { throw null; }
+        public Avalonia.Platform.Screen? ScreenFromPoint(Avalonia.PixelPoint point) { throw null; }
+        public Avalonia.Platform.Screen? ScreenFromRect(Avalonia.PixelRect rect) { throw null; }
+        public Avalonia.Platform.Screen? ScreenFromWindow(Avalonia.Platform.IWindowBaseImpl window) { throw null; }
     }
     [Avalonia.Metadata.UnstableAttribute]
     public partial class TrayIconImpl : Avalonia.Platform.ITrayIconImpl, System.IDisposable
@@ -76,11 +75,10 @@ namespace Avalonia.Win32
     {
         public Win32Platform() { }
         public bool CurrentThreadIsLoopThread { get { throw null; } }
-        public static Avalonia.Win32PlatformOptions Options { [System.Runtime.CompilerServices.CompilerGeneratedAttribute] get { throw null; } }
-        public static bool UseDeferredRendering { get { throw null; } }
+        public static Avalonia.Win32PlatformOptions Options { get { throw null; } }
         public static System.Version WindowsVersion { [System.Runtime.CompilerServices.CompilerGeneratedAttribute] get { throw null; } }
-        public event System.EventHandler<Avalonia.Controls.ApplicationLifetimes.ShutdownRequestedEventArgs> ShutdownRequested { add { } remove { } }
-        public event System.Action<Avalonia.Threading.DispatcherPriority?> Signaled { add { } remove { } }
+        public event System.EventHandler<Avalonia.Controls.ApplicationLifetimes.ShutdownRequestedEventArgs>? ShutdownRequested { add { } remove { } }
+        public event System.Action<Avalonia.Threading.DispatcherPriority?>? Signaled { add { } remove { } }
         public Avalonia.Platform.IWindowImpl CreateEmbeddableWindow() { throw null; }
         public Avalonia.Platform.ITrayIconImpl CreateTrayIcon() { throw null; }
         public Avalonia.Platform.IWindowImpl CreateWindow() { throw null; }
@@ -96,49 +94,47 @@ namespace Avalonia.Win32
         public System.IDisposable StartTimer(Avalonia.Threading.DispatcherPriority priority, System.TimeSpan interval, System.Action callback) { throw null; }
     }
     [Avalonia.Metadata.UnstableAttribute]
-    public partial class WindowImpl : Avalonia.Controls.Platform.ITopLevelImplWithNativeControlHost, Avalonia.Controls.Platform.ITopLevelImplWithStorageProvider, Avalonia.Controls.Platform.ITopLevelImplWithTextInputMethod, Avalonia.OpenGL.Egl.EglGlPlatformSurface.IEglWindowGlPlatformSurfaceInfo, Avalonia.Platform.ITopLevelImpl, Avalonia.Platform.IWindowBaseImpl, Avalonia.Platform.IWindowImpl, System.IDisposable
+    public partial class WindowImpl : Avalonia.OpenGL.Egl.EglGlPlatformSurface.IEglWindowGlPlatformSurfaceInfo, Avalonia.Platform.IOptionalFeatureProvider, Avalonia.Platform.ITopLevelImpl, Avalonia.Platform.IWindowBaseImpl, Avalonia.Platform.IWindowImpl, System.IDisposable
     {
         public WindowImpl() { }
         public Avalonia.Controls.AcrylicPlatformCompensationLevels AcrylicCompensationLevels { [System.Runtime.CompilerServices.CompilerGeneratedAttribute] get { throw null; } }
-        public System.Action Activated { [System.Runtime.CompilerServices.CompilerGeneratedAttribute] get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute] set { } }
+        public System.Action? Activated { [System.Runtime.CompilerServices.CompilerGeneratedAttribute] get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute] set { } }
         System.IntPtr Avalonia.OpenGL.Egl.EglGlPlatformSurface.IEglWindowGlPlatformSurfaceInfo.Handle { get { throw null; } }
         double Avalonia.OpenGL.Egl.EglGlPlatformSurface.IEglWindowGlPlatformSurfaceInfo.Scaling { get { throw null; } }
         Avalonia.PixelSize Avalonia.OpenGL.Egl.EglGlPlatformSurface.IEglWindowGlPlatformSurfaceInfo.Size { get { throw null; } }
         public Avalonia.Thickness BorderThickness { get { throw null; } }
         public Avalonia.Size ClientSize { get { throw null; } }
-        public System.Action Closed { [System.Runtime.CompilerServices.CompilerGeneratedAttribute] get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute] set { } }
-        public System.Func<Avalonia.Controls.WindowCloseReason, bool> Closing { [System.Runtime.CompilerServices.CompilerGeneratedAttribute] get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute] set { } }
-        public System.Action Deactivated { [System.Runtime.CompilerServices.CompilerGeneratedAttribute] get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute] set { } }
+        public System.Action? Closed { [System.Runtime.CompilerServices.CompilerGeneratedAttribute] get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute] set { } }
+        public System.Func<Avalonia.Controls.WindowCloseReason, bool>? Closing { [System.Runtime.CompilerServices.CompilerGeneratedAttribute] get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute] set { } }
+        public System.Action? Deactivated { [System.Runtime.CompilerServices.CompilerGeneratedAttribute] get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute] set { } }
         public double DesktopScaling { get { throw null; } }
-        public System.Action<bool> ExtendClientAreaToDecorationsChanged { [System.Runtime.CompilerServices.CompilerGeneratedAttribute] get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute] set { } }
+        public System.Action<bool>? ExtendClientAreaToDecorationsChanged { [System.Runtime.CompilerServices.CompilerGeneratedAttribute] get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute] set { } }
         public Avalonia.Thickness ExtendedMargins { get { throw null; } }
         public Avalonia.Size? FrameSize { get { throw null; } }
-        public System.Action GotInputWhenDisabled { [System.Runtime.CompilerServices.CompilerGeneratedAttribute] get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute] set { } }
+        public System.Action? GotInputWhenDisabled { [System.Runtime.CompilerServices.CompilerGeneratedAttribute] get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute] set { } }
         public Avalonia.Platform.IPlatformHandle Handle { [System.Runtime.CompilerServices.CompilerGeneratedAttribute] get { throw null; } }
         protected System.IntPtr Hwnd { get { throw null; } }
-        public System.Action<Avalonia.Input.Raw.RawInputEventArgs> Input { [System.Runtime.CompilerServices.CompilerGeneratedAttribute] get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute] set { } }
+        public System.Action<Avalonia.Input.Raw.RawInputEventArgs>? Input { [System.Runtime.CompilerServices.CompilerGeneratedAttribute] get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute] set { } }
         public bool IsClientAreaExtendedToDecorations { get { throw null; } }
-        public System.Action LostFocus { [System.Runtime.CompilerServices.CompilerGeneratedAttribute] get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute] set { } }
+        public System.Action? LostFocus { [System.Runtime.CompilerServices.CompilerGeneratedAttribute] get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute] set { } }
         public virtual Avalonia.Size MaxAutoSizeHint { get { throw null; } }
         public Avalonia.Input.IMouseDevice MouseDevice { get { throw null; } }
         public Avalonia.Controls.Platform.INativeControlHostImpl NativeControlHost { get { throw null; } }
         public bool NeedsManagedDecorations { get { throw null; } }
         public Avalonia.Thickness OffScreenMargin { get { throw null; } }
-        public System.Action<Avalonia.Rect> Paint { [System.Runtime.CompilerServices.CompilerGeneratedAttribute] get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute] set { } }
+        public System.Action<Avalonia.Rect>? Paint { [System.Runtime.CompilerServices.CompilerGeneratedAttribute] get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute] set { } }
         public Avalonia.PixelPoint Position { get { throw null; } set { } }
-        public System.Action<Avalonia.PixelPoint> PositionChanged { [System.Runtime.CompilerServices.CompilerGeneratedAttribute] get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute] set { } }
+        public System.Action<Avalonia.PixelPoint>? PositionChanged { [System.Runtime.CompilerServices.CompilerGeneratedAttribute] get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute] set { } }
         public double RenderScaling { get { throw null; } }
-        public System.Action<Avalonia.Size, Avalonia.Platform.PlatformResizeReason> Resized { [System.Runtime.CompilerServices.CompilerGeneratedAttribute] get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute] set { } }
-        public System.Action<double> ScalingChanged { [System.Runtime.CompilerServices.CompilerGeneratedAttribute] get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute] set { } }
+        public System.Action<Avalonia.Size, Avalonia.Platform.PlatformResizeReason>? Resized { [System.Runtime.CompilerServices.CompilerGeneratedAttribute] get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute] set { } }
+        public System.Action<double>? ScalingChanged { [System.Runtime.CompilerServices.CompilerGeneratedAttribute] get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute] set { } }
         public Avalonia.Platform.IScreenImpl Screen { [System.Runtime.CompilerServices.CompilerGeneratedAttribute] get { throw null; } }
         protected virtual bool ShouldTakeFocusOnClick { get { throw null; } }
-        public Avalonia.Platform.Storage.IStorageProvider StorageProvider { [System.Runtime.CompilerServices.CompilerGeneratedAttribute] get { throw null; } }
         public System.Collections.Generic.IEnumerable<object> Surfaces { get { throw null; } }
-        public Avalonia.Input.TextInput.ITextInputMethodImpl TextInputMethod { get { throw null; } }
         public Avalonia.Controls.WindowTransparencyLevel TransparencyLevel { [System.Runtime.CompilerServices.CompilerGeneratedAttribute] get { throw null; } }
-        public System.Action<Avalonia.Controls.WindowTransparencyLevel> TransparencyLevelChanged { [System.Runtime.CompilerServices.CompilerGeneratedAttribute] get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute] set { } }
+        public System.Action<Avalonia.Controls.WindowTransparencyLevel>? TransparencyLevelChanged { [System.Runtime.CompilerServices.CompilerGeneratedAttribute] get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute] set { } }
         public Avalonia.Controls.WindowState WindowState { get { throw null; } set { } }
-        public System.Action<Avalonia.Controls.WindowState> WindowStateChanged { [System.Runtime.CompilerServices.CompilerGeneratedAttribute] get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute] set { } }
+        public System.Action<Avalonia.Controls.WindowState>? WindowStateChanged { [System.Runtime.CompilerServices.CompilerGeneratedAttribute] get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute] set { } }
         public void Activate() { }
         [System.Diagnostics.CodeAnalysis.UnconditionalSuppressMessageAttribute("Trimming", "IL2026", Justification="We do .NET COM interop availability checks")]
         [System.Diagnostics.CodeAnalysis.UnconditionalSuppressMessageAttribute("Trimming", "IL2050", Justification="We do .NET COM interop availability checks")]
@@ -146,7 +142,7 @@ namespace Avalonia.Win32
         public void BeginMoveDrag(Avalonia.Input.PointerPressedEventArgs e) { }
         public void BeginResizeDrag(Avalonia.Controls.WindowEdge edge, Avalonia.Input.PointerPressedEventArgs e) { }
         public void CanResize(bool value) { }
-        public Avalonia.Platform.IPopupImpl CreatePopup() { throw null; }
+        public Avalonia.Platform.IPopupImpl? CreatePopup() { throw null; }
         public Avalonia.Rendering.IRenderer CreateRenderer(Avalonia.Rendering.IRenderRoot root) { throw null; }
         protected virtual System.IntPtr CreateWindowOverride(ushort atom) { throw null; }
         protected virtual System.IntPtr CustomCaptionProc(System.IntPtr hWnd, uint msg, System.IntPtr wParam, System.IntPtr lParam, ref bool callDwp) { throw null; }
@@ -157,22 +153,23 @@ namespace Avalonia.Win32
         public Avalonia.Point PointToClient(Avalonia.PixelPoint point) { throw null; }
         public Avalonia.PixelPoint PointToScreen(Avalonia.Point point) { throw null; }
         public void Resize(Avalonia.Size value, Avalonia.Platform.PlatformResizeReason reason) { }
-        public void SetCursor(Avalonia.Platform.ICursorImpl cursor) { }
+        public void SetCursor(Avalonia.Platform.ICursorImpl? cursor) { }
         public void SetEnabled(bool enable) { }
         public void SetExtendClientAreaChromeHints(Avalonia.Platform.ExtendClientAreaChromeHints hints) { }
         public void SetExtendClientAreaTitleBarHeightHint(double titleBarHeight) { }
         public void SetExtendClientAreaToDecorationsHint(bool hint) { }
         public void SetFrameThemeVariant(Avalonia.Platform.PlatformThemeVariant themeVariant) { }
-        public void SetIcon(Avalonia.Platform.IWindowIconImpl icon) { }
+        public void SetIcon(Avalonia.Platform.IWindowIconImpl? icon) { }
         public void SetInputRoot(Avalonia.Input.IInputRoot inputRoot) { }
         public void SetMinMaxSize(Avalonia.Size minSize, Avalonia.Size maxSize) { }
-        public void SetParent(Avalonia.Platform.IWindowImpl parent) { }
+        public void SetParent(Avalonia.Platform.IWindowImpl? parent) { }
         public void SetSystemDecorations(Avalonia.Controls.SystemDecorations value) { }
-        public void SetTitle(string title) { }
+        public void SetTitle(string? title) { }
         public void SetTopmost(bool value) { }
         public void SetTransparencyLevelHint(Avalonia.Controls.WindowTransparencyLevel transparencyLevel) { }
         public virtual void Show(bool activate, bool isDialog) { }
         public void ShowTaskbarIcon(bool value) { }
+        public object? TryGetFeature(System.Type featureType) { throw null; }
         protected virtual System.IntPtr WndProc(System.IntPtr hWnd, uint msg, System.IntPtr wParam, System.IntPtr lParam) { throw null; }
     }
     public partial class WindowsMountedVolumeInfoProvider : Avalonia.Controls.Platform.IMountedVolumeInfoProvider
@@ -184,7 +181,7 @@ namespace Avalonia.Win32
     {
         public WinScreen(double scaling, Avalonia.PixelRect bounds, Avalonia.PixelRect workingArea, bool isPrimary, System.IntPtr hMonitor) : base (default(double), default(Avalonia.PixelRect), default(Avalonia.PixelRect), default(bool)) { }
         public System.IntPtr Handle { get { throw null; } }
-        public override bool Equals(object obj) { throw null; }
+        public override bool Equals(object? obj) { throw null; }
         public override int GetHashCode() { throw null; }
     }
 }
@@ -289,7 +286,7 @@ namespace Avalonia.Win32.Interop.Automation
     {
         int ColumnCount { get; }
         int RowCount { get; }
-        Avalonia.Win32.Interop.Automation.IRawElementProviderSimple GetItem(int row, int column);
+        Avalonia.Win32.Interop.Automation.IRawElementProviderSimple? GetItem(int row, int column);
     }
     [System.Runtime.InteropServices.ComVisibleAttribute(true)]
     [System.Runtime.InteropServices.GuidAttribute("54fcb24b-e18e-47a2-b4d3-eccbe77599a2")]
@@ -346,8 +343,8 @@ namespace Avalonia.Win32.Interop.Automation
     [System.Runtime.InteropServices.InterfaceTypeAttribute(System.Runtime.InteropServices.ComInterfaceType.InterfaceIsIUnknown)]
     public partial interface IRawElementProviderFragmentRoot : Avalonia.Win32.Interop.Automation.IRawElementProviderFragment, Avalonia.Win32.Interop.Automation.IRawElementProviderSimple
     {
-        Avalonia.Win32.Interop.Automation.IRawElementProviderFragment ElementProviderFromPoint(double x, double y);
-        Avalonia.Win32.Interop.Automation.IRawElementProviderFragment GetFocus();
+        Avalonia.Win32.Interop.Automation.IRawElementProviderFragment? ElementProviderFromPoint(double x, double y);
+        Avalonia.Win32.Interop.Automation.IRawElementProviderFragment? GetFocus();
     }
     [System.Runtime.InteropServices.ComVisibleAttribute(true)]
     [System.Runtime.InteropServices.GuidAttribute("d6dd68d1-86fd-4332-8666-9abedea2d24c")]

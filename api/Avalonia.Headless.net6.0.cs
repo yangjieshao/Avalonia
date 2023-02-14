@@ -20,16 +20,17 @@ namespace Avalonia.Headless
     public partial class AvaloniaHeadlessPlatformOptions
     {
         public AvaloniaHeadlessPlatformOptions() { }
-        public bool UseCompositor { [System.Runtime.CompilerServices.CompilerGeneratedAttribute] get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute] set { } }
         public bool UseHeadlessDrawing { [System.Runtime.CompilerServices.CompilerGeneratedAttribute] get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute] set { } }
     }
     public partial interface IHeadlessWindow
     {
+        void DragDrop(Avalonia.Point point, Avalonia.Input.Raw.RawDragEventType type, Avalonia.Input.IDataObject data, Avalonia.Input.DragDropEffects effects, Avalonia.Input.RawInputModifiers modifiers);
         Avalonia.Utilities.IRef<Avalonia.Platform.IWriteableBitmapImpl> GetLastRenderedFrame();
         void KeyPress(Avalonia.Input.Key key, Avalonia.Input.RawInputModifiers modifiers);
         void KeyRelease(Avalonia.Input.Key key, Avalonia.Input.RawInputModifiers modifiers);
         void MouseDown(Avalonia.Point point, int button, Avalonia.Input.RawInputModifiers modifiers = Avalonia.Input.RawInputModifiers.None);
         void MouseMove(Avalonia.Point point, Avalonia.Input.RawInputModifiers modifiers = Avalonia.Input.RawInputModifiers.None);
         void MouseUp(Avalonia.Point point, int button, Avalonia.Input.RawInputModifiers modifiers = Avalonia.Input.RawInputModifiers.None);
+        void MouseWheel(Avalonia.Point point, Avalonia.Vector delta, Avalonia.Input.RawInputModifiers modifiers = Avalonia.Input.RawInputModifiers.None);
     }
 }
