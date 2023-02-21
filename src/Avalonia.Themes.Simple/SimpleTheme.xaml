@@ -5,9 +5,8 @@
     <ResourceDictionary>
       <ResourceDictionary.MergedDictionaries>
         <MergeResourceInclude Source="/Accents/Base.xaml" />
+        <MergeResourceInclude Source="/Controls/SimpleControls.xaml" />
       </ResourceDictionary.MergedDictionaries>
     </ResourceDictionary>
   </Styles.Resources>
-  
-  <StyleInclude Source="/Controls/SimpleControls.xaml" />
 </Styles>

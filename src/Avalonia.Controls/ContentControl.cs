@@ -43,6 +43,21 @@ namespace Avalonia.Controls
         static ContentControl()
         {
             ContentProperty.Changed.AddClassHandler<ContentControl>((x, e) => x.ContentChanged(e));
+            TemplateProperty.OverrideDefaultValue<ContentControl>(new FuncControlTemplate<ContentControl>((c, n) =>
+            {
+                var presenter = new ContentPresenter { Name = "PART_ContentPresenter" };
+                n.Register(presenter.Name, presenter);
+                presenter.Bind(BackgroundProperty, c.GetBindingObservable(BackgroundProperty));
+                presenter.Bind(BorderBrushProperty, c.GetBindingObservable(BorderBrushProperty));
+                presenter.Bind(BorderThicknessProperty, c.GetBindingObservable(BorderThicknessProperty));
+                presenter.Bind(CornerRadiusProperty, c.GetBindingObservable(CornerRadiusProperty));
+                presenter.Bind(ContentTemplateProperty, c.GetBindingObservable(ContentTemplateProperty));
+                presenter.Bind(ContentProperty, c.GetBindingObservable(ContentProperty));
+                presenter.Bind(PaddingProperty, c.GetBindingObservable(PaddingProperty));
+                presenter.Bind(VerticalContentAlignmentProperty, c.GetBindingObservable(VerticalContentAlignmentProperty));
+                presenter.Bind(HorizontalContentAlignmentProperty, c.GetBindingObservable(HorizontalContentAlignmentProperty));
+                return presenter;
+            }));
         }
 
         /// <summary>
